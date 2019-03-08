@@ -1,0 +1,421 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		20D2EFD022321CA1001DC35D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D2EFCF22321CA1001DC35D /* AppDelegate.m */; };
+		20D2EFD322321CA1001DC35D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D2EFD222321CA1001DC35D /* ViewController.m */; };
+		20D2EFD622321CA1001DC35D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20D2EFD422321CA1001DC35D /* Main.storyboard */; };
+		20D2EFD822321CA2001DC35D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20D2EFD722321CA2001DC35D /* Assets.xcassets */; };
+		20D2EFDB22321CA2001DC35D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20D2EFD922321CA2001DC35D /* LaunchScreen.storyboard */; };
+		20D2EFDE22321CA2001DC35D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D2EFDD22321CA2001DC35D /* main.m */; };
+		20D2EFE722321F43001DC35D /* TFScrollTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D2EFE622321F43001DC35D /* TFScrollTagView.m */; };
+		20D2EFEC22322307001DC35D /* TFScrollTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D2EFEA22322307001DC35D /* TFScrollTagViewController.m */; };
+		20D2EFED22322307001DC35D /* TFScrollTagViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20D2EFEB22322307001DC35D /* TFScrollTagViewController.xib */; };
+		3181B3D42D96106084DFD923 /* libPods-TFComponentsDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 423C14E308F7FFACDC192769 /* libPods-TFComponentsDemo.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0766CA20DAFE18EECDA875EE /* Pods-TFComponentsDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TFComponentsDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TFComponentsDemo/Pods-TFComponentsDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		20D2EFCB22321CA1001DC35D /* TFComponentsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TFComponentsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		20D2EFCE22321CA1001DC35D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		20D2EFCF22321CA1001DC35D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		20D2EFD122321CA1001DC35D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		20D2EFD222321CA1001DC35D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		20D2EFD522321CA1001DC35D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		20D2EFD722321CA2001DC35D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		20D2EFDA22321CA2001DC35D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		20D2EFDC22321CA2001DC35D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		20D2EFDD22321CA2001DC35D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		20D2EFE522321F43001DC35D /* TFScrollTagView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TFScrollTagView.h; sourceTree = "<group>"; };
+		20D2EFE622321F43001DC35D /* TFScrollTagView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TFScrollTagView.m; sourceTree = "<group>"; };
+		20D2EFE922322307001DC35D /* TFScrollTagViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TFScrollTagViewController.h; sourceTree = "<group>"; };
+		20D2EFEA22322307001DC35D /* TFScrollTagViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TFScrollTagViewController.m; sourceTree = "<group>"; };
+		20D2EFEB22322307001DC35D /* TFScrollTagViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TFScrollTagViewController.xib; sourceTree = "<group>"; };
+		423C14E308F7FFACDC192769 /* libPods-TFComponentsDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TFComponentsDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAB4364B1219D7FF792AC2FA /* Pods-TFComponentsDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TFComponentsDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-TFComponentsDemo/Pods-TFComponentsDemo.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		20D2EFC822321CA1001DC35D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3181B3D42D96106084DFD923 /* libPods-TFComponentsDemo.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		20D2EFC222321CA1001DC35D = {
+			isa = PBXGroup;
+			children = (
+				20D2EFCD22321CA1001DC35D /* TFComponentsDemo */,
+				20D2EFCC22321CA1001DC35D /* Products */,
+				9ACDD4325446A13A36A63900 /* Pods */,
+				ABC281DE02A98FBE01552774 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		20D2EFCC22321CA1001DC35D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				20D2EFCB22321CA1001DC35D /* TFComponentsDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		20D2EFCD22321CA1001DC35D /* TFComponentsDemo */ = {
+			isa = PBXGroup;
+			children = (
+				20D2EFCE22321CA1001DC35D /* AppDelegate.h */,
+				20D2EFCF22321CA1001DC35D /* AppDelegate.m */,
+				20D2EFD122321CA1001DC35D /* ViewController.h */,
+				20D2EFD222321CA1001DC35D /* ViewController.m */,
+				20D2EFE8223222BE001DC35D /* DemoController */,
+				20D2EFE422321F2E001DC35D /* TFComponents */,
+				20D2EFD422321CA1001DC35D /* Main.storyboard */,
+				20D2EFD722321CA2001DC35D /* Assets.xcassets */,
+				20D2EFD922321CA2001DC35D /* LaunchScreen.storyboard */,
+				20D2EFDC22321CA2001DC35D /* Info.plist */,
+				20D2EFDD22321CA2001DC35D /* main.m */,
+			);
+			path = TFComponentsDemo;
+			sourceTree = "<group>";
+		};
+		20D2EFE422321F2E001DC35D /* TFComponents */ = {
+			isa = PBXGroup;
+			children = (
+				20D2EFE522321F43001DC35D /* TFScrollTagView.h */,
+				20D2EFE622321F43001DC35D /* TFScrollTagView.m */,
+			);
+			name = TFComponents;
+			path = ../../TFComponents;
+			sourceTree = "<group>";
+		};
+		20D2EFE8223222BE001DC35D /* DemoController */ = {
+			isa = PBXGroup;
+			children = (
+				20D2EFE922322307001DC35D /* TFScrollTagViewController.h */,
+				20D2EFEA22322307001DC35D /* TFScrollTagViewController.m */,
+				20D2EFEB22322307001DC35D /* TFScrollTagViewController.xib */,
+			);
+			path = DemoController;
+			sourceTree = "<group>";
+		};
+		9ACDD4325446A13A36A63900 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0766CA20DAFE18EECDA875EE /* Pods-TFComponentsDemo.debug.xcconfig */,
+				AAB4364B1219D7FF792AC2FA /* Pods-TFComponentsDemo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		ABC281DE02A98FBE01552774 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				423C14E308F7FFACDC192769 /* libPods-TFComponentsDemo.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		20D2EFCA22321CA1001DC35D /* TFComponentsDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 20D2EFE122321CA2001DC35D /* Build configuration list for PBXNativeTarget "TFComponentsDemo" */;
+			buildPhases = (
+				28D510E89501FE977ED89EDB /* [CP] Check Pods Manifest.lock */,
+				20D2EFC722321CA1001DC35D /* Sources */,
+				20D2EFC822321CA1001DC35D /* Frameworks */,
+				20D2EFC922321CA1001DC35D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TFComponentsDemo;
+			productName = TFComponentsDemo;
+			productReference = 20D2EFCB22321CA1001DC35D /* TFComponentsDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		20D2EFC322321CA1001DC35D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = ztf;
+				TargetAttributes = {
+					20D2EFCA22321CA1001DC35D = {
+						CreatedOnToolsVersion = 10.1;
+					};
+				};
+			};
+			buildConfigurationList = 20D2EFC622321CA1001DC35D /* Build configuration list for PBXProject "TFComponentsDemo" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 20D2EFC222321CA1001DC35D;
+			productRefGroup = 20D2EFCC22321CA1001DC35D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				20D2EFCA22321CA1001DC35D /* TFComponentsDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		20D2EFC922321CA1001DC35D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20D2EFDB22321CA2001DC35D /* LaunchScreen.storyboard in Resources */,
+				20D2EFD822321CA2001DC35D /* Assets.xcassets in Resources */,
+				20D2EFED22322307001DC35D /* TFScrollTagViewController.xib in Resources */,
+				20D2EFD622321CA1001DC35D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		28D510E89501FE977ED89EDB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TFComponentsDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		20D2EFC722321CA1001DC35D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20D2EFE722321F43001DC35D /* TFScrollTagView.m in Sources */,
+				20D2EFD322321CA1001DC35D /* ViewController.m in Sources */,
+				20D2EFEC22322307001DC35D /* TFScrollTagViewController.m in Sources */,
+				20D2EFDE22321CA2001DC35D /* main.m in Sources */,
+				20D2EFD022321CA1001DC35D /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		20D2EFD422321CA1001DC35D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				20D2EFD522321CA1001DC35D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		20D2EFD922321CA2001DC35D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				20D2EFDA22321CA2001DC35D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		20D2EFDF22321CA2001DC35D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		20D2EFE022321CA2001DC35D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		20D2EFE222321CA2001DC35D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0766CA20DAFE18EECDA875EE /* Pods-TFComponentsDemo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = TFComponentsDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ztf.TFComponentsDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		20D2EFE322321CA2001DC35D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AAB4364B1219D7FF792AC2FA /* Pods-TFComponentsDemo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = TFComponentsDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ztf.TFComponentsDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		20D2EFC622321CA1001DC35D /* Build configuration list for PBXProject "TFComponentsDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				20D2EFDF22321CA2001DC35D /* Debug */,
+				20D2EFE022321CA2001DC35D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		20D2EFE122321CA2001DC35D /* Build configuration list for PBXNativeTarget "TFComponentsDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				20D2EFE222321CA2001DC35D /* Debug */,
+				20D2EFE322321CA2001DC35D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 20D2EFC322321CA1001DC35D /* Project object */;
+}
