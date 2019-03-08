@@ -20,6 +20,9 @@
 
 @implementation TFScrollTagViewController
 
+- (IBAction)back:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -27,7 +30,7 @@
     self.tagView = [[TFScrollTagView alloc]init];
     self.tagView.delegate = self;
     self.tagView.backgroundColor = [UIColor lightGrayColor];
-    self.tagView.frame = CGRectMake(0, 200, [UIScreen mainScreen].bounds.size.width, 60);
+    self.tagView.frame = CGRectMake(0, 88, [UIScreen mainScreen].bounds.size.width, 60);
     [self.view addSubview:self.tagView];
     
     [self.tagView reload];

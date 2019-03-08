@@ -16,6 +16,9 @@
 		20D2EFE722321F43001DC35D /* TFScrollTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D2EFE622321F43001DC35D /* TFScrollTagView.m */; };
 		20D2EFEC22322307001DC35D /* TFScrollTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D2EFEA22322307001DC35D /* TFScrollTagViewController.m */; };
 		20D2EFED22322307001DC35D /* TFScrollTagViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20D2EFEB22322307001DC35D /* TFScrollTagViewController.xib */; };
+		20D2EFF02232481E001DC35D /* TFSquareBlockView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D2EFEF2232481E001DC35D /* TFSquareBlockView.m */; };
+		20D2EFF4223248CD001DC35D /* TFSquareBlockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D2EFF2223248CD001DC35D /* TFSquareBlockViewController.m */; };
+		20D2EFF5223248CD001DC35D /* TFSquareBlockViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20D2EFF3223248CD001DC35D /* TFSquareBlockViewController.xib */; };
 		3181B3D42D96106084DFD923 /* libPods-TFComponentsDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 423C14E308F7FFACDC192769 /* libPods-TFComponentsDemo.a */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +39,11 @@
 		20D2EFE922322307001DC35D /* TFScrollTagViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TFScrollTagViewController.h; sourceTree = "<group>"; };
 		20D2EFEA22322307001DC35D /* TFScrollTagViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TFScrollTagViewController.m; sourceTree = "<group>"; };
 		20D2EFEB22322307001DC35D /* TFScrollTagViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TFScrollTagViewController.xib; sourceTree = "<group>"; };
+		20D2EFEE2232481E001DC35D /* TFSquareBlockView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TFSquareBlockView.h; sourceTree = "<group>"; };
+		20D2EFEF2232481E001DC35D /* TFSquareBlockView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TFSquareBlockView.m; sourceTree = "<group>"; };
+		20D2EFF1223248CD001DC35D /* TFSquareBlockViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TFSquareBlockViewController.h; sourceTree = "<group>"; };
+		20D2EFF2223248CD001DC35D /* TFSquareBlockViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TFSquareBlockViewController.m; sourceTree = "<group>"; };
+		20D2EFF3223248CD001DC35D /* TFSquareBlockViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TFSquareBlockViewController.xib; sourceTree = "<group>"; };
 		423C14E308F7FFACDC192769 /* libPods-TFComponentsDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TFComponentsDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAB4364B1219D7FF792AC2FA /* Pods-TFComponentsDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TFComponentsDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-TFComponentsDemo/Pods-TFComponentsDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -93,6 +101,8 @@
 			children = (
 				20D2EFE522321F43001DC35D /* TFScrollTagView.h */,
 				20D2EFE622321F43001DC35D /* TFScrollTagView.m */,
+				20D2EFEE2232481E001DC35D /* TFSquareBlockView.h */,
+				20D2EFEF2232481E001DC35D /* TFSquareBlockView.m */,
 			);
 			name = TFComponents;
 			path = ../../TFComponents;
@@ -104,6 +114,9 @@
 				20D2EFE922322307001DC35D /* TFScrollTagViewController.h */,
 				20D2EFEA22322307001DC35D /* TFScrollTagViewController.m */,
 				20D2EFEB22322307001DC35D /* TFScrollTagViewController.xib */,
+				20D2EFF1223248CD001DC35D /* TFSquareBlockViewController.h */,
+				20D2EFF2223248CD001DC35D /* TFSquareBlockViewController.m */,
+				20D2EFF3223248CD001DC35D /* TFSquareBlockViewController.xib */,
 			);
 			path = DemoController;
 			sourceTree = "<group>";
@@ -184,6 +197,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				20D2EFDB22321CA2001DC35D /* LaunchScreen.storyboard in Resources */,
+				20D2EFF5223248CD001DC35D /* TFSquareBlockViewController.xib in Resources */,
 				20D2EFD822321CA2001DC35D /* Assets.xcassets in Resources */,
 				20D2EFED22322307001DC35D /* TFScrollTagViewController.xib in Resources */,
 				20D2EFD622321CA1001DC35D /* Main.storyboard in Resources */,
@@ -219,8 +233,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				20D2EFE722321F43001DC35D /* TFScrollTagView.m in Sources */,
+				20D2EFF4223248CD001DC35D /* TFSquareBlockViewController.m in Sources */,
 				20D2EFD322321CA1001DC35D /* ViewController.m in Sources */,
 				20D2EFEC22322307001DC35D /* TFScrollTagViewController.m in Sources */,
+				20D2EFF02232481E001DC35D /* TFSquareBlockView.m in Sources */,
 				20D2EFDE22321CA2001DC35D /* main.m in Sources */,
 				20D2EFD022321CA1001DC35D /* AppDelegate.m in Sources */,
 			);

@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "TFScrollTagViewController.h"
+#import "TFSquareBlockViewController.h"
 @interface ViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property(nonatomic,strong) NSMutableArray *dataSource;
@@ -19,12 +20,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.dataSource addObject:@"滚动标签:TFScrollTagViewController"];
+    [self.dataSource addObject:@"滚动方块:TFSquareBlockViewController"];
     [self.tableView reloadData];
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 1;
+    return self.dataSource.count;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 60;
