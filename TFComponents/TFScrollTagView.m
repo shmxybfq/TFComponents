@@ -14,6 +14,8 @@
 @property(nonatomic,assign)NSUInteger count;
 @property(nonatomic,strong)NSMutableArray *widths;
 @property(nonatomic,strong)NSMutableArray *margins;
+@property(nonatomic,strong)NSMutableArray *tops;
+@property(nonatomic,strong)NSMutableArray *heights;
 @property(nonatomic,strong)NSMutableArray *cells;
 @property(nonatomic,assign)CGFloat maxWidth;
 
@@ -33,6 +35,7 @@
     [super layoutSubviews];
     if (CGRectEqualToRect(self.scrollView.frame, self.bounds) == NO) {
         self.scrollView.frame = self.bounds;
+        [self reloadLayout];
     }
 }
 
@@ -55,13 +58,21 @@
     
     for (NSInteger i = 0; i <= self.count; i++) {
         if (i < self.count) {
+            if ([self.delegate respondsToSelector:@selector(tagView:marginForIndex:totalCount:)]) {
+                CGFloat margin = [self.delegate tagView:self marginForIndex:i totalCount:self.count];
+                [self.margins addObject:[NSString stringWithFormat:@"%f",margin]];
+            }
+            if ([self.delegate respondsToSelector:@selector(tagView:topForIndex:)]) {
+                CGFloat top = [self.delegate tagView:self topForIndex:i];
+                [self.tops addObject:[NSString stringWithFormat:@"%f",top]];
+            }
             if ([self.delegate respondsToSelector:@selector(tagView:widthForIndex:)]) {
                 CGFloat width = [self.delegate tagView:self widthForIndex:i];
                 [self.widths addObject:[NSString stringWithFormat:@"%f",width]];
             }
-            if ([self.delegate respondsToSelector:@selector(tagView:marginForIndex:totalCount:)]) {
-                CGFloat margin = [self.delegate tagView:self marginForIndex:i totalCount:self.count];
-                [self.margins addObject:[NSString stringWithFormat:@"%f",margin]];
+            if ([self.delegate respondsToSelector:@selector(tagView:heightForIndex:)]) {
+                CGFloat height = [self.delegate tagView:self heightForIndex:i];
+                [self.heights addObject:[NSString stringWithFormat:@"%f",height]];
             }
             if ([self.delegate respondsToSelector:@selector(tagView:cellForIndex:)]) {
                 UIView *cell = [self.delegate tagView:self cellForIndex:i];
@@ -79,21 +90,30 @@
 
 -(void)reloadLayout{
     
+    if (self.count == 0) return;
     CGFloat x = 0;
     for (NSInteger i = 0; i <= self.count; i++) {
         UIView *cell = nil;
+        CGFloat y  = 0;
         CGFloat width  = 0;
+        CGFloat height  = self.bounds.size.height;
         CGFloat margin = 0;
         if (i < self.count) {
             cell  = [self.cells objectAtIndex:i];
             margin = [[self.margins objectAtIndex:i] floatValue];
+            if (i < self.tops.count) {
+                y = [[self.tops objectAtIndex:i] floatValue];
+            }
             width = [[self.widths objectAtIndex:i] floatValue];
+            if (i < self.heights.count) {
+                height = [[self.heights objectAtIndex:i] floatValue];
+            }
             [self.scrollView addSubview:cell];
         }else{
             margin = [[self.margins objectAtIndex:i] floatValue];
         }
         x += margin;
-        cell.frame = CGRectMake(x, 0, width, self.bounds.size.height);
+        cell.frame = CGRectMake(x, y, width, height);
         x += width;
     }
     self.scrollView.contentSize = CGSizeMake(x, self.bounds.size.height);
@@ -125,6 +145,19 @@
         _margins = [[NSMutableArray alloc]init];
     }
     return _margins;
+}
+
+-(NSMutableArray *)tops{
+    if (_tops == nil) {
+        _tops = [[NSMutableArray alloc]init];
+    }
+    return _tops;
+}
+-(NSMutableArray *)heights{
+    if (_heights == nil) {
+        _heights = [[NSMutableArray alloc]init];
+    }
+    return _heights;
 }
 
 -(NSMutableArray *)cells{

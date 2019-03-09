@@ -19,8 +19,11 @@
 
 -(UIView *)tagView:(TFScrollTagView *)tagView cellForIndex:(NSUInteger)index;
 
+@optional
+-(CGFloat)tagView:(TFScrollTagView *)tagView topForIndex:(NSUInteger)index;
+
+-(CGFloat)tagView:(TFScrollTagView *)tagView heightForIndex:(NSUInteger)index;
 @end
-NS_ASSUME_NONNULL_BEGIN
 
 @interface TFScrollTagView : UIView
 
@@ -31,4 +34,11 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)scrollToIndex:(NSInteger)index;
 @end
 
-NS_ASSUME_NONNULL_END
+@interface ScrollTag : UIView
+
+@property(nonatomic,  weak)id<TFScrollTagViewDelegate>delegate;
+@property(nonatomic,strong)UIScrollView *scrollView;
+
+-(void)reload;
+-(void)scrollToIndex:(NSInteger)index;
+@end
