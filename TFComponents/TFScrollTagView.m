@@ -31,7 +31,9 @@
 
 -(void)layoutSubviews{
     [super layoutSubviews];
-    self.scrollView.frame = self.bounds;
+    if (CGRectEqualToRect(self.scrollView.frame, self.bounds) == NO) {
+        self.scrollView.frame = self.bounds;
+    }
 }
 
 -(void)reload{
