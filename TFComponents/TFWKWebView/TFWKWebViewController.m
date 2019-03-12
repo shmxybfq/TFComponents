@@ -1,24 +1,25 @@
 //
-//  TFWebViewController.m
+//  TFWKWebViewController.m
 //  TFComponentsDemo
 //
 //  Created by Time on 2019/3/12.
 //  Copyright © 2019 ztf. All rights reserved.
 //
 
-#import "TFWebViewController.h"
+#import "TFWKWebViewController.h"
 #import "TFComponents.h"
 #define kWebViewTag 1099
 #define kAnimationDuration 0.3
-
-@interface TFWebViewController ()<WKUIDelegate,WKNavigationDelegate>
+@interface TFWKWebViewController ()<WKUIDelegate,WKNavigationDelegate>
 
 @property(nonatomic,  copy)NSString *oldUserAgent;
-@property(nonatomic,  copy)TFWebViewControllerActionBlock closeActionBlock;
+@property(nonatomic,  copy)TFWKWebViewControllerActionBlock closeActionBlock;
+
 
 @end
 
-@implementation TFWebViewController
+@implementation TFWKWebViewController
+
 
 
 #pragma mark 移除观察者
@@ -34,12 +35,6 @@
     [self reload:self.urlString title:self.titleString];
 }
 
-+(instancetype)creatInstance{
-    TFWebViewController *controller = [[TFWebViewController alloc]init];
-    return controller;
-    
-}
-
 #define kTopHeight 64
 -(void)initView{
     kdeclare_weakself;
@@ -51,15 +46,15 @@
     self.webView.frame = self.view.bounds;
     
     
-
-
+    
+    
     
     //位置
-//    CGFloat navgationBarHeight = self.hideNavgationBar?0:kTopHeight;
-//    [self.webView mas_remakeConstraints:^(MASConstraintMaker *make) {
-//        make.top.equalTo(weakSelf.view).offset(navgationBarHeight);
-//        make.left.bottom.right.equalTo(weakSelf.view);
-//    }];
+    //    CGFloat navgationBarHeight = self.hideNavgationBar?0:kTopHeight;
+    //    [self.webView mas_remakeConstraints:^(MASConstraintMaker *make) {
+    //        make.top.equalTo(weakSelf.view).offset(navgationBarHeight);
+    //        make.left.bottom.right.equalTo(weakSelf.view);
+    //    }];
     
     //监听网页标题
     [self.webView observerTitle:^(TFWKWebView *webView, NSString *title) {
@@ -71,11 +66,11 @@
     self.navgationBar.hidden = self.hideNavgationBar;
     [self.view addSubview:self.navgationBar];
     self.navgationBar.backgroundColor = [UIColor whiteColor];
-//    [self.navgationBar mas_remakeConstraints:^(MASConstraintMaker *make) {
-//        make.top.equalTo(weakSelf.view).offset(0);
-//        make.left.right.equalTo(weakSelf.view);
-//        make.height.mas_equalTo(kTopHeight);
-//    }];
+    //    [self.navgationBar mas_remakeConstraints:^(MASConstraintMaker *make) {
+    //        make.top.equalTo(weakSelf.view).offset(0);
+    //        make.left.right.equalTo(weakSelf.view);
+    //        make.height.mas_equalTo(kTopHeight);
+    //    }];
     
     //事件
     [self.navgationBar.backButton addTarget:self
@@ -136,7 +131,7 @@
 }
 
 
--(void)observerNavgationBarCloseAction:(TFWebViewControllerActionBlock)block{
+-(void)observerNavgationBarCloseAction:(TFWKWebViewControllerActionBlock)block{
     self.closeActionBlock = block;
 }
 

@@ -1,33 +1,34 @@
 //
-//  TFWebView.m
+//  TFWKWebView.m
 //  TFComponentsDemo
 //
 //  Created by Time on 2019/3/12.
 //  Copyright © 2019 ztf. All rights reserved.
 //
 
-#import "TFWebView.h"
+#import "TFWKWebView.h"
 #import "WeakWKScriptMessageHandler.h"
 
-@interface TFWebView()
+NSString *const TFWKTitleKey = @"title";
+NSString *const TFWKEstimatedProgressKey = @"estimatedProgress";
+
+@interface TFWKWebView()
 
 @property (nonatomic,assign)BOOL isInited;
 @property (nonatomic,strong)UIProgressView *progress;
-@property (nonatomic,  copy)TFWebViewTitleBlock titleBlock;
-@property (nonatomic,  copy)TFWebViewProgressBlock progressBlock;
+@property (nonatomic,  copy)TFWKWebViewTitleBlock titleBlock;
+@property (nonatomic,  copy)TFWKWebViewProgressBlock progressBlock;
 
 @end
 
-
-@implementation TFWebView
-
+@implementation TFWKWebView
 
 -(void)dealloc{
+    //移除kvo
+    [self removeObserver:self forKeyPath:TFWKTitleKey];
+    [self removeObserver:self forKeyPath:TFWKEstimatedProgressKey];
     //移除对js函数监听的类
     [self removeAllScriptMessageHandler];
-    //移除kvo
-    [self removeObserver:self forKeyPath:@"title"];
-    [self removeObserver:self forKeyPath:@"estimatedProgress"];
 }
 
 -(instancetype)initWithFrame:(CGRect)frame configuration:(WKWebViewConfiguration *)configuration{
@@ -47,33 +48,32 @@
 
 //初始化,只执行一次
 -(void)initSetting{
+    
     if (self.isInited == NO) {
-        
         self.isInited = YES;
+        //kvo监听,获取页面title值
+        [self addObserver:self
+               forKeyPath:TFWKTitleKey
+                  options:NSKeyValueObservingOptionNew
+                  context:NULL];
         //kvo监听,获得加载进度值
         [self addObserver:self
-               forKeyPath:@"estimatedProgress"
+               forKeyPath:TFWKEstimatedProgressKey
                   options:NSKeyValueObservingOptionNew
                   context:NULL];
         [self addSubview:self.progress];
-        
-        //kvo监听,获取页面title值
-        [self addObserver:self
-               forKeyPath:@"title"
-                  options:NSKeyValueObservingOptionNew
-                  context:NULL];
     }
     //设置滚动速度为正常
     self.scrollView.decelerationRate = UIScrollViewDecelerationRateNormal;
 }
 
 //监听网页的title变化调用此函数
--(void)observerTitle:(TFWebViewTitleBlock)block{
+-(void)observerTitle:(TFWKWebViewTitleBlock)block{
     self.titleBlock = block;
 }
 
 //监听网页的请求进度调用此函数
--(void)observerProgress:(TFWebViewProgressBlock)block{
+-(void)observerProgress:(TFWKWebViewProgressBlock)block{
     self.progressBlock = block;
 }
 
@@ -87,7 +87,7 @@
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     __weak typeof(self) weakself = self;
     //监听加载进度值
-    if ([keyPath isEqualToString:@"estimatedProgress"]){
+    if ([keyPath isEqualToString:TFWKEstimatedProgressKey]){
         if (object == self){
             //往外回调进度
             if(self.progressBlock){
@@ -107,7 +107,7 @@
             [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
         }
         //监听网页title
-    }else if ([keyPath isEqualToString:@"title"]){
+    }else if ([keyPath isEqualToString:TFWKTitleKey]){
         if (object == self){
             //往外标题
             if(self.titleBlock){
@@ -138,10 +138,9 @@
     return _progress;
 }
 
-//设置是否显示进度条
--(void)setShowProgress:(BOOL)showProgress{
-    _showProgress = showProgress;
-    self.progress.hidden = !showProgress;
+-(void)setDisuseProgress:(BOOL)disuseProgress{
+    _disuseProgress = disuseProgress;
+    self.progress.hidden = disuseProgress;
 }
 
 
@@ -175,5 +174,6 @@ static NSString *_platformAgentString = nil;
     [[NSUserDefaults standardUserDefaults] registerDefaults:userAgent];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
+
 
 @end

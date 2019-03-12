@@ -15,5 +15,4 @@
 
 @property(nonatomic,  weak)id<WKScriptMessageHandler>delegate;
 
-
 @end

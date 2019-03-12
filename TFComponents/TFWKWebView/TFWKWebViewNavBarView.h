@@ -1,5 +1,5 @@
 //
-//  TFWebNavgationBar.h
+//  TFWKWebViewNavBarView.h
 //  TFComponentsDemo
 //
 //  Created by Time on 2019/3/12.
@@ -8,8 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-
-@interface TFWebNavgationBar : UIView
+@interface TFWKWebViewNavBarView : UIView
 
 @property (strong, nonatomic)UIImageView *backgroundImageView;
 @property (strong, nonatomic)UIButton *backButton;

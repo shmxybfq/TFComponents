@@ -1,5 +1,5 @@
 //
-//  TFWebViewController.h
+//  TFWKWebViewController.h
 //  TFComponentsDemo
 //
 //  Created by Time on 2019/3/12.
@@ -19,10 +19,10 @@
 #define kJsToLocalPopRoot @"jsToLocalPopRoot"//js调用本地-pop到root - 函数
 #define kJsToLocalDismiss @"jsToLocalDismiss"//js调用本地-控制器的dismiss - 函数
 
-@class TFWebViewController;
-typedef void(^TFWebViewControllerActionBlock)(TFWebViewController *controller);
+@class TFWKWebViewController;
+typedef void(^TFWKWebViewControllerActionBlock)(TFWKWebViewController *controller);
 
-@interface TFWebViewController : UIViewController
+@interface TFWKWebViewController : UIViewController
 
 //基本属性
 @property(nonatomic,  copy)NSString *urlString;
@@ -40,8 +40,9 @@ typedef void(^TFWebViewControllerActionBlock)(TFWebViewController *controller);
 -(void)reload:(NSString *)urlString title:(NSString *)titleString;
 
 //监听自定义导航栏或者js导航栏回调
--(void)observerNavgationBarCloseAction:(TFWebViewControllerActionBlock)block;
+-(void)observerNavgationBarCloseAction:(TFWKWebViewControllerActionBlock)block;
 
 
 @end
+
 
