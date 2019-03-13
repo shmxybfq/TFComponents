@@ -27,7 +27,14 @@
 #define kScreenWidth [UIScreen mainScreen].bounds.size.width
 #define kScreenHeight [UIScreen mainScreen].bounds.size.height
 
-
+static inline BOOL fun_iphonex(){
+    CGSize ss = [UIScreen mainScreen].bounds.size;
+    NSInteger max = MAX(ss.width, ss.height);
+    if (max == 896 /*xr,xsmax*/ || max == 812 /*x,xs*/) {
+        return YES;
+    }
+    return NO;
+}
 
 
 #endif /* TFComponents_h */

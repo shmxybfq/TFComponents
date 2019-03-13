@@ -8,13 +8,24 @@
 
 #import "TFWKWebViewController.h"
 #import "TFComponents.h"
+
 #define kWebViewTag 1099
 #define kAnimationDuration 0.3
+
+NSString *const kLocalCanGoBackx = @"";
+//js和原生交互通用函数,此规则适用于所有h5页面
+#define kLocalCanGoBack @"localCanGoBack"//本地调用js - canGoBack函数
+#define kLocalGoBack @"localGoBack"//本地调用js - goBack函数
+
+#define kJsToLocalGoBack @"jsToLocalGoBack"//js调用本地-页面内返回 - 函数
+#define kJsToLocalPop @"jsToLocalPop"//js调用本地-pop控制器 - 函数
+#define kJsToLocalPopRoot @"jsToLocalPopRoot"//js调用本地-pop到root - 函数
+#define kJsToLocalDismiss @"jsToLocalDismiss"//js调用本地-控制器的dismiss - 函数
+
 @interface TFWKWebViewController ()<WKUIDelegate,WKNavigationDelegate>
 
 @property(nonatomic,  copy)NSString *oldUserAgent;
 @property(nonatomic,  copy)TFWKWebViewControllerActionBlock closeActionBlock;
-
 
 @end
 
@@ -35,6 +46,20 @@
     [self reload:self.urlString title:self.titleString];
 }
 
+-(void)viewWillLayoutSubviews{
+    [super viewWillLayoutSubviews];
+    [self relayout];
+}
+
+
+
+-(void)relayout{
+    BOOL iphonex = fun_iphonex();
+    CGSize ss = kScreenSize;
+    self.navgationBar.frame = CGRectMake(0, 0, ss.width, 64 + (iphonex?24:0));
+    self.webView.frame = CGRectMake(0, 64 + (iphonex?24:0), ss.width, ss.height - (64 + (iphonex?24:0)));
+}
+
 #define kTopHeight 64
 -(void)initView{
     kdeclare_weakself;
@@ -43,35 +68,17 @@
     self.webView.UIDelegate = self;
     self.webView.navigationDelegate = self;
     [self.view addSubview:self.webView];
-    self.webView.frame = self.view.bounds;
-    
-    
-    
-    
-    
-    //位置
-    //    CGFloat navgationBarHeight = self.hideNavgationBar?0:kTopHeight;
-    //    [self.webView mas_remakeConstraints:^(MASConstraintMaker *make) {
-    //        make.top.equalTo(weakSelf.view).offset(navgationBarHeight);
-    //        make.left.bottom.right.equalTo(weakSelf.view);
-    //    }];
-    
+
     //监听网页标题
     [self.webView observerTitle:^(TFWKWebView *webView, NSString *title) {
         [weakSelf.navgationBar.titleButton setTitle:title forState:UIControlStateNormal];
     }];
     
-    
     //导航栏
     self.navgationBar.hidden = self.hideNavgationBar;
     [self.view addSubview:self.navgationBar];
     self.navgationBar.backgroundColor = [UIColor whiteColor];
-    //    [self.navgationBar mas_remakeConstraints:^(MASConstraintMaker *make) {
-    //        make.top.equalTo(weakSelf.view).offset(0);
-    //        make.left.right.equalTo(weakSelf.view);
-    //        make.height.mas_equalTo(kTopHeight);
-    //    }];
-    
+  
     //事件
     [self.navgationBar.backButton addTarget:self
                                      action:@selector(backButtonClick:)
@@ -239,8 +246,6 @@
 //7.WKNavigationDelegate -- 页面加载完成之后调用
 - (void)webView:(WKWebView *)webView didFinishNavigation:(null_unspecified WKNavigation *)navigation{
     [self checkShowCloseButton];
-    
-    
 }
 //WKNavigationDelegate -- 页面加载失败时调用
 - (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error{

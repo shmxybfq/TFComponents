@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "TFScrollTagViewController.h"
 #import "TFSquareBlockViewController.h"
+#import "WebViewController.h"
 @interface ViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property(nonatomic,strong) NSMutableArray *dataSource;
@@ -21,6 +22,7 @@
     [super viewDidLoad];
     [self.dataSource addObject:@"滚动标签:TFScrollTagViewController"];
     [self.dataSource addObject:@"滚动方块:TFSquareBlockViewController"];
+    [self.dataSource addObject:@"浏览器:WebViewController"];
     [self.tableView reloadData];
 }
 

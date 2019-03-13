@@ -8,11 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		2098108122375F2E004B262C /* WKUserContentController+Safe.m in Sources */ = {isa = PBXBuildFile; fileRef = 2098107722375F2E004B262C /* WKUserContentController+Safe.m */; };
-		2098108322375F2E004B262C /* TFWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2098107A22375F2E004B262C /* TFWebViewController.m */; };
 		2098108422375F2E004B262C /* WeakWKScriptMessageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2098107B22375F2E004B262C /* WeakWKScriptMessageHandler.m */; };
 		20981088223760FD004B262C /* TFWKWebViewNavBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20981087223760FD004B262C /* TFWKWebViewNavBarView.m */; };
 		2098108B2237616D004B262C /* TFWKWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2098108A2237616D004B262C /* TFWKWebView.m */; };
 		2098108E223769EF004B262C /* TFWKWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2098108D223769EF004B262C /* TFWKWebViewController.m */; };
+		2098109222389DE9004B262C /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2098109022389DE9004B262C /* WebViewController.m */; };
+		2098109322389DE9004B262C /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2098109122389DE9004B262C /* WebViewController.xib */; };
 		20D2EFD022321CA1001DC35D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D2EFCF22321CA1001DC35D /* AppDelegate.m */; };
 		20D2EFD322321CA1001DC35D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D2EFD222321CA1001DC35D /* ViewController.m */; };
 		20D2EFD622321CA1001DC35D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20D2EFD422321CA1001DC35D /* Main.storyboard */; };
@@ -32,17 +33,18 @@
 		0766CA20DAFE18EECDA875EE /* Pods-TFComponentsDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TFComponentsDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TFComponentsDemo/Pods-TFComponentsDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		2098107522375C28004B262C /* TFComponents.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TFComponents.h; sourceTree = "<group>"; };
 		2098107722375F2E004B262C /* WKUserContentController+Safe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WKUserContentController+Safe.m"; sourceTree = "<group>"; };
-		2098107A22375F2E004B262C /* TFWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFWebViewController.m; sourceTree = "<group>"; };
 		2098107B22375F2E004B262C /* WeakWKScriptMessageHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeakWKScriptMessageHandler.m; sourceTree = "<group>"; };
 		2098107C22375F2E004B262C /* WKUserContentController+Safe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WKUserContentController+Safe.h"; sourceTree = "<group>"; };
 		2098107F22375F2E004B262C /* WeakWKScriptMessageHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeakWKScriptMessageHandler.h; sourceTree = "<group>"; };
-		2098108022375F2E004B262C /* TFWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFWebViewController.h; sourceTree = "<group>"; };
 		20981086223760FD004B262C /* TFWKWebViewNavBarView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TFWKWebViewNavBarView.h; sourceTree = "<group>"; };
 		20981087223760FD004B262C /* TFWKWebViewNavBarView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TFWKWebViewNavBarView.m; sourceTree = "<group>"; };
 		209810892237616D004B262C /* TFWKWebView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TFWKWebView.h; sourceTree = "<group>"; };
 		2098108A2237616D004B262C /* TFWKWebView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TFWKWebView.m; sourceTree = "<group>"; };
 		2098108C223769EF004B262C /* TFWKWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TFWKWebViewController.h; sourceTree = "<group>"; };
 		2098108D223769EF004B262C /* TFWKWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TFWKWebViewController.m; sourceTree = "<group>"; };
+		2098108F22389DE9004B262C /* WebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		2098109022389DE9004B262C /* WebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		2098109122389DE9004B262C /* WebViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
 		20D2EFCB22321CA1001DC35D /* TFComponentsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TFComponentsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20D2EFCE22321CA1001DC35D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		20D2EFCF22321CA1001DC35D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -88,8 +90,6 @@
 				2098108A2237616D004B262C /* TFWKWebView.m */,
 				2098108C223769EF004B262C /* TFWKWebViewController.h */,
 				2098108D223769EF004B262C /* TFWKWebViewController.m */,
-				2098108022375F2E004B262C /* TFWebViewController.h */,
-				2098107A22375F2E004B262C /* TFWebViewController.m */,
 				2098107F22375F2E004B262C /* WeakWKScriptMessageHandler.h */,
 				2098107B22375F2E004B262C /* WeakWKScriptMessageHandler.m */,
 				2098107C22375F2E004B262C /* WKUserContentController+Safe.h */,
@@ -157,6 +157,9 @@
 				20D2EFF1223248CD001DC35D /* TFSquareBlockViewController.h */,
 				20D2EFF2223248CD001DC35D /* TFSquareBlockViewController.m */,
 				20D2EFF3223248CD001DC35D /* TFSquareBlockViewController.xib */,
+				2098108F22389DE9004B262C /* WebViewController.h */,
+				2098109022389DE9004B262C /* WebViewController.m */,
+				2098109122389DE9004B262C /* WebViewController.xib */,
 			);
 			path = DemoController;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 				20D2EFDB22321CA2001DC35D /* LaunchScreen.storyboard in Resources */,
 				20D2EFF5223248CD001DC35D /* TFSquareBlockViewController.xib in Resources */,
 				20D2EFD822321CA2001DC35D /* Assets.xcassets in Resources */,
+				2098109322389DE9004B262C /* WebViewController.xib in Resources */,
 				20D2EFED22322307001DC35D /* TFScrollTagViewController.xib in Resources */,
 				20D2EFD622321CA1001DC35D /* Main.storyboard in Resources */,
 			);
@@ -273,9 +277,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				20D2EFE722321F43001DC35D /* TFScrollTagView.m in Sources */,
+				2098109222389DE9004B262C /* WebViewController.m in Sources */,
 				20D2EFF4223248CD001DC35D /* TFSquareBlockViewController.m in Sources */,
 				20D2EFD322321CA1001DC35D /* ViewController.m in Sources */,
-				2098108322375F2E004B262C /* TFWebViewController.m in Sources */,
 				2098108B2237616D004B262C /* TFWKWebView.m in Sources */,
 				2098108422375F2E004B262C /* WeakWKScriptMessageHandler.m in Sources */,
 				2098108122375F2E004B262C /* WKUserContentController+Safe.m in Sources */,
