@@ -26,6 +26,7 @@
 		20D2EFF02232481E001DC35D /* TFSquareBlockView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D2EFEF2232481E001DC35D /* TFSquareBlockView.m */; };
 		20D2EFF4223248CD001DC35D /* TFSquareBlockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D2EFF2223248CD001DC35D /* TFSquareBlockViewController.m */; };
 		20D2EFF5223248CD001DC35D /* TFSquareBlockViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20D2EFF3223248CD001DC35D /* TFSquareBlockViewController.xib */; };
+		20D7299E2238F7E700FA849D /* TFRectangleBlockView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D7299D2238F7E600FA849D /* TFRectangleBlockView.m */; };
 		3181B3D42D96106084DFD923 /* libPods-TFComponentsDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 423C14E308F7FFACDC192769 /* libPods-TFComponentsDemo.a */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +66,8 @@
 		20D2EFF1223248CD001DC35D /* TFSquareBlockViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TFSquareBlockViewController.h; sourceTree = "<group>"; };
 		20D2EFF2223248CD001DC35D /* TFSquareBlockViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TFSquareBlockViewController.m; sourceTree = "<group>"; };
 		20D2EFF3223248CD001DC35D /* TFSquareBlockViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TFSquareBlockViewController.xib; sourceTree = "<group>"; };
+		20D7299C2238F7E600FA849D /* TFRectangleBlockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFRectangleBlockView.h; sourceTree = "<group>"; };
+		20D7299D2238F7E600FA849D /* TFRectangleBlockView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFRectangleBlockView.m; sourceTree = "<group>"; };
 		423C14E308F7FFACDC192769 /* libPods-TFComponentsDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TFComponentsDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAB4364B1219D7FF792AC2FA /* Pods-TFComponentsDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TFComponentsDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-TFComponentsDemo/Pods-TFComponentsDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -142,6 +145,8 @@
 				20D2EFE622321F43001DC35D /* TFScrollTagView.m */,
 				20D2EFEE2232481E001DC35D /* TFSquareBlockView.h */,
 				20D2EFEF2232481E001DC35D /* TFSquareBlockView.m */,
+				20D7299C2238F7E600FA849D /* TFRectangleBlockView.h */,
+				20D7299D2238F7E600FA849D /* TFRectangleBlockView.m */,
 				2098107622375F2E004B262C /* TFWKWebView */,
 			);
 			name = TFComponents;
@@ -284,6 +289,7 @@
 				2098108422375F2E004B262C /* WeakWKScriptMessageHandler.m in Sources */,
 				2098108122375F2E004B262C /* WKUserContentController+Safe.m in Sources */,
 				20D2EFEC22322307001DC35D /* TFScrollTagViewController.m in Sources */,
+				20D7299E2238F7E700FA849D /* TFRectangleBlockView.m in Sources */,
 				20981088223760FD004B262C /* TFWKWebViewNavBarView.m in Sources */,
 				2098108E223769EF004B262C /* TFWKWebViewController.m in Sources */,
 				20D2EFF02232481E001DC35D /* TFSquareBlockView.m in Sources */,
