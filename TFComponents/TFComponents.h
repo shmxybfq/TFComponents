@@ -9,6 +9,8 @@
 #ifndef TFComponents_h
 #define TFComponents_h
 
+#import "Const.h"
+
 /**
  *  weak obj
  *  @param TARGET 实例

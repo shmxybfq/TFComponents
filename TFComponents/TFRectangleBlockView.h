@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-
+#import "Const.h"
 
 @class TFRectangleBlockView;
 @protocol TFRectangleBlockViewDelegate <NSObject>

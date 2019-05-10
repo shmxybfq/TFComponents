@@ -9,12 +9,6 @@
 #import "TFWKWebViewController.h"
 #import "TFComponents.h"
 
-#ifdef DEBUG
-#   define XLog(fmt, ...) NSLog((@"\nfunction:%s,line:%d\n" fmt @"\n"), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
-#else
-#   define XLog(...)
-#endif
-
 #define kWebViewTag 1099
 #define kAnimationDuration 0.3
 

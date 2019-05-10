@@ -69,6 +69,7 @@
 		20D7299C2238F7E600FA849D /* TFRectangleBlockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFRectangleBlockView.h; sourceTree = "<group>"; };
 		20D7299D2238F7E600FA849D /* TFRectangleBlockView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFRectangleBlockView.m; sourceTree = "<group>"; };
 		423C14E308F7FFACDC192769 /* libPods-TFComponentsDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TFComponentsDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		909FFBF2228580C3006F7587 /* Const.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Const.h; sourceTree = "<group>"; };
 		AAB4364B1219D7FF792AC2FA /* Pods-TFComponentsDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TFComponentsDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-TFComponentsDemo/Pods-TFComponentsDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -141,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				2098107522375C28004B262C /* TFComponents.h */,
+				909FFBF2228580C3006F7587 /* Const.h */,
 				20D2EFE522321F43001DC35D /* TFScrollTagView.h */,
 				20D2EFE622321F43001DC35D /* TFScrollTagView.m */,
 				20D2EFEE2232481E001DC35D /* TFSquareBlockView.h */,

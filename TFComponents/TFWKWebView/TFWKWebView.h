@@ -8,6 +8,7 @@
 
 #import <WebKit/WebKit.h>
 #import "WKUserContentController+Safe.h"
+#import "Const.h"
 
 @class TFWKWebView;
 typedef void(^TFWKWebViewTitleBlock)(TFWKWebView *webView,NSString *title);
