@@ -14,6 +14,7 @@
 @property(nonatomic,strong)UICollectionViewFlowLayout *flowLayout;
 @property(nonatomic,strong)NSMutableArray *registCells;
 
+
 @end
 
 @implementation TFSquareBlockView

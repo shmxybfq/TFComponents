@@ -16,7 +16,6 @@
 @property(nonatomic,strong)NSMutableArray *margins;
 @property(nonatomic,strong)NSMutableArray *tops;
 @property(nonatomic,strong)NSMutableArray *heights;
-@property(nonatomic,strong)NSMutableArray *cells;
 @property(nonatomic,assign)CGFloat maxWidth;
 
 @end

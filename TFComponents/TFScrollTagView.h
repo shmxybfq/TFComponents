@@ -29,16 +29,10 @@
 
 @property(nonatomic,  weak)id<TFScrollTagViewDelegate>delegate;
 @property(nonatomic,strong)UIScrollView *scrollView;
+@property(nonatomic,strong)NSMutableArray *cells;
 
 -(void)reload;
 -(void)scrollToIndex:(NSInteger)index;
+
 @end
 
-@interface ScrollTag : UIView
-
-@property(nonatomic,  weak)id<TFScrollTagViewDelegate>delegate;
-@property(nonatomic,strong)UIScrollView *scrollView;
-
--(void)reload;
--(void)scrollToIndex:(NSInteger)index;
-@end

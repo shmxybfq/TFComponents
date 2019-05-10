@@ -87,12 +87,12 @@
 		2098107622375F2E004B262C /* TFWKWebView */ = {
 			isa = PBXGroup;
 			children = (
-				20981086223760FD004B262C /* TFWKWebViewNavBarView.h */,
-				20981087223760FD004B262C /* TFWKWebViewNavBarView.m */,
 				209810892237616D004B262C /* TFWKWebView.h */,
 				2098108A2237616D004B262C /* TFWKWebView.m */,
 				2098108C223769EF004B262C /* TFWKWebViewController.h */,
 				2098108D223769EF004B262C /* TFWKWebViewController.m */,
+				20981086223760FD004B262C /* TFWKWebViewNavBarView.h */,
+				20981087223760FD004B262C /* TFWKWebViewNavBarView.m */,
 				2098107F22375F2E004B262C /* WeakWKScriptMessageHandler.h */,
 				2098107B22375F2E004B262C /* WeakWKScriptMessageHandler.m */,
 				2098107C22375F2E004B262C /* WKUserContentController+Safe.h */,
