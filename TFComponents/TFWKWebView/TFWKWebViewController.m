@@ -9,6 +9,12 @@
 #import "TFWKWebViewController.h"
 #import "TFComponents.h"
 
+#ifdef DEBUG
+#   define XLog(fmt, ...) NSLog((@"\nfunction:%s,line:%d\n" fmt @"\n"), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+#else
+#   define XLog(...)
+#endif
+
 #define kWebViewTag 1099
 #define kAnimationDuration 0.3
 
@@ -210,15 +216,15 @@ NSString *const kLocalCanGoBackx = @"";
         decisionHandler(WKNavigationActionPolicyAllow);
     }
     [self checkShowCloseButton];
-    NSLog(@"001");
+    XLog(@"001");
 }
 //2.WKNavigationDelegate -- 页面开始加载
 - (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(null_unspecified WKNavigation *)navigation{
-    NSLog(@"003");
+    XLog(@"003");
 }
 //3.WKNavigationDelegate -- 接收到服务器跳转请求之后调用 (服务器端redirect)，不一定调用
 - (void)webView:(WKWebView *)webView didReceiveServerRedirectForProvisionalNavigation:(null_unspecified WKNavigation *)navigation{
-    NSLog(@"004");
+    XLog(@"004");
 }
 //4.WKNavigationDelegate -- 这个方法有一个bug https://blog.csdn.net/yuanmengong886/article/details/55051036
 - (void)webView:(WKWebView *)webView didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential * _Nullable credential))completionHandler{
@@ -232,16 +238,16 @@ NSString *const kLocalCanGoBackx = @"";
     } else {
         completionHandler(NSURLSessionAuthChallengeCancelAuthenticationChallenge, nil);
     }
-    NSLog(@"009");
+    XLog(@"009");
 }
 //5.WKNavigationDelegate -- 在收到服务器的响应头，根据response相关信息，决定是否跳转。decisionHandler必须调用，来决定是否跳转，参数WKNavigationActionPolicyCancel取消跳转，WKNavigationActionPolicyAllow允许跳转
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler{
     decisionHandler(WKNavigationResponsePolicyAllow);
-    NSLog(@"002");
+    XLog(@"002");
 }
 //6.WKNavigationDelegate -- 开始获取到网页内容时返回
 - (void)webView:(WKWebView *)webView didCommitNavigation:(null_unspecified WKNavigation *)navigation{
-    NSLog(@"006");
+    XLog(@"006");
 }
 //7.WKNavigationDelegate -- 页面加载完成之后调用
 - (void)webView:(WKWebView *)webView didFinishNavigation:(null_unspecified WKNavigation *)navigation{
@@ -250,15 +256,15 @@ NSString *const kLocalCanGoBackx = @"";
 //WKNavigationDelegate -- 页面加载失败时调用
 - (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error{
     [self checkShowCloseButton];
-    NSLog(@"005:error:%@",error);
+    XLog(@"005:error:%@",error);
 }
 //WKNavigationDelegate --
 - (void)webView:(WKWebView *)webView didFailNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error{
-    NSLog(@"008:error:%@",error);
+    XLog(@"008:error:%@",error);
 }
 //WKNavigationDelegate --
 - (void)webViewWebContentProcessDidTerminate:(WKWebView *)webView{
-    NSLog(@"010");
+    XLog(@"010");
 }
 
 
