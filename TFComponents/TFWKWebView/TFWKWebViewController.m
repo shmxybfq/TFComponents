@@ -202,7 +202,7 @@ NSString *const kLocalCanGoBackx = @"";
 //1.WKNavigationDelegate -- 在发送请求之前，决定是否跳转
 //相当于UIWebView的
 //- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
-- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler{
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler API_AVAILABLE(ios(8.0)){
     //允许或者取消
     if ([navigationAction.request.URL.absoluteString rangeOfString:@"需要跳转页面的url"].location != NSNotFound){
         decisionHandler(WKNavigationActionPolicyCancel);
@@ -213,15 +213,15 @@ NSString *const kLocalCanGoBackx = @"";
     XLog(@"001");
 }
 //2.WKNavigationDelegate -- 页面开始加载
-- (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(null_unspecified WKNavigation *)navigation{
+- (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(null_unspecified WKNavigation *)navigation API_AVAILABLE(ios(8.0)){
     XLog(@"003");
 }
 //3.WKNavigationDelegate -- 接收到服务器跳转请求之后调用 (服务器端redirect)，不一定调用
-- (void)webView:(WKWebView *)webView didReceiveServerRedirectForProvisionalNavigation:(null_unspecified WKNavigation *)navigation{
+- (void)webView:(WKWebView *)webView didReceiveServerRedirectForProvisionalNavigation:(null_unspecified WKNavigation *)navigation API_AVAILABLE(ios(8.0)){
     XLog(@"004");
 }
 //4.WKNavigationDelegate -- 这个方法有一个bug https://blog.csdn.net/yuanmengong886/article/details/55051036
-- (void)webView:(WKWebView *)webView didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential * _Nullable credential))completionHandler{
+- (void)webView:(WKWebView *)webView didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential * _Nullable credential))completionHandler API_AVAILABLE(ios(8.0)){
     if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
         if ([challenge previousFailureCount] == 0) {
             NSURLCredential *credential = [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust];
@@ -235,35 +235,35 @@ NSString *const kLocalCanGoBackx = @"";
     XLog(@"009");
 }
 //5.WKNavigationDelegate -- 在收到服务器的响应头，根据response相关信息，决定是否跳转。decisionHandler必须调用，来决定是否跳转，参数WKNavigationActionPolicyCancel取消跳转，WKNavigationActionPolicyAllow允许跳转
-- (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler{
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler API_AVAILABLE(ios(8.0)){
     decisionHandler(WKNavigationResponsePolicyAllow);
     XLog(@"002");
 }
 //6.WKNavigationDelegate -- 开始获取到网页内容时返回
-- (void)webView:(WKWebView *)webView didCommitNavigation:(null_unspecified WKNavigation *)navigation{
+- (void)webView:(WKWebView *)webView didCommitNavigation:(null_unspecified WKNavigation *)navigation API_AVAILABLE(ios(8.0)){
     XLog(@"006");
 }
 //7.WKNavigationDelegate -- 页面加载完成之后调用
-- (void)webView:(WKWebView *)webView didFinishNavigation:(null_unspecified WKNavigation *)navigation{
+- (void)webView:(WKWebView *)webView didFinishNavigation:(null_unspecified WKNavigation *)navigation API_AVAILABLE(ios(8.0)){
     [self checkShowCloseButton];
 }
 //WKNavigationDelegate -- 页面加载失败时调用
-- (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error{
+- (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error API_AVAILABLE(ios(8.0)){
     [self checkShowCloseButton];
     XLog(@"005:error:%@",error);
 }
 //WKNavigationDelegate --
-- (void)webView:(WKWebView *)webView didFailNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error{
+- (void)webView:(WKWebView *)webView didFailNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error API_AVAILABLE(ios(8.0)){
     XLog(@"008:error:%@",error);
 }
 //WKNavigationDelegate --
-- (void)webViewWebContentProcessDidTerminate:(WKWebView *)webView{
+- (void)webViewWebContentProcessDidTerminate:(WKWebView *)webView API_AVAILABLE(ios(8.0)){
     XLog(@"010");
 }
 
 
 #pragma mark UIDelegate -- 代理
-- (void)webView:(WKWebView *)webView runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(void))completionHandler{
+- (void)webView:(WKWebView *)webView runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(void))completionHandler API_AVAILABLE(ios(8.0)){
     completionHandler();
 }
 
