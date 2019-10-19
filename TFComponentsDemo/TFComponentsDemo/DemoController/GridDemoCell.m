@@ -25,17 +25,24 @@
     [self bringSubviewToFront:self.markImageView];
 }
 
+-(void)initContentOffset:(CGPoint)contentOffset{
+    [self displayWithOffset:contentOffset];
+}
+
 -(void)cellDidDrag:(TFGridViewCell *)witchCell scrollView:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{
     [super cellDidDrag:witchCell scrollView:scrollView indexPath:indexPath];
-    CGPoint offset = scrollView.contentOffset;
+    [self displayWithOffset:scrollView.contentOffset];
+}
+
+-(void)displayWithOffset:(CGPoint)offset{
     
     CGRect markFrame = self.markImageView.frame;
     self.markImageView.frame = CGRectMake(offset.x, 0, markFrame.size.width, markFrame.size.height);
     
     
     CGRect productFrame = self.productLabel.frame;
-    if ((scrollView.contentOffset.x + markFrame.size.width) >= self.productLabelOriginFrame.origin.x) {
-        self.productLabel.frame = CGRectMake((scrollView.contentOffset.x + markFrame.size.width), 0, productFrame.size.width, productFrame.size.height);
+    if ((offset.x + markFrame.size.width) >= self.productLabelOriginFrame.origin.x) {
+        self.productLabel.frame = CGRectMake((offset.x + markFrame.size.width), 0, productFrame.size.width, productFrame.size.height);
     }else{
         self.productLabel.frame = self.productLabelOriginFrame;
     }
