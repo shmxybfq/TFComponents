@@ -7,19 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TFGridViewCell.h"
-NS_ASSUME_NONNULL_BEGIN
 
+NS_ASSUME_NONNULL_BEGIN
+@class TFGridViewCell;
 @class TFGridViewInnerCell;
 @protocol TFGridViewInnerCellDelegate <NSObject>
 
-- (void)innerCell:(TFGridViewCell *)cell scrollViewDidScroll:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath;
+- (void)innerCell:(TFGridViewInnerCell *)cell scrollViewDidScroll:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath;
 
 @end
 
 @interface TFGridViewInnerCell : UITableViewCell
 @property(nonatomic, strong) UIScrollView *scrollView;
 @property(nonatomic, strong) NSIndexPath  *indexPath;
+@property(nonatomic, strong) TFGridViewCell *gridCell;
 @property(nonatomic,   weak) id<TFGridViewInnerCellDelegate>delegate;
 
 -(void)reloadGridCell:(TFGridViewCell *)cell;

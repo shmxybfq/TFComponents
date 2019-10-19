@@ -32,7 +32,7 @@
 
 
 - (NSInteger)gridView:(TFGridView *)gridView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+    return 30;
 }
 
 -(CGFloat)gridView:(TFGridView *)gridView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

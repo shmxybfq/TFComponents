@@ -7,9 +7,10 @@
 //
 
 #import "TFGridViewInnerCell.h"
+#import "TFGridViewCell.h"
 
 @interface TFGridViewInnerCell ()<UIScrollViewDelegate>
-@property(nonatomic, strong) TFGridViewCell *gridCell;
+
 
 @end
 
@@ -56,7 +57,7 @@
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     if ([self.delegate respondsToSelector:@selector(innerCell:scrollViewDidScroll:indexPath:)]) {
-        [self.delegate innerCell:self.gridCell scrollViewDidScroll:self.scrollView indexPath:self.indexPath];
+        [self.delegate innerCell:self scrollViewDidScroll:self.scrollView indexPath:self.indexPath];
     }
 }
 
