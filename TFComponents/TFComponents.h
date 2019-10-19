@@ -10,6 +10,10 @@
 #define TFComponents_h
 
 #import "Const.h"
+#import "TFGridView.h"
+#import "TFRectangleBlockView.h"
+#import "TFScrollTagView.h"
+#import "TFSquareBlockView.h"
 
 /**
  *  weak obj

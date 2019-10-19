@@ -23,6 +23,7 @@
     [self.dataSource addObject:@"滚动标签:TFScrollTagViewController"];
     [self.dataSource addObject:@"滚动方块:TFSquareBlockViewController"];
     [self.dataSource addObject:@"浏览器:WebViewController"];
+    [self.dataSource addObject:@"表格:GridViewController"];
     [self.tableView reloadData];
 }
 
