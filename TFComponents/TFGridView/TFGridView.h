@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @required
 - (NSInteger)gridView:(TFGridView *)gridView numberOfRowsInSection:(NSInteger)section;
 - (TFGridViewCell *)gridView:(TFGridView *)gridView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
-- (CGRect)gridView:(TFGridView *)gridView cellFrameForRowWithCell:(TFGridViewCell *)gridView atIndexPath:(NSIndexPath *)indexPath;
+- (CGRect)gridView:(TFGridView *)gridView cellFrameForRowWithCell:(TFGridViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 @optional
 - (NSInteger)numberOfSectionsInGridView:(TFGridView *)gridView;
 

@@ -12,6 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface GridDemoCell : TFGridViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *markImageView;
+@property (weak, nonatomic) IBOutlet UILabel *productLabel;
+
 @end
 
 NS_ASSUME_NONNULL_END

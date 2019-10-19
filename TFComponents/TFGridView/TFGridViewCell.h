@@ -16,7 +16,6 @@ NS_ASSUME_NONNULL_BEGIN
 //禁止横向滚动同步,默认NO
 @property(nonatomic, assign)BOOL disuseSyncHorizontalScroll;
 
-
 /* 初始化contentOffset
  * 初始化的时候调用此方法告诉你当前indexPath的cell上次滚动到哪个位置
  */

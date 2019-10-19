@@ -45,10 +45,11 @@
     if (!cell) {
         cell = [[NSBundle mainBundle]loadNibNamed:@"GridDemoCell" owner:nil options:nil].firstObject;
     }
+    //cell.disuseSyncHorizontalScroll = indexPath.row % 2;
     return cell;
 }
 
-- (CGRect)gridView:(TFGridView *)gridView cellFrameForRowWithCell:(TFGridViewCell *)gridView atIndexPath:(NSIndexPath *)indexPath{
+- (CGRect)gridView:(TFGridView *)gridView cellFrameForRowWithCell:(TFGridViewCell *)cell atIndexPath:(NSIndexPath *)indexPath{
     return CGRectMake(0, 0, 900, 65);
 }
 

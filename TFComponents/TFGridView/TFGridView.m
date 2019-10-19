@@ -98,12 +98,13 @@
 }
 
 
+
+#pragma mark - TFGridViewInnerCellDelegate
+//滚动同步逻辑
 //1.同步情况下，新出现的view需要同步offset
 //2.非同步情况下，新出现的cell需要同步上一次记录的cell
 //3.同步和非同步cell并存情况下，同步需要同步，不同步需要保持记录
 //4.reload以后清空记录
-
-#pragma mark - TFGridViewInnerCellDelegate
 - (void)innerCell:(TFGridViewInnerCell *)cell scrollViewDidScroll:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{
     if (cell.gridCell.disuseSyncHorizontalScroll == NO) {
         //记录同步情况下的offset,以供新cell初始化使用,reload后清空
@@ -120,9 +121,18 @@
     }
 }
 
+- (void)innerCell:(TFGridViewInnerCell *)cell scrollViewWillBeginDragging:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{}
+
+- (void)innerCell:(TFGridViewInnerCell *)cell scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset indexPath:(NSIndexPath *)indexPath{}
+
+- (void)innerCell:(TFGridViewInnerCell *)cell scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate indexPath:(NSIndexPath *)indexPath{}
+
+- (void)innerCell:(TFGridViewInnerCell *)cell scrollViewWillBeginDecelerating:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{}
+
+- (void)innerCell:(TFGridViewInnerCell *)cell scrollViewDidEndDecelerating:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{}
+
 
 #pragma mark - functionMethod
-
 
 -(CGPoint)offsetWithIndexPath:(NSIndexPath *)indexPath{
     NSString *string = indexPathToString(indexPath);
