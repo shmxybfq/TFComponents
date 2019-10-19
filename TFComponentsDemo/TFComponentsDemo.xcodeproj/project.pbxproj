@@ -34,6 +34,8 @@
 		90811545235AB5330061540F /* TFGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 90811544235AB5330061540F /* TFGridViewCell.m */; };
 		90811548235AB54C0061540F /* TFGridViewHeaderFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 90811547235AB54C0061540F /* TFGridViewHeaderFooterView.m */; };
 		9081154D235AB8410061540F /* TFGridViewInnerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9081154B235AB8410061540F /* TFGridViewInnerCell.m */; };
+		90811551235AEE090061540F /* GridDemoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 90811550235AEE090061540F /* GridDemoCell.m */; };
+		90811553235AEE190061540F /* GridDemoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90811552235AEE190061540F /* GridDemoCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +88,9 @@
 		90811547235AB54C0061540F /* TFGridViewHeaderFooterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TFGridViewHeaderFooterView.m; sourceTree = "<group>"; };
 		9081154A235AB8410061540F /* TFGridViewInnerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TFGridViewInnerCell.h; sourceTree = "<group>"; };
 		9081154B235AB8410061540F /* TFGridViewInnerCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TFGridViewInnerCell.m; sourceTree = "<group>"; };
+		9081154F235AEE090061540F /* GridDemoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GridDemoCell.h; sourceTree = "<group>"; };
+		90811550235AEE090061540F /* GridDemoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GridDemoCell.m; sourceTree = "<group>"; };
+		90811552235AEE190061540F /* GridDemoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GridDemoCell.xib; sourceTree = "<group>"; };
 		909FFBF2228580C3006F7587 /* Const.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Const.h; sourceTree = "<group>"; };
 		AAB4364B1219D7FF792AC2FA /* Pods-TFComponentsDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TFComponentsDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-TFComponentsDemo/Pods-TFComponentsDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -185,6 +190,9 @@
 				903D2512235AB106009A92DE /* GridViewController.h */,
 				903D2513235AB106009A92DE /* GridViewController.m */,
 				903D2514235AB106009A92DE /* GridViewController.xib */,
+				9081154F235AEE090061540F /* GridDemoCell.h */,
+				90811550235AEE090061540F /* GridDemoCell.m */,
+				90811552235AEE190061540F /* GridDemoCell.xib */,
 			);
 			path = DemoController;
 			sourceTree = "<group>";
@@ -318,6 +326,7 @@
 				20D2EFF5223248CD001DC35D /* TFSquareBlockViewController.xib in Resources */,
 				20D2EFD822321CA2001DC35D /* Assets.xcassets in Resources */,
 				2098109322389DE9004B262C /* WebViewController.xib in Resources */,
+				90811553235AEE190061540F /* GridDemoCell.xib in Resources */,
 				20D2EFED22322307001DC35D /* TFScrollTagViewController.xib in Resources */,
 				903D2516235AB106009A92DE /* GridViewController.xib in Resources */,
 				20D2EFD622321CA1001DC35D /* Main.storyboard in Resources */,
@@ -352,6 +361,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90811551235AEE090061540F /* GridDemoCell.m in Sources */,
 				2098109222389DE9004B262C /* WebViewController.m in Sources */,
 				20D2EFF4223248CD001DC35D /* TFSquareBlockViewController.m in Sources */,
 				903D2526235AB1D3009A92DE /* TFGridView.m in Sources */,

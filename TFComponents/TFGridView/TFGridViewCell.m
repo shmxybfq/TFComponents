@@ -10,7 +10,6 @@
 
 @implementation TFGridViewCell
 
-
 -(void)cellDidDrag:(TFGridViewCell *)witchCell scrollView:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{}
 
 @end

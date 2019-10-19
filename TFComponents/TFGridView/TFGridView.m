@@ -30,18 +30,13 @@
     self.tableView.frame = self.bounds;
 }
 
-
--(UITableView *)tableView{
-    if (!_tableView) {
-        _tableView = [[UITableView alloc]initWithFrame:self.bounds style:UITableViewStylePlain];
-        [self addSubview:_tableView];
-    }
-    return _tableView;
+-(void)reloadData{
+    [self.tableView reloadData];
 }
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    NSInteger count = 0;
+    NSInteger count = 1;
     if ([self.dataSource respondsToSelector:@selector(numberOfSectionsInGridView:)]) {
         count = [self.dataSource numberOfSectionsInGridView:self];
     }
@@ -55,6 +50,15 @@
     }
     return count;
 }
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    CGFloat height = 60.0;
+    if ([self.delegate respondsToSelector:@selector(gridView:heightForRowAtIndexPath:)]) {
+        height = [self.delegate gridView:self heightForRowAtIndexPath:indexPath];
+    }
+    return height;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     NSString *tableCellId = NSStringFromClass([TFGridViewInnerCell class]);
@@ -98,14 +102,11 @@
 }
 
 
-//static inline NSIndexPath *stringToIndexPath(NSString *string){
-//    if ([string isKindOfClass:[NSString class]] && [string containsString:@"-"]) {
-//        NSArray *comp = [string componentsSeparatedByString:@"-"];
-//        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[comp.lastObject integerValue] inSection:[comp.firstObject integerValue]];
-//        return indexPath;
-//    }
-//    return nil;
-//}
+#pragma mark - functionMethod
+
+-(id)dequeueReusableCellWithIdentifier:(NSString *)cell{
+    return nil;
+}
 
 static inline NSString *indexPathToString(NSIndexPath *indexPath){
     if ([indexPath isKindOfClass:[NSIndexPath class]]) {
@@ -117,11 +118,21 @@ static inline NSString *indexPathToString(NSIndexPath *indexPath){
 
 
 #pragma mark - lazyLoad
+
 -(NSMutableDictionary<NSString *,TFGridViewCell *>*)gridCellPool{
     if (!_gridCellPool) {
         _gridCellPool = [[NSMutableDictionary alloc]init];
     }
     return _gridCellPool;
+}
+-(UITableView *)tableView{
+    if (!_tableView) {
+        _tableView = [[UITableView alloc]initWithFrame:self.bounds style:UITableViewStylePlain];
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+        [self addSubview:_tableView];
+    }
+    return _tableView;
 }
 
 @end
