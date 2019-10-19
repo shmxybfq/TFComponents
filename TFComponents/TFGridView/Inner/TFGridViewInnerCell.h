@@ -30,7 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface TFGridViewInnerCell : UITableViewCell
 @property(nonatomic, strong) UIScrollView *scrollView;
 @property(nonatomic, strong) NSIndexPath  *indexPath;
-@property(nonatomic, strong) TFGridViewCell *gridCell;
+@property(nonatomic, strong) TFGridViewCell *__nullable gridCell;
 @property(nonatomic,   weak) id<TFGridViewInnerCellDelegate>delegate;
 
 -(void)reloadGridCell:(TFGridViewCell *)cell;

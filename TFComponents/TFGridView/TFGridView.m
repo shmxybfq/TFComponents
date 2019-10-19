@@ -8,8 +8,9 @@
 
 #import "TFGridView.h"
 #import "TFGridViewInnerCell.h"
+#import "TFGridViewInnerHeaderFooterView.h"
 
-@interface TFGridView ()<UITableViewDelegate,UITableViewDataSource,TFGridViewInnerCellDelegate>
+@interface TFGridView ()<UITableViewDelegate,UITableViewDataSource,TFGridViewInnerCellDelegate,TFGridViewInnerHeaderFooterViewDelegate>
 
 @property(nonatomic, strong)UITableView *tableView;
 
@@ -97,6 +98,48 @@
     return tableCell;
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    CGFloat height = 60.0;
+    if ([self.delegate respondsToSelector:@selector(gridView:heightForHeaderInSection:)]) {
+        height = [self.delegate gridView:self heightForHeaderInSection:section];
+    }
+    return height;
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    NSString *tableHeaderId = NSStringFromClass([TFGridViewInnerHeaderFooterView class]);
+    TFGridViewInnerHeaderFooterView *tableHeader = [tableView dequeueReusableHeaderFooterViewWithIdentifier:tableHeaderId];
+    if (!tableHeader) {
+        tableHeader = [[TFGridViewInnerHeaderFooterView alloc]initWithReuseIdentifier:tableHeaderId];
+    }
+    tableHeader.delegate = self;
+    tableHeader.indexPath = [NSIndexPath indexPathForRow:0 inSection:section];
+    
+    
+    //横向滚动cell
+    TFGridViewHeaderFooterView *gridHeader = nil;
+    if ([self.dataSource respondsToSelector:@selector(gridView:viewForHeaderInSection:)]) {
+        gridHeader = (TFGridViewHeaderFooterView *)[self.delegate gridView:self viewForHeaderInSection:section];
+    }
+    gridHeader.faterHeader = tableHeader;
+    //frame
+    CGRect frame = gridHeader.frame;
+    if ([self.dataSource respondsToSelector:@selector(gridView:headerFrameForRowWithHeader:inSection:)]) {
+        frame = [self.delegate gridView:self headerFrameForRowWithHeader:gridHeader inSection:section];
+    }
+    [tableHeader reloadGridHeaderFrame:frame];
+    
+    //刷新tableViewCell中的横向滚动cell
+    [tableHeader reloadGridHeader:gridHeader];
+    //根据记录初始化滚动contentOffset
+    if (gridHeader.disuseSyncHorizontalScroll == NO) {
+        [gridHeader initContentOffset:self.cellContentOffsetSync];
+    }else{
+        [gridHeader initContentOffset:[self offsetWithIndexPath:[NSIndexPath indexPathForRow:0 inSection:section]]];
+    }
+    return tableHeader;
+}
+
 
 
 #pragma mark - TFGridViewInnerCellDelegate
@@ -130,6 +173,13 @@
 - (void)innerCell:(TFGridViewInnerCell *)cell scrollViewWillBeginDecelerating:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{}
 
 - (void)innerCell:(TFGridViewInnerCell *)cell scrollViewDidEndDecelerating:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{}
+
+
+
+#pragma mark - TFGridViewInnerCellDelegate
+- (void)innerHeader:(TFGridViewInnerHeaderFooterView *)header scrollViewDidScroll:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{
+    
+}
 
 
 #pragma mark - functionMethod

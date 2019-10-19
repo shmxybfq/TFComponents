@@ -7,10 +7,25 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "TFGridViewInnerHeaderFooterView.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TFGridViewHeaderFooterView : UIView
+
+@property(nonatomic, weak) TFGridViewInnerHeaderFooterView *faterHeader;
+//禁止横向滚动同步,默认NO
+@property(nonatomic, assign)BOOL disuseSyncHorizontalScroll;
+
+/* 初始化contentOffset
+ * 初始化的时候调用此方法告诉你当前indexPath的cell上次滚动到哪个位置
+ */
+-(void)initContentOffset:(CGPoint)contentOffset;
+
+/* 同步滚动函数
+ * 当cell设置disuseSyncHorizontalScroll==NO的情况下此方法会被调用,告诉你当前某个同步滚动cell滚动到哪个位置
+ */
+-(void)headerDidDrag:(TFGridViewHeaderFooterView *)witchHeader scrollView:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath;
+
 
 @end
 

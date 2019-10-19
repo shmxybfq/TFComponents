@@ -25,7 +25,12 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 @protocol TFGridViewDelegate <NSObject>
+
 -(CGFloat)gridView:(TFGridView *)gridView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
+-(CGFloat)gridView:(TFGridView *)gridView heightForHeaderInSection:(NSInteger)section;
+
+-(nullable UIView *)gridView:(TFGridView *)gridView viewForHeaderInSection:(NSInteger)section;
+- (CGRect)gridView:(TFGridView *)gridView headerFrameForRowWithHeader:(TFGridViewHeaderFooterView *)header inSection:(NSInteger)section;
 
 @end
 

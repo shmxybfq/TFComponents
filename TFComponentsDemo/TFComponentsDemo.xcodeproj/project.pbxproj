@@ -32,10 +32,11 @@
 		903D2523235AB175009A92DE /* TFRectangleBlockView.m in Sources */ = {isa = PBXBuildFile; fileRef = 903D251F235AB175009A92DE /* TFRectangleBlockView.m */; };
 		903D2526235AB1D3009A92DE /* TFGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 903D2525235AB1D3009A92DE /* TFGridView.m */; };
 		90811545235AB5330061540F /* TFGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 90811544235AB5330061540F /* TFGridViewCell.m */; };
-		90811548235AB54C0061540F /* TFGridViewHeaderFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 90811547235AB54C0061540F /* TFGridViewHeaderFooterView.m */; };
 		9081154D235AB8410061540F /* TFGridViewInnerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9081154B235AB8410061540F /* TFGridViewInnerCell.m */; };
 		90811551235AEE090061540F /* GridDemoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 90811550235AEE090061540F /* GridDemoCell.m */; };
 		90811553235AEE190061540F /* GridDemoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90811552235AEE190061540F /* GridDemoCell.xib */; };
+		90811556235B130C0061540F /* TFGridViewInnerHeaderFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 90811555235B130C0061540F /* TFGridViewInnerHeaderFooterView.m */; };
+		90811559235B13230061540F /* TFGridViewHeaderFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 90811558235B13230061540F /* TFGridViewHeaderFooterView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,13 +85,15 @@
 		903D2525235AB1D3009A92DE /* TFGridView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TFGridView.m; sourceTree = "<group>"; };
 		90811543235AB5330061540F /* TFGridViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TFGridViewCell.h; sourceTree = "<group>"; };
 		90811544235AB5330061540F /* TFGridViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TFGridViewCell.m; sourceTree = "<group>"; };
-		90811546235AB54C0061540F /* TFGridViewHeaderFooterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TFGridViewHeaderFooterView.h; sourceTree = "<group>"; };
-		90811547235AB54C0061540F /* TFGridViewHeaderFooterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TFGridViewHeaderFooterView.m; sourceTree = "<group>"; };
 		9081154A235AB8410061540F /* TFGridViewInnerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TFGridViewInnerCell.h; sourceTree = "<group>"; };
 		9081154B235AB8410061540F /* TFGridViewInnerCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TFGridViewInnerCell.m; sourceTree = "<group>"; };
 		9081154F235AEE090061540F /* GridDemoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GridDemoCell.h; sourceTree = "<group>"; };
 		90811550235AEE090061540F /* GridDemoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GridDemoCell.m; sourceTree = "<group>"; };
 		90811552235AEE190061540F /* GridDemoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GridDemoCell.xib; sourceTree = "<group>"; };
+		90811554235B130C0061540F /* TFGridViewInnerHeaderFooterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TFGridViewInnerHeaderFooterView.h; sourceTree = "<group>"; };
+		90811555235B130C0061540F /* TFGridViewInnerHeaderFooterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TFGridViewInnerHeaderFooterView.m; sourceTree = "<group>"; };
+		90811557235B13230061540F /* TFGridViewHeaderFooterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TFGridViewHeaderFooterView.h; sourceTree = "<group>"; };
+		90811558235B13230061540F /* TFGridViewHeaderFooterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TFGridViewHeaderFooterView.m; sourceTree = "<group>"; };
 		909FFBF2228580C3006F7587 /* Const.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Const.h; sourceTree = "<group>"; };
 		AAB4364B1219D7FF792AC2FA /* Pods-TFComponentsDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TFComponentsDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-TFComponentsDemo/Pods-TFComponentsDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -213,8 +216,8 @@
 				903D2525235AB1D3009A92DE /* TFGridView.m */,
 				90811543235AB5330061540F /* TFGridViewCell.h */,
 				90811544235AB5330061540F /* TFGridViewCell.m */,
-				90811546235AB54C0061540F /* TFGridViewHeaderFooterView.h */,
-				90811547235AB54C0061540F /* TFGridViewHeaderFooterView.m */,
+				90811557235B13230061540F /* TFGridViewHeaderFooterView.h */,
+				90811558235B13230061540F /* TFGridViewHeaderFooterView.m */,
 				90811549235AB81E0061540F /* Inner */,
 			);
 			path = TFGridView;
@@ -243,6 +246,8 @@
 			children = (
 				9081154A235AB8410061540F /* TFGridViewInnerCell.h */,
 				9081154B235AB8410061540F /* TFGridViewInnerCell.m */,
+				90811554235B130C0061540F /* TFGridViewInnerHeaderFooterView.h */,
+				90811555235B130C0061540F /* TFGridViewInnerHeaderFooterView.m */,
 			);
 			path = Inner;
 			sourceTree = "<group>";
@@ -363,6 +368,7 @@
 			files = (
 				90811551235AEE090061540F /* GridDemoCell.m in Sources */,
 				2098109222389DE9004B262C /* WebViewController.m in Sources */,
+				90811556235B130C0061540F /* TFGridViewInnerHeaderFooterView.m in Sources */,
 				20D2EFF4223248CD001DC35D /* TFSquareBlockViewController.m in Sources */,
 				903D2526235AB1D3009A92DE /* TFGridView.m in Sources */,
 				20D2EFD322321CA1001DC35D /* ViewController.m in Sources */,
@@ -372,13 +378,13 @@
 				2098108122375F2E004B262C /* WKUserContentController+Safe.m in Sources */,
 				90811545235AB5330061540F /* TFGridViewCell.m in Sources */,
 				903D2515235AB106009A92DE /* GridViewController.m in Sources */,
+				90811559235B13230061540F /* TFGridViewHeaderFooterView.m in Sources */,
 				20D2EFEC22322307001DC35D /* TFScrollTagViewController.m in Sources */,
 				20981088223760FD004B262C /* TFWKWebViewNavBarView.m in Sources */,
 				2098108E223769EF004B262C /* TFWKWebViewController.m in Sources */,
 				903D2521235AB175009A92DE /* TFScrollTagView.m in Sources */,
 				903D2522235AB175009A92DE /* TFSquareBlockView.m in Sources */,
 				20D2EFDE22321CA2001DC35D /* main.m in Sources */,
-				90811548235AB54C0061540F /* TFGridViewHeaderFooterView.m in Sources */,
 				20D2EFD022321CA1001DC35D /* AppDelegate.m in Sources */,
 				903D2523235AB175009A92DE /* TFRectangleBlockView.m in Sources */,
 			);

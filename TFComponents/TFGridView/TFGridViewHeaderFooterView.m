@@ -10,12 +10,23 @@
 
 @implementation TFGridViewHeaderFooterView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+/* 禁止子类重写【内部方法】
+ * 初始化contentOffset
+ */
+-(void)initContentOffset:(CGPoint)contentOffset{
+    if (self.faterHeader) {
+        self.faterHeader.scrollView.contentOffset = contentOffset;
+    }
 }
-*/
+
+/* 子类重写
+ * 当cell被拖动时调用本方法
+ *
+ */
+-(void)headerDidDrag:(TFGridViewHeaderFooterView *)witchHeader scrollView:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{
+    if (self.disuseSyncHorizontalScroll == NO) {
+        self.faterHeader.scrollView.contentOffset = scrollView.contentOffset;
+    }
+}
 
 @end
