@@ -37,6 +37,11 @@
 
 //同tableview
 - (NSInteger)gridView:(TFGridView *)gridView numberOfRowsInSection:(NSInteger)section{
+    if (section == 0) {
+        return 3;
+    }else if (section == 1) {
+        return 30;
+    }
     return 5;
 }
 
