@@ -20,13 +20,12 @@
 -(void)awakeFromNib{
     [super awakeFromNib];
     
+    //预先保存某些浮动列的初始frame,以便滚动的时候满足条件时,将frame设置为初始值
     self.productLabelOriginFrame = self.productLabel.frame;
     
+    //列浮动需要注意层次关系
     [self bringSubviewToFront:self.productLabel];
     [self bringSubviewToFront:self.markImageView];
-    
-    
-    [self displayWithOffset:self.initContentOffset];
 }
 
 -(void)initContentOffset:(CGPoint)contentOffset{
@@ -50,10 +49,11 @@
 }
 
 - (void)witchViewDidDrag:(UIView *)witchView scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset indexPath:(NSIndexPath *)indexPath{
-    //*targetContentOffset = [self getNearlyPoint:(*targetContentOffset).x + [UIScreen mainScreen].bounds.size.width];
+    *targetContentOffset = [self getNearlyPoint:(*targetContentOffset).x + [UIScreen mainScreen].bounds.size.width];
 }
 
 -(CGPoint)getNearlyPoint:(CGFloat)x{
+    return CGPointMake(x - [UIScreen mainScreen].bounds.size.width, 0);
     UIView *nearlyView = nil;
     CGFloat edgeX = x;
     for (UIView *view in self.subviews) {
