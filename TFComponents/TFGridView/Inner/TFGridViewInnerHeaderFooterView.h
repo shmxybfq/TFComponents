@@ -29,9 +29,10 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 @interface TFGridViewInnerHeaderFooterView : UITableViewHeaderFooterView
+
 @property(nonatomic, strong) UIScrollView *scrollView;
 @property(nonatomic, strong) NSIndexPath  *indexPath;
-@property(nonatomic, strong) TFGridViewHeaderFooterView *__nullable header;
+@property(nonatomic, strong) TFGridViewHeaderFooterView *__nullable gridHeader;
 @property(nonatomic,   weak) id<TFGridViewInnerHeaderFooterViewDelegate>delegate;
 
 -(void)reloadGridHeader:(TFGridViewHeaderFooterView *)header;

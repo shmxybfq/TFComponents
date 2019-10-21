@@ -39,6 +39,7 @@
 		90811559235B13230061540F /* TFGridViewHeaderFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 90811558235B13230061540F /* TFGridViewHeaderFooterView.m */; };
 		9081155C235D9E550061540F /* GridDemoSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 9081155B235D9E550061540F /* GridDemoSectionHeader.m */; };
 		9081155E235D9E5C0061540F /* GridDemoSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9081155D235D9E5C0061540F /* GridDemoSectionHeader.xib */; };
+		90E62288235DA6730083B60C /* UITableView+TFGridExtesion.m in Sources */ = {isa = PBXBuildFile; fileRef = 90E62287235DA6730083B60C /* UITableView+TFGridExtesion.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,6 +101,8 @@
 		9081155B235D9E550061540F /* GridDemoSectionHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GridDemoSectionHeader.m; sourceTree = "<group>"; };
 		9081155D235D9E5C0061540F /* GridDemoSectionHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GridDemoSectionHeader.xib; sourceTree = "<group>"; };
 		909FFBF2228580C3006F7587 /* Const.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Const.h; sourceTree = "<group>"; };
+		90E62286235DA6730083B60C /* UITableView+TFGridExtesion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITableView+TFGridExtesion.h"; sourceTree = "<group>"; };
+		90E62287235DA6730083B60C /* UITableView+TFGridExtesion.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITableView+TFGridExtesion.m"; sourceTree = "<group>"; };
 		AAB4364B1219D7FF792AC2FA /* Pods-TFComponentsDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TFComponentsDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-TFComponentsDemo/Pods-TFComponentsDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -226,6 +229,8 @@
 				90811544235AB5330061540F /* TFGridViewCell.m */,
 				90811557235B13230061540F /* TFGridViewHeaderFooterView.h */,
 				90811558235B13230061540F /* TFGridViewHeaderFooterView.m */,
+				90E62286235DA6730083B60C /* UITableView+TFGridExtesion.h */,
+				90E62287235DA6730083B60C /* UITableView+TFGridExtesion.m */,
 				90811549235AB81E0061540F /* Inner */,
 			);
 			path = TFGridView;
@@ -376,6 +381,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				90811551235AEE090061540F /* GridDemoCell.m in Sources */,
+				90E62288235DA6730083B60C /* UITableView+TFGridExtesion.m in Sources */,
 				9081155C235D9E550061540F /* GridDemoSectionHeader.m in Sources */,
 				2098109222389DE9004B262C /* WebViewController.m in Sources */,
 				90811556235B130C0061540F /* TFGridViewInnerHeaderFooterView.m in Sources */,

@@ -30,9 +30,12 @@
     self.gridView = gridView;
 }
 
+-(NSInteger)numberOfSectionsInGridView:(TFGridView *)gridView{
+    return 1;
+}
 
 - (NSInteger)gridView:(TFGridView *)gridView numberOfRowsInSection:(NSInteger)section{
-    return 30;
+    return 1;
 }
 
 -(CGFloat)gridView:(TFGridView *)gridView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -45,7 +48,7 @@
     if (!cell) {
         cell = [[NSBundle mainBundle]loadNibNamed:@"GridDemoCell" owner:nil options:nil].firstObject;
     }
-    cell.syncScrollIdentifier = indexPath.row % 2 == 0?@"111":@"222";
+    cell.syncScrollIdentifier = @"111";
     return cell;
 }
 
@@ -62,7 +65,7 @@
     if (!header) {
         header = [[NSBundle mainBundle]loadNibNamed:@"GridDemoSectionHeader" owner:nil options:nil].firstObject;
     }
-    header.syncScrollIdentifier = section % 2 == 0?@"111":@"222";
+    header.syncScrollIdentifier = @"111";
     return header;
 }
 - (CGRect)gridView:(TFGridView *)gridView headerFrameForRowWithHeader:(TFGridViewHeaderFooterView *)header inSection:(NSInteger)section{

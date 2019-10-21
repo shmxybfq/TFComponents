@@ -9,16 +9,20 @@
 #import "TFGridView.h"
 #import "TFGridViewInnerCell.h"
 #import "TFGridViewInnerHeaderFooterView.h"
-
+#import "UITableView+TFGridExtesion.h"
 @interface TFGridView ()<UITableViewDelegate,UITableViewDataSource,TFGridViewInnerCellDelegate,TFGridViewInnerHeaderFooterViewDelegate>
 
 @property(nonatomic, strong)UITableView *tableView;
 @property(nonatomic, strong)NSMutableDictionary <NSString *,NSString *>*cellContentOffsetPool;
-
+@property(nonatomic, assign)BOOL haveSectionHeaders;
 @end
 
 @implementation TFGridView
 
+
+//1.自动吸附
+//2.动态列
+//3.头部同步滚动
 - (instancetype)init{
     if (self = [super init]) {
         
@@ -32,6 +36,7 @@
 }
 
 -(void)reloadData{
+    self.haveSectionHeaders = NO;
     [self.cellContentOffsetPool removeAllObjects];
     [self.tableView reloadData];
 }
@@ -124,6 +129,11 @@
         gridHeader = (TFGridViewHeaderFooterView *)[self.delegate gridView:self viewForHeaderInSection:section];
     }
     gridHeader.faterHeader = tableHeader;
+    if (gridHeader.syncScrollIdentifier) {
+        gridHeader.faterHeader.scrollView.scrollEnabled = YES;
+    }else{
+        gridHeader.faterHeader.scrollView.scrollEnabled = NO;
+    }
     //frame
     CGRect frame = gridHeader.frame;
     if ([self.dataSource respondsToSelector:@selector(gridView:headerFrameForRowWithHeader:inSection:)]) {
@@ -134,11 +144,13 @@
     //刷新tableViewCell中的横向滚动cell
     [tableHeader reloadGridHeader:gridHeader];
     //根据记录初始化滚动contentOffset
-//    if (gridHeader.disuseSyncHorizontalScroll == NO) {
-//        [gridHeader initContentOffset:self.cellContentOffsetSync];
-//    }else{
-//        [gridHeader initContentOffset:[self offsetWithIndexPath:[NSIndexPath indexPathForRow:0 inSection:section]]];
-//    }
+    if (gridHeader.syncScrollIdentifier) {
+        NSString *pointString = [self.cellContentOffsetPool objectForKey:gridHeader.syncScrollIdentifier];
+        [gridHeader initContentOffset:CGPointFromString(pointString)];
+    }
+    if (tableHeader) {
+        self.haveSectionHeaders = YES;
+    }
     return tableHeader;
 }
 
@@ -153,15 +165,29 @@
 - (void)innerCell:(TFGridViewInnerCell *)cell scrollViewDidScroll:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{
     if (cell.gridCell.syncScrollIdentifier) {
         [self.cellContentOffsetPool setObject:NSStringFromCGPoint(scrollView.contentOffset) forKey:cell.gridCell.syncScrollIdentifier];
-        //方案2,只让显示的cell同步横向滚动,但是这样的话需要额外处理内存中没有跟着滚动的view
+        //【方案2】只让显示的cell同步横向滚动,但是这样的话需要额外处理内存中没有跟着滚动的view
         NSArray *cells = [self.tableView visibleCells];
         for (TFGridViewInnerCell *visibleCell in cells) {
             if ([visibleCell.gridCell.syncScrollIdentifier isEqualToString:cell.gridCell.syncScrollIdentifier]) {
                 [visibleCell.gridCell cellDidDrag:cell.gridCell scrollView:scrollView indexPath:indexPath];
             }
         }
+        
+        //section
+        if (self.haveSectionHeaders) {
+            NSArray *headers = [self.tableView visibleSectionHeaders:indexPath];
+            for (TFGridViewInnerHeaderFooterView *visibleHeader in headers) {
+                if ([visibleHeader.gridHeader.syncScrollIdentifier isEqualToString:cell.gridCell.syncScrollIdentifier]) {
+                    [visibleHeader.gridHeader headerDidDrag:visibleHeader.gridHeader scrollView:scrollView indexPath:indexPath];
+                }
+            }
+        }
     }
 }
+
+
+
+
 
 - (void)innerCell:(TFGridViewInnerCell *)cell scrollViewWillBeginDragging:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{}
 
@@ -178,7 +204,26 @@
 #pragma mark - TFGridViewInnerHeaderFooterViewDelegate
 - (void)innerHeader:(TFGridViewInnerHeaderFooterView *)header scrollViewDidScroll:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{
     
-    
+    if (header.gridHeader.syncScrollIdentifier) {
+        [self.cellContentOffsetPool setObject:NSStringFromCGPoint(scrollView.contentOffset) forKey:header.gridHeader.syncScrollIdentifier];
+        //【方案2】只让显示的cell同步横向滚动,但是这样的话需要额外处理内存中没有跟着滚动的view
+        NSArray *cells = [self.tableView visibleCells];
+        for (TFGridViewInnerCell *visibleCell in cells) {
+            if ([visibleCell.gridCell.syncScrollIdentifier isEqualToString:header.gridHeader.syncScrollIdentifier]) {
+                [visibleCell.gridCell cellDidDrag:header.gridHeader scrollView:scrollView indexPath:indexPath];
+            }
+        }
+        
+        //section
+        if (self.haveSectionHeaders) {
+            NSArray *headers = [self.tableView visibleSectionHeaders:indexPath];
+            for (TFGridViewInnerHeaderFooterView *visibleHeader in headers) {
+                if ([visibleHeader.gridHeader.syncScrollIdentifier isEqualToString:header.gridHeader.syncScrollIdentifier]) {
+                    [visibleHeader.gridHeader headerDidDrag:visibleHeader.gridHeader scrollView:scrollView indexPath:indexPath];
+                }
+            }
+        }
+    }
 }
 
 

@@ -7,7 +7,7 @@
 //
 
 #import "TFGridViewCell.h"
-
+#import "TFGridViewHeaderFooterView.h"
 @implementation TFGridViewCell
 
 /* 禁止子类重写【内部方法】
@@ -23,9 +23,18 @@
  * 当cell被拖动时调用本方法
  *
  */
--(void)cellDidDrag:(TFGridViewCell *)witchCell scrollView:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{
-    if ([self.syncScrollIdentifier isEqualToString:witchCell.syncScrollIdentifier]) {
-        self.faterCell.scrollView.contentOffset = scrollView.contentOffset;
+//-(void)cellDidDrag:(TFGridViewCell *)witchCell scrollView:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{
+-(void)cellDidDrag:(UIView *)witchView scrollView:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{
+    if ([witchView isKindOfClass:[TFGridViewCell class]]) {
+        TFGridViewCell *witchCell = (TFGridViewCell *)witchView;
+        if ([self.syncScrollIdentifier isEqualToString:witchCell.syncScrollIdentifier]) {
+            self.faterCell.scrollView.contentOffset = scrollView.contentOffset;
+        }
+    }else if ([witchView isKindOfClass:[TFGridViewHeaderFooterView class]]) {
+        TFGridViewHeaderFooterView *witchHeader = (TFGridViewHeaderFooterView *)witchView;
+        if ([self.syncScrollIdentifier isEqualToString:witchHeader.syncScrollIdentifier]) {
+            self.faterCell.scrollView.contentOffset = scrollView.contentOffset;
+        }
     }
 }
 

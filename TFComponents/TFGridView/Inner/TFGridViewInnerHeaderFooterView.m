@@ -24,17 +24,17 @@
 }
 
 -(void)reloadGridHeader:(TFGridViewHeaderFooterView *)header{
-    [self.header removeFromSuperview];
-    self.header = nil;
+    [self.gridHeader removeFromSuperview];
+    self.gridHeader = nil;
     
     if (header) {
-        self.header = header;
-        [self.scrollView addSubview:self.header];
+        self.gridHeader = header;
+        [self.scrollView addSubview:self.gridHeader];
     }
 }
 
 -(void)reloadGridHeaderFrame:(CGRect)frame{
-    self.header.frame = frame;
+    self.gridHeader.frame = frame;
     self.scrollView.contentSize = CGSizeMake(frame.origin.x + frame.size.width, frame.origin.y + frame.size.height);
 }
 

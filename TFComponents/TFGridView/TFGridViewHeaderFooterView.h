@@ -24,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 /* 同步滚动函数
  * 当cell设置disuseSyncHorizontalScroll==NO的情况下此方法会被调用,告诉你当前某个同步滚动cell滚动到哪个位置
  */
--(void)headerDidDrag:(TFGridViewHeaderFooterView *)witchHeader scrollView:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath;
+-(void)headerDidDrag:(UIView *)witchView scrollView:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath;
 
 
 @end

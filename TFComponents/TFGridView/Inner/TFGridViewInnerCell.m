@@ -20,7 +20,7 @@
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.scrollView.showsVerticalScrollIndicator = NO;
         self.scrollView.showsHorizontalScrollIndicator = NO;
-        
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     return self;
 }
@@ -77,7 +77,7 @@
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
-    NSLog(@"=============scrollViewDidEndDragging:%@",NSStringFromCGPoint(scrollView.contentOffset));
+    NSLog(@"=============scrollViewDidEndDragging:%@   decelerate:%@",NSStringFromCGPoint(scrollView.contentOffset),@(decelerate));
     if ([self.delegate respondsToSelector:@selector(innerCell:scrollViewDidEndDragging:willDecelerate:indexPath:)]) {
         [self.delegate innerCell:self scrollViewDidEndDragging:scrollView willDecelerate:decelerate indexPath:self.indexPath];
     }
