@@ -35,8 +35,8 @@
     [self displayWithOffset:contentOffset];
 }
 
--(void)cellDidDrag:(TFGridViewCell *)witchCell scrollView:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{
-    [super cellDidDrag:witchCell scrollView:scrollView indexPath:indexPath];
+-(void)witchViewDidDrag:(TFGridViewCell *)witchCell scrollViewDidScroll:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{
+    [super witchViewDidDrag:witchCell scrollViewDidScroll:scrollView indexPath:indexPath];
     [self displayWithOffset:scrollView.contentOffset];
 }
 

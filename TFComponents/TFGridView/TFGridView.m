@@ -12,9 +12,9 @@
 #import "UITableView+TFGridExtesion.h"
 @interface TFGridView ()<UITableViewDelegate,UITableViewDataSource,TFGridViewInnerCellDelegate,TFGridViewInnerHeaderFooterViewDelegate>
 
-@property(nonatomic, strong)UITableView *tableView;
 @property(nonatomic, strong)NSMutableDictionary <NSString *,NSString *>*cellContentOffsetPool;
 @property(nonatomic, assign)BOOL haveSectionHeaders;
+
 @end
 
 @implementation TFGridView
@@ -168,8 +168,8 @@
         //【方案2】只让显示的cell同步横向滚动,但是这样的话需要额外处理内存中没有跟着滚动的view
         NSArray *cells = [self.tableView visibleCells];
         for (TFGridViewInnerCell *visibleCell in cells) {
-            if ([visibleCell.gridCell.syncScrollIdentifier isEqualToString:cell.gridCell.syncScrollIdentifier]) {
-                [visibleCell.gridCell cellDidDrag:cell.gridCell scrollView:scrollView indexPath:indexPath];
+            if (visibleCell.gridCell != cell.gridCell && [visibleCell.gridCell.syncScrollIdentifier isEqualToString:cell.gridCell.syncScrollIdentifier]) {
+                [visibleCell.gridCell witchViewDidDrag:cell.gridCell scrollViewDidScroll:scrollView indexPath:indexPath];
             }
         }
         
@@ -178,28 +178,22 @@
             NSArray *headers = [self.tableView visibleSectionHeaders:indexPath];
             for (TFGridViewInnerHeaderFooterView *visibleHeader in headers) {
                 if ([visibleHeader.gridHeader.syncScrollIdentifier isEqualToString:cell.gridCell.syncScrollIdentifier]) {
-                    [visibleHeader.gridHeader headerDidDrag:visibleHeader.gridHeader scrollView:scrollView indexPath:indexPath];
+                    [visibleHeader.gridHeader witchViewDidDrag:visibleHeader.gridHeader scrollViewDidScroll:scrollView indexPath:indexPath];
                 }
             }
         }
     }
 }
 
-
-
-
-
 - (void)innerCell:(TFGridViewInnerCell *)cell scrollViewWillBeginDragging:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{}
 
-- (void)innerCell:(TFGridViewInnerCell *)cell scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset indexPath:(NSIndexPath *)indexPath{}
-
 - (void)innerCell:(TFGridViewInnerCell *)cell scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate indexPath:(NSIndexPath *)indexPath{}
+
+- (void)innerCell:(TFGridViewInnerCell *)cell scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset indexPath:(NSIndexPath *)indexPath{}
 
 - (void)innerCell:(TFGridViewInnerCell *)cell scrollViewWillBeginDecelerating:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{}
 
 - (void)innerCell:(TFGridViewInnerCell *)cell scrollViewDidEndDecelerating:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{}
-
-
 
 #pragma mark - TFGridViewInnerHeaderFooterViewDelegate
 - (void)innerHeader:(TFGridViewInnerHeaderFooterView *)header scrollViewDidScroll:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{
@@ -210,7 +204,7 @@
         NSArray *cells = [self.tableView visibleCells];
         for (TFGridViewInnerCell *visibleCell in cells) {
             if ([visibleCell.gridCell.syncScrollIdentifier isEqualToString:header.gridHeader.syncScrollIdentifier]) {
-                [visibleCell.gridCell cellDidDrag:header.gridHeader scrollView:scrollView indexPath:indexPath];
+                [visibleCell.gridCell witchViewDidDrag:header.gridHeader scrollViewDidScroll:scrollView indexPath:indexPath];
             }
         }
         
@@ -218,8 +212,8 @@
         if (self.haveSectionHeaders) {
             NSArray *headers = [self.tableView visibleSectionHeaders:indexPath];
             for (TFGridViewInnerHeaderFooterView *visibleHeader in headers) {
-                if ([visibleHeader.gridHeader.syncScrollIdentifier isEqualToString:header.gridHeader.syncScrollIdentifier]) {
-                    [visibleHeader.gridHeader headerDidDrag:visibleHeader.gridHeader scrollView:scrollView indexPath:indexPath];
+                if (header.gridHeader != visibleHeader.gridHeader && [visibleHeader.gridHeader.syncScrollIdentifier isEqualToString:header.gridHeader.syncScrollIdentifier]) {
+                    [visibleHeader.gridHeader witchViewDidDrag:visibleHeader.gridHeader scrollViewDidScroll:scrollView indexPath:indexPath];
                 }
             }
         }
@@ -227,17 +221,9 @@
 }
 
 
+
+
 #pragma mark - functionMethod
-
--(CGPoint)offsetWithIndexPath:(NSIndexPath *)indexPath{
-    NSString *string = indexPathToString(indexPath);
-    NSString *offsetString = [self.cellContentOffsetPool objectForKey:string];
-    if (offsetString) {
-        return CGPointFromString(offsetString);
-    }
-    return CGPointZero;
-}
-
 
 -(id)dequeueReusableCellWithIdentifier:(NSString *)identifier{
     return nil;
@@ -246,15 +232,6 @@
 -(id)dequeueReusableSectionHeaderWithIdentifier:(NSString *)identifier{
     return nil;
 }
-
-static inline NSString *indexPathToString(NSIndexPath *indexPath){
-    if ([indexPath isKindOfClass:[NSIndexPath class]]) {
-        NSString *string = [NSString stringWithFormat:@"%ld-%ld",(long)indexPath.section,(long)indexPath.row];
-        return string;
-    }
-    return nil;
-}
-
 
 #pragma mark - lazyLoad
 

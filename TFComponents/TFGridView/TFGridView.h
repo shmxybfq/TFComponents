@@ -38,8 +38,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TFGridView : UIView
 
-@property(nonatomic, weak) id<TFGridViewDelegate>delegate;
-@property(nonatomic, weak) id<TFGridViewDataSource>dataSource;
+@property(nonatomic,strong)UITableView *tableView;
+@property(nonatomic,  weak)id<TFGridViewDelegate>delegate;
+@property(nonatomic,  weak)id<TFGridViewDataSource>dataSource;
 
 -(void)reloadData;
 -(id)dequeueReusableCellWithIdentifier:(NSString *)identifier;

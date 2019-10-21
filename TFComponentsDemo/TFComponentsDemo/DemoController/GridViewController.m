@@ -22,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    TFGridView *gridView = [[TFGridView alloc]initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight)];
+    TFGridView *gridView = [[TFGridView alloc]initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight -  64)];
     gridView.backgroundColor = [UIColor brownColor];
     gridView.delegate = self;
     gridView.dataSource = self;
@@ -31,11 +31,11 @@
 }
 
 -(NSInteger)numberOfSectionsInGridView:(TFGridView *)gridView{
-    return 1;
+    return 3;
 }
 
 - (NSInteger)gridView:(TFGridView *)gridView numberOfRowsInSection:(NSInteger)section{
-    return 1;
+    return 5;
 }
 
 -(CGFloat)gridView:(TFGridView *)gridView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

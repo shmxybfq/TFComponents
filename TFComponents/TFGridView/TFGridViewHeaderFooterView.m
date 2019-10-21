@@ -10,20 +10,14 @@
 #import "TFGridViewCell.h"
 @implementation TFGridViewHeaderFooterView
 
-/* 禁止子类重写【内部方法】
- * 初始化contentOffset
- */
+
 -(void)initContentOffset:(CGPoint)contentOffset{
     if (self.faterHeader) {
         self.faterHeader.scrollView.contentOffset = contentOffset;
     }
 }
 
-/* 子类重写
- * 当cell被拖动时调用本方法
- *
- */
--(void)headerDidDrag:(UIView *)witchView scrollView:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{
+-(void)witchViewDidDrag:(UIView *)witchView scrollViewDidScroll:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{
     if ([witchView isKindOfClass:[TFGridViewCell class]]) {
         TFGridViewCell *witchCell = (TFGridViewCell *)witchView;
         if ([self.syncScrollIdentifier isEqualToString:witchCell.syncScrollIdentifier]) {
@@ -36,6 +30,17 @@
         }
     }
 }
+
+
+- (void)witchViewDidDrag:(UIView *)witchView scrollViewWillBeginDragging:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{}
+
+- (void)witchViewDidDrag:(UIView *)witchView scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate indexPath:(NSIndexPath *)indexPath{}
+
+- (void)witchViewDidDrag:(UIView *)witchView scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset indexPath:(NSIndexPath *)indexPath{}
+
+- (void)witchViewDidDrag:(UIView *)witchView scrollViewWillBeginDecelerating:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{}
+
+- (void)witchViewDidDrag:(UIView *)witchView scrollViewDidEndDecelerating:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{}
 
 -(void)setSyncScrollIdentifier:(NSString *)syncScrollIdentifier{
     _syncScrollIdentifier = [syncScrollIdentifier copy];
