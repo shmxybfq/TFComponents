@@ -13,8 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface TFGridViewHeaderFooterView : UIView
 
 @property(nonatomic, weak) TFGridViewInnerHeaderFooterView *faterHeader;
-//禁止横向滚动同步,默认NO
-@property(nonatomic, assign)BOOL disuseSyncHorizontalScroll;
+//同步滚动id,相同id的view可接收到滚动消息,为nil时不可滚动,默认为nil
+@property(nonatomic, copy)NSString *syncScrollIdentifier;
 
 /* 初始化contentOffset
  * 初始化的时候调用此方法告诉你当前indexPath的cell上次滚动到哪个位置

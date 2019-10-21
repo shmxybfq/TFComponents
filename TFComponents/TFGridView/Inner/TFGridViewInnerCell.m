@@ -48,6 +48,7 @@
 -(UIScrollView *)scrollView{
     if (!_scrollView) {
         _scrollView = [[UIScrollView alloc]initWithFrame:self.bounds];
+        _scrollView.scrollEnabled = NO;
         _scrollView.delegate = self;
         [self addSubview:_scrollView];
     }

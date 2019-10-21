@@ -9,7 +9,7 @@
 #import "GridViewController.h"
 #import "TFComponents.h"
 #import "GridDemoCell.h"
-
+#import "GridDemoSectionHeader.h"
 @interface GridViewController ()<TFGridViewDelegate,TFGridViewDataSource>
 
 @property(nonatomic, strong) TFGridView *gridView;
@@ -45,7 +45,7 @@
     if (!cell) {
         cell = [[NSBundle mainBundle]loadNibNamed:@"GridDemoCell" owner:nil options:nil].firstObject;
     }
-    //cell.disuseSyncHorizontalScroll = indexPath.row % 2;
+    cell.syncScrollIdentifier = indexPath.row % 2 == 0?@"111":@"222";
     return cell;
 }
 
@@ -53,7 +53,21 @@
     return CGRectMake(0, 0, 900, 65);
 }
 
-
+-(CGFloat)gridView:(TFGridView *)gridView heightForHeaderInSection:(NSInteger)section{
+    return 40;
+}
+-(TFGridViewHeaderFooterView *)gridView:(TFGridView *)gridView viewForHeaderInSection:(NSInteger)section{
+    NSString *headerId = NSStringFromClass([GridDemoSectionHeader class]);
+    GridDemoSectionHeader *header = [gridView dequeueReusableSectionHeaderWithIdentifier:headerId];
+    if (!header) {
+        header = [[NSBundle mainBundle]loadNibNamed:@"GridDemoSectionHeader" owner:nil options:nil].firstObject;
+    }
+    header.syncScrollIdentifier = section % 2 == 0?@"111":@"222";
+    return header;
+}
+- (CGRect)gridView:(TFGridView *)gridView headerFrameForRowWithHeader:(TFGridViewHeaderFooterView *)header inSection:(NSInteger)section{
+    return CGRectMake(0, 0, 900, 40);
+}
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.gridView reloadData];

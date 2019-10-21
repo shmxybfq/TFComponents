@@ -24,8 +24,17 @@
  *
  */
 -(void)headerDidDrag:(TFGridViewHeaderFooterView *)witchHeader scrollView:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{
-    if (self.disuseSyncHorizontalScroll == NO) {
+    if ([self.syncScrollIdentifier isEqualToString:witchHeader.syncScrollIdentifier]) {
         self.faterHeader.scrollView.contentOffset = scrollView.contentOffset;
+    }
+}
+
+-(void)setSyncScrollIdentifier:(NSString *)syncScrollIdentifier{
+    _syncScrollIdentifier = [syncScrollIdentifier copy];
+    if (_syncScrollIdentifier) {
+        self.faterHeader.scrollView.scrollEnabled = YES;
+    }else{
+        self.faterHeader.scrollView.scrollEnabled = NO;
     }
 }
 

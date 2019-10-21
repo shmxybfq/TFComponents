@@ -13,9 +13,7 @@
 @interface TFGridView ()<UITableViewDelegate,UITableViewDataSource,TFGridViewInnerCellDelegate,TFGridViewInnerHeaderFooterViewDelegate>
 
 @property(nonatomic, strong)UITableView *tableView;
-
 @property(nonatomic, strong)NSMutableDictionary <NSString *,NSString *>*cellContentOffsetPool;
-@property(nonatomic, assign)CGPoint cellContentOffsetSync;
 
 @end
 
@@ -34,7 +32,6 @@
 }
 
 -(void)reloadData{
-    self.cellContentOffsetSync = CGPointZero;
     [self.cellContentOffsetPool removeAllObjects];
     [self.tableView reloadData];
 }
@@ -80,6 +77,12 @@
         gridCell = [self.dataSource gridView:self cellForRowAtIndexPath:indexPath];
     }
     gridCell.faterCell = tableCell;
+    if (gridCell.syncScrollIdentifier) {
+        gridCell.faterCell.scrollView.scrollEnabled = YES;
+    }else{
+        gridCell.faterCell.scrollView.scrollEnabled = NO;
+    }
+    
     //frame
     CGRect frame = gridCell.frame;
     if ([self.dataSource respondsToSelector:@selector(gridView:cellFrameForRowWithCell:atIndexPath:)]) {
@@ -90,10 +93,9 @@
     //刷新tableViewCell中的横向滚动cell
     [tableCell reloadGridCell:gridCell];
     //根据记录初始化滚动contentOffset
-    if (gridCell.disuseSyncHorizontalScroll == NO) {
-        [gridCell initContentOffset:self.cellContentOffsetSync];
-    }else{
-        [gridCell initContentOffset:[self offsetWithIndexPath:indexPath]];
+    if (gridCell.syncScrollIdentifier) {
+        NSString *pointString = [self.cellContentOffsetPool objectForKey:gridCell.syncScrollIdentifier];
+        [gridCell initContentOffset:CGPointFromString(pointString)];
     }
     return tableCell;
 }
@@ -132,11 +134,11 @@
     //刷新tableViewCell中的横向滚动cell
     [tableHeader reloadGridHeader:gridHeader];
     //根据记录初始化滚动contentOffset
-    if (gridHeader.disuseSyncHorizontalScroll == NO) {
-        [gridHeader initContentOffset:self.cellContentOffsetSync];
-    }else{
-        [gridHeader initContentOffset:[self offsetWithIndexPath:[NSIndexPath indexPathForRow:0 inSection:section]]];
-    }
+//    if (gridHeader.disuseSyncHorizontalScroll == NO) {
+//        [gridHeader initContentOffset:self.cellContentOffsetSync];
+//    }else{
+//        [gridHeader initContentOffset:[self offsetWithIndexPath:[NSIndexPath indexPathForRow:0 inSection:section]]];
+//    }
     return tableHeader;
 }
 
@@ -149,18 +151,15 @@
 //3.同步和非同步cell并存情况下，同步需要同步，不同步需要保持记录
 //4.reload以后清空记录
 - (void)innerCell:(TFGridViewInnerCell *)cell scrollViewDidScroll:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{
-    if (cell.gridCell.disuseSyncHorizontalScroll == NO) {
-        //记录同步情况下的offset,以供新cell初始化使用,reload后清空
-        self.cellContentOffsetSync = scrollView.contentOffset;
+    if (cell.gridCell.syncScrollIdentifier) {
+        [self.cellContentOffsetPool setObject:NSStringFromCGPoint(scrollView.contentOffset) forKey:cell.gridCell.syncScrollIdentifier];
         //方案2,只让显示的cell同步横向滚动,但是这样的话需要额外处理内存中没有跟着滚动的view
         NSArray *cells = [self.tableView visibleCells];
-        for (TFGridViewInnerCell *cell in cells) {
-            [cell.gridCell cellDidDrag:cell.gridCell scrollView:scrollView indexPath:indexPath];
+        for (TFGridViewInnerCell *visibleCell in cells) {
+            if ([visibleCell.gridCell.syncScrollIdentifier isEqualToString:cell.gridCell.syncScrollIdentifier]) {
+                [visibleCell.gridCell cellDidDrag:cell.gridCell scrollView:scrollView indexPath:indexPath];
+            }
         }
-    }else{
-        NSString *string = indexPathToString(indexPath);
-        NSString *offsetString = NSStringFromCGPoint(scrollView.contentOffset);
-        [self.cellContentOffsetPool setObject:offsetString forKey:string];
     }
 }
 
@@ -176,8 +175,9 @@
 
 
 
-#pragma mark - TFGridViewInnerCellDelegate
+#pragma mark - TFGridViewInnerHeaderFooterViewDelegate
 - (void)innerHeader:(TFGridViewInnerHeaderFooterView *)header scrollViewDidScroll:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{
+    
     
 }
 
@@ -194,7 +194,11 @@
 }
 
 
--(id)dequeueReusableCellWithIdentifier:(NSString *)cell{
+-(id)dequeueReusableCellWithIdentifier:(NSString *)identifier{
+    return nil;
+}
+
+-(id)dequeueReusableSectionHeaderWithIdentifier:(NSString *)identifier{
     return nil;
 }
 
@@ -215,6 +219,7 @@ static inline NSString *indexPathToString(NSIndexPath *indexPath){
     }
     return _cellContentOffsetPool;
 }
+
 -(UITableView *)tableView{
     if (!_tableView) {
         _tableView = [[UITableView alloc]initWithFrame:self.bounds style:UITableViewStylePlain];

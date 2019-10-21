@@ -29,7 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(CGFloat)gridView:(TFGridView *)gridView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 -(CGFloat)gridView:(TFGridView *)gridView heightForHeaderInSection:(NSInteger)section;
 
--(nullable UIView *)gridView:(TFGridView *)gridView viewForHeaderInSection:(NSInteger)section;
+-(TFGridViewHeaderFooterView *)gridView:(TFGridView *)gridView viewForHeaderInSection:(NSInteger)section;
 - (CGRect)gridView:(TFGridView *)gridView headerFrameForRowWithHeader:(TFGridViewHeaderFooterView *)header inSection:(NSInteger)section;
 
 @end
@@ -42,8 +42,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, weak) id<TFGridViewDataSource>dataSource;
 
 -(void)reloadData;
--(id)dequeueReusableCellWithIdentifier:(NSString *)cell;
-
+-(id)dequeueReusableCellWithIdentifier:(NSString *)identifier;
+-(id)dequeueReusableSectionHeaderWithIdentifier:(NSString *)identifier;
 @end
 
 NS_ASSUME_NONNULL_END
