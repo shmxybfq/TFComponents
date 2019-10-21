@@ -11,8 +11,8 @@
 @implementation TFGridViewCell
 
 -(void)initContentOffset:(CGPoint)contentOffset{
-    if (self.faterCell) {
-        self.faterCell.scrollView.contentOffset = contentOffset;
+    if (self.fatherCell) {
+        self.fatherCell.scrollView.contentOffset = contentOffset;
     }
 }
 
@@ -20,34 +20,44 @@
     if ([witchView isKindOfClass:[TFGridViewCell class]]) {
         TFGridViewCell *witchCell = (TFGridViewCell *)witchView;
         if ([self.syncScrollIdentifier isEqualToString:witchCell.syncScrollIdentifier]) {
-            self.faterCell.scrollView.contentOffset = scrollView.contentOffset;
+            self.fatherCell.scrollView.contentOffset = scrollView.contentOffset;
         }
     }else if ([witchView isKindOfClass:[TFGridViewHeaderFooterView class]]) {
         TFGridViewHeaderFooterView *witchHeader = (TFGridViewHeaderFooterView *)witchView;
         if ([self.syncScrollIdentifier isEqualToString:witchHeader.syncScrollIdentifier]) {
-            self.faterCell.scrollView.contentOffset = scrollView.contentOffset;
+            self.fatherCell.scrollView.contentOffset = scrollView.contentOffset;
         }
     }
 }
 
 
-- (void)witchViewDidDrag:(UIView *)witchView scrollViewWillBeginDragging:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{}
+- (void)witchViewDidDrag:(UIView *)witchView scrollViewWillBeginDragging:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{
+    NSLog(@"-------------------scrollViewWillBeginDragging:%@",NSStringFromCGPoint(scrollView.contentOffset));
+}
 
-- (void)witchViewDidDrag:(UIView *)witchView scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate indexPath:(NSIndexPath *)indexPath{}
+- (void)witchViewDidDrag:(UIView *)witchView scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate indexPath:(NSIndexPath *)indexPath{
+    NSLog(@"-------------------scrollViewDidEndDragging:%@",NSStringFromCGPoint(scrollView.contentOffset));
+}
 
-- (void)witchViewDidDrag:(UIView *)witchView scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset indexPath:(NSIndexPath *)indexPath{}
+- (void)witchViewDidDrag:(UIView *)witchView scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset indexPath:(NSIndexPath *)indexPath{
+    NSLog(@"-------------------scrollViewWillEndDragging:%@",NSStringFromCGPoint(scrollView.contentOffset));
+}
 
-- (void)witchViewDidDrag:(UIView *)witchView scrollViewWillBeginDecelerating:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{}
+- (void)witchViewDidDrag:(UIView *)witchView scrollViewWillBeginDecelerating:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{
+    NSLog(@"-------------------scrollViewWillBeginDecelerating:%@",NSStringFromCGPoint(scrollView.contentOffset));
+}
 
-- (void)witchViewDidDrag:(UIView *)witchView scrollViewDidEndDecelerating:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{}
+- (void)witchViewDidDrag:(UIView *)witchView scrollViewDidEndDecelerating:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{
+    NSLog(@"-------------------scrollViewDidEndDecelerating:%@",NSStringFromCGPoint(scrollView.contentOffset));
+}
 
 
 -(void)setSyncScrollIdentifier:(NSString *)syncScrollIdentifier{
     _syncScrollIdentifier = [syncScrollIdentifier copy];
     if (_syncScrollIdentifier) {
-        self.faterCell.scrollView.scrollEnabled = YES;
+        self.fatherCell.scrollView.scrollEnabled = YES;
     }else{
-        self.faterCell.scrollView.scrollEnabled = NO;
+        self.fatherCell.scrollView.scrollEnabled = NO;
     }
 }
 

@@ -31,11 +31,11 @@
 }
 
 -(NSInteger)numberOfSectionsInGridView:(TFGridView *)gridView{
-    return 3;
+    return 1;
 }
 
 - (NSInteger)gridView:(TFGridView *)gridView numberOfRowsInSection:(NSInteger)section{
-    return 5;
+    return 2;
 }
 
 -(CGFloat)gridView:(TFGridView *)gridView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

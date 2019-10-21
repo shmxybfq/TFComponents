@@ -16,15 +16,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)innerHeader:(TFGridViewInnerHeaderFooterView *)header scrollViewDidScroll:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath;
 
-//- (void)innerCell:(TFGridViewInnerHeaderFooterView *)cell scrollViewWillBeginDragging:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath;
-//
-//- (void)innerCell:(TFGridViewInnerHeaderFooterView *)cell scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset indexPath:(NSIndexPath *)indexPath;
-//
-//- (void)innerCell:(TFGridViewInnerHeaderFooterView *)cell scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate indexPath:(NSIndexPath *)indexPath;
-//
-//- (void)innerCell:(TFGridViewInnerHeaderFooterView *)cell scrollViewWillBeginDecelerating:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath;
-//
-//- (void)innerCell:(TFGridViewInnerHeaderFooterView *)cell scrollViewDidEndDecelerating:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath;
+- (void)innerHeader:(TFGridViewInnerHeaderFooterView *)header scrollViewWillBeginDragging:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath;
+
+- (void)innerHeader:(TFGridViewInnerHeaderFooterView *)header scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset indexPath:(NSIndexPath *)indexPath;
+
+- (void)innerHeader:(TFGridViewInnerHeaderFooterView *)header scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate indexPath:(NSIndexPath *)indexPath;
+
+- (void)innerHeader:(TFGridViewInnerHeaderFooterView *)header scrollViewWillBeginDecelerating:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath;
+
+- (void)innerHeader:(TFGridViewInnerHeaderFooterView *)header scrollViewDidEndDecelerating:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath;
 
 @end
 

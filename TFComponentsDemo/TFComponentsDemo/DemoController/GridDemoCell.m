@@ -40,6 +40,35 @@
     [self displayWithOffset:scrollView.contentOffset];
 }
 
+
+
+- (void)witchViewDidDrag:(UIView *)witchView scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate indexPath:(NSIndexPath *)indexPath{
+    if (decelerate == NO) {
+        [scrollView setContentOffset:[self getNearlyPoint:scrollView.contentOffset.x + [UIScreen mainScreen].bounds.size.width]
+                            animated:YES];
+    }
+}
+
+- (void)witchViewDidDrag:(UIView *)witchView scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset indexPath:(NSIndexPath *)indexPath{
+    //*targetContentOffset = [self getNearlyPoint:(*targetContentOffset).x + [UIScreen mainScreen].bounds.size.width];
+}
+
+-(CGPoint)getNearlyPoint:(CGFloat)x{
+    UIView *nearlyView = nil;
+    CGFloat edgeX = x;
+    for (UIView *view in self.subviews) {
+        if (edgeX > view.frame.origin.x && edgeX < view.frame.origin.x + view.frame.size.width) {
+            nearlyView = view;break;
+        }
+    }
+    if (nearlyView) {
+        return CGPointMake(nearlyView.frame.origin.x + nearlyView.frame.size.width - [UIScreen mainScreen].bounds.size.width, 0);
+    }
+    return CGPointZero;
+}
+
+
+
 -(void)displayWithOffset:(CGPoint)offset{
     
     CGRect markFrame = self.markImageView.frame;

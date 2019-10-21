@@ -81,11 +81,11 @@
     if ([self.dataSource respondsToSelector:@selector(gridView:cellForRowAtIndexPath:)]) {
         gridCell = [self.dataSource gridView:self cellForRowAtIndexPath:indexPath];
     }
-    gridCell.faterCell = tableCell;
+    gridCell.fatherCell = tableCell;
     if (gridCell.syncScrollIdentifier) {
-        gridCell.faterCell.scrollView.scrollEnabled = YES;
+        gridCell.fatherCell.scrollView.scrollEnabled = YES;
     }else{
-        gridCell.faterCell.scrollView.scrollEnabled = NO;
+        gridCell.fatherCell.scrollView.scrollEnabled = NO;
     }
     
     //frame
@@ -128,11 +128,11 @@
     if ([self.dataSource respondsToSelector:@selector(gridView:viewForHeaderInSection:)]) {
         gridHeader = (TFGridViewHeaderFooterView *)[self.delegate gridView:self viewForHeaderInSection:section];
     }
-    gridHeader.faterHeader = tableHeader;
+    gridHeader.fatherHeader = tableHeader;
     if (gridHeader.syncScrollIdentifier) {
-        gridHeader.faterHeader.scrollView.scrollEnabled = YES;
+        gridHeader.fatherHeader.scrollView.scrollEnabled = YES;
     }else{
-        gridHeader.faterHeader.scrollView.scrollEnabled = NO;
+        gridHeader.fatherHeader.scrollView.scrollEnabled = NO;
     }
     //frame
     CGRect frame = gridHeader.frame;
@@ -164,64 +164,123 @@
 //4.reload以后清空记录
 - (void)innerCell:(TFGridViewInnerCell *)cell scrollViewDidScroll:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{
     if (cell.gridCell.syncScrollIdentifier) {
-        [self.cellContentOffsetPool setObject:NSStringFromCGPoint(scrollView.contentOffset) forKey:cell.gridCell.syncScrollIdentifier];
-        //【方案2】只让显示的cell同步横向滚动,但是这样的话需要额外处理内存中没有跟着滚动的view
-        NSArray *cells = [self.tableView visibleCells];
-        for (TFGridViewInnerCell *visibleCell in cells) {
-            if (visibleCell.gridCell != cell.gridCell && [visibleCell.gridCell.syncScrollIdentifier isEqualToString:cell.gridCell.syncScrollIdentifier]) {
-                [visibleCell.gridCell witchViewDidDrag:cell.gridCell scrollViewDidScroll:scrollView indexPath:indexPath];
-            }
-        }
-        
-        //section
-        if (self.haveSectionHeaders) {
-            NSArray *headers = [self.tableView visibleSectionHeaders:indexPath];
-            for (TFGridViewInnerHeaderFooterView *visibleHeader in headers) {
-                if ([visibleHeader.gridHeader.syncScrollIdentifier isEqualToString:cell.gridCell.syncScrollIdentifier]) {
-                    [visibleHeader.gridHeader witchViewDidDrag:visibleHeader.gridHeader scrollViewDidScroll:scrollView indexPath:indexPath];
-                }
-            }
-        }
+        [self syncScrollToSameIdentifier:cell.gridCell.syncScrollIdentifier witchView:cell.gridCell scrollViewDidScroll:scrollView indexPath:indexPath];
     }
 }
-
-- (void)innerCell:(TFGridViewInnerCell *)cell scrollViewWillBeginDragging:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{}
-
-- (void)innerCell:(TFGridViewInnerCell *)cell scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate indexPath:(NSIndexPath *)indexPath{}
-
-- (void)innerCell:(TFGridViewInnerCell *)cell scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset indexPath:(NSIndexPath *)indexPath{}
-
-- (void)innerCell:(TFGridViewInnerCell *)cell scrollViewWillBeginDecelerating:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{}
-
-- (void)innerCell:(TFGridViewInnerCell *)cell scrollViewDidEndDecelerating:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{}
+- (void)innerCell:(TFGridViewInnerCell *)cell scrollViewWillBeginDragging:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{
+    [self syncMethodToSameIdentifier:cell.gridCell.syncScrollIdentifier witchView:cell.gridCell methodName:NSStringFromSelector(_cmd) scrollViewDidScroll:scrollView willDecelerate:NO withVelocity:CGPointZero targetContentOffset:nil indexPath:indexPath];
+}
+- (void)innerCell:(TFGridViewInnerCell *)cell scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate indexPath:(NSIndexPath *)indexPath{
+      [self syncMethodToSameIdentifier:cell.gridCell.syncScrollIdentifier witchView:cell.gridCell methodName:NSStringFromSelector(_cmd) scrollViewDidScroll:scrollView willDecelerate:decelerate withVelocity:CGPointZero targetContentOffset:nil indexPath:indexPath];
+}
+- (void)innerCell:(TFGridViewInnerCell *)cell scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset indexPath:(NSIndexPath *)indexPath{
+    [self syncMethodToSameIdentifier:cell.gridCell.syncScrollIdentifier witchView:cell.gridCell methodName:NSStringFromSelector(_cmd) scrollViewDidScroll:scrollView willDecelerate:NO withVelocity:velocity targetContentOffset:targetContentOffset indexPath:indexPath];
+}
+- (void)innerCell:(TFGridViewInnerCell *)cell scrollViewWillBeginDecelerating:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{
+       [self syncMethodToSameIdentifier:cell.gridCell.syncScrollIdentifier witchView:cell.gridCell methodName:NSStringFromSelector(_cmd) scrollViewDidScroll:scrollView willDecelerate:NO withVelocity:CGPointZero targetContentOffset:nil indexPath:indexPath];
+}
+- (void)innerCell:(TFGridViewInnerCell *)cell scrollViewDidEndDecelerating:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{
+       [self syncMethodToSameIdentifier:cell.gridCell.syncScrollIdentifier witchView:cell.gridCell methodName:NSStringFromSelector(_cmd) scrollViewDidScroll:scrollView willDecelerate:NO withVelocity:CGPointZero targetContentOffset:nil indexPath:indexPath];
+}
 
 #pragma mark - TFGridViewInnerHeaderFooterViewDelegate
 - (void)innerHeader:(TFGridViewInnerHeaderFooterView *)header scrollViewDidScroll:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{
-    
     if (header.gridHeader.syncScrollIdentifier) {
-        [self.cellContentOffsetPool setObject:NSStringFromCGPoint(scrollView.contentOffset) forKey:header.gridHeader.syncScrollIdentifier];
-        //【方案2】只让显示的cell同步横向滚动,但是这样的话需要额外处理内存中没有跟着滚动的view
-        NSArray *cells = [self.tableView visibleCells];
-        for (TFGridViewInnerCell *visibleCell in cells) {
-            if ([visibleCell.gridCell.syncScrollIdentifier isEqualToString:header.gridHeader.syncScrollIdentifier]) {
-                [visibleCell.gridCell witchViewDidDrag:header.gridHeader scrollViewDidScroll:scrollView indexPath:indexPath];
-            }
+        [self syncScrollToSameIdentifier:header.gridHeader.syncScrollIdentifier witchView:header.gridHeader scrollViewDidScroll:scrollView indexPath:indexPath];
+    }
+}
+- (void)innerHeader:(TFGridViewInnerHeaderFooterView *)header scrollViewWillBeginDragging:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{
+    [self syncMethodToSameIdentifier:header.gridHeader.syncScrollIdentifier witchView:header.gridHeader methodName:NSStringFromSelector(_cmd) scrollViewDidScroll:scrollView willDecelerate:NO withVelocity:CGPointZero targetContentOffset:nil indexPath:indexPath];
+}
+
+- (void)innerHeader:(TFGridViewInnerHeaderFooterView *)header scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset indexPath:(NSIndexPath *)indexPath{
+     [self syncMethodToSameIdentifier:header.gridHeader.syncScrollIdentifier witchView:header.gridHeader methodName:NSStringFromSelector(_cmd) scrollViewDidScroll:scrollView willDecelerate:NO withVelocity:velocity targetContentOffset:targetContentOffset indexPath:indexPath];
+}
+
+- (void)innerHeader:(TFGridViewInnerHeaderFooterView *)header scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate indexPath:(NSIndexPath *)indexPath{
+    [self syncMethodToSameIdentifier:header.gridHeader.syncScrollIdentifier witchView:header.gridHeader methodName:NSStringFromSelector(_cmd) scrollViewDidScroll:scrollView willDecelerate:decelerate withVelocity:CGPointZero targetContentOffset:nil indexPath:indexPath];
+}
+
+- (void)innerHeader:(TFGridViewInnerHeaderFooterView *)header scrollViewWillBeginDecelerating:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{
+    [self syncMethodToSameIdentifier:header.gridHeader.syncScrollIdentifier witchView:header.gridHeader methodName:NSStringFromSelector(_cmd) scrollViewDidScroll:scrollView willDecelerate:NO withVelocity:CGPointZero targetContentOffset:nil indexPath:indexPath];
+}
+
+- (void)innerHeader:(TFGridViewInnerHeaderFooterView *)header scrollViewDidEndDecelerating:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{
+    [self syncMethodToSameIdentifier:header.gridHeader.syncScrollIdentifier witchView:header.gridHeader methodName:NSStringFromSelector(_cmd) scrollViewDidScroll:scrollView willDecelerate:NO withVelocity:CGPointZero targetContentOffset:nil indexPath:indexPath];
+}
+
+#pragma mark - 同步滚动分发
+//将滚动事件同步到同id的view
+-(void)syncScrollToSameIdentifier:(NSString *)identifier witchView:(UIView *)witchView scrollViewDidScroll:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{
+    
+    [self.cellContentOffsetPool setObject:NSStringFromCGPoint(scrollView.contentOffset) forKey:identifier];
+    
+    //【方案2】只让显示的cell同步横向滚动,但是这样的话需要额外处理内存中没有跟着滚动的view
+    NSArray *cells = [self.tableView visibleCells];
+    for (TFGridViewInnerCell *visibleCell in cells) {
+        if (visibleCell.gridCell != witchView && [visibleCell.gridCell.syncScrollIdentifier isEqualToString:identifier]) {
+            [visibleCell.gridCell witchViewDidDrag:witchView scrollViewDidScroll:scrollView indexPath:indexPath];
         }
-        
-        //section
-        if (self.haveSectionHeaders) {
-            NSArray *headers = [self.tableView visibleSectionHeaders:indexPath];
-            for (TFGridViewInnerHeaderFooterView *visibleHeader in headers) {
-                if (header.gridHeader != visibleHeader.gridHeader && [visibleHeader.gridHeader.syncScrollIdentifier isEqualToString:header.gridHeader.syncScrollIdentifier]) {
-                    [visibleHeader.gridHeader witchViewDidDrag:visibleHeader.gridHeader scrollViewDidScroll:scrollView indexPath:indexPath];
-                }
+    }
+    //section
+    if (self.haveSectionHeaders) {
+        NSArray *headers = [self.tableView visibleSectionHeaders:indexPath];
+        for (TFGridViewInnerHeaderFooterView *visibleHeader in headers) {
+            if (visibleHeader.gridHeader != witchView && [visibleHeader.gridHeader.syncScrollIdentifier isEqualToString:identifier]) {
+                [visibleHeader.gridHeader witchViewDidDrag:visibleHeader.gridHeader scrollViewDidScroll:scrollView indexPath:indexPath];
             }
         }
     }
 }
 
 
-
+-(void)syncMethodToSameIdentifier:(NSString *)identifier
+                        witchView:(UIView *)witchView
+                       methodName:(NSString *)methodName
+              scrollViewDidScroll:(UIScrollView *)scrollView
+                   willDecelerate:(BOOL)decelerate
+                     withVelocity:(CGPoint)velocity
+              targetContentOffset:(inout CGPoint *)targetContentOffset
+                        indexPath:(NSIndexPath *)indexPath{
+    
+    //【方案2】只让显示的cell同步横向滚动,但是这样的话需要额外处理内存中没有跟着滚动的view
+    NSArray *cells = [self.tableView visibleCells];
+    for (TFGridViewInnerCell *visibleCell in cells) {
+        if (visibleCell.gridCell != witchView && [visibleCell.gridCell.syncScrollIdentifier isEqualToString:identifier]) {
+            if ([methodName containsString:@"scrollViewWillBeginDragging"]) {
+                [visibleCell.gridCell witchViewDidDrag:witchView scrollViewWillBeginDragging:scrollView indexPath:indexPath];
+            }else if ([methodName containsString:@"scrollViewDidEndDragging"]) {
+                [visibleCell.gridCell witchViewDidDrag:witchView scrollViewDidEndDragging:scrollView willDecelerate:decelerate indexPath:indexPath];
+            }else if ([methodName containsString:@"scrollViewWillEndDragging"]) {
+                [visibleCell.gridCell witchViewDidDrag:witchView scrollViewWillEndDragging:scrollView withVelocity:velocity targetContentOffset:targetContentOffset indexPath:indexPath];
+            }else if ([methodName containsString:@"scrollViewWillBeginDecelerating"]) {
+                [visibleCell.gridCell witchViewDidDrag:witchView scrollViewWillBeginDecelerating:scrollView indexPath:indexPath];
+            }else if ([methodName containsString:@"scrollViewDidEndDecelerating"]) {
+                [visibleCell.gridCell witchViewDidDrag:witchView scrollViewDidEndDecelerating:scrollView indexPath:indexPath];
+            }
+        }
+    }
+    //section
+    if (self.haveSectionHeaders) {
+        NSArray *headers = [self.tableView visibleSectionHeaders:indexPath];
+        for (TFGridViewInnerHeaderFooterView *visibleHeader in headers) {
+            if (visibleHeader.gridHeader != witchView && [visibleHeader.gridHeader.syncScrollIdentifier isEqualToString:identifier]) {
+                if ([methodName containsString:@"scrollViewWillBeginDragging"]) {
+                    [visibleHeader.gridHeader witchViewDidDrag:witchView scrollViewWillBeginDragging:scrollView indexPath:indexPath];
+                }else if ([methodName containsString:@"scrollViewDidEndDragging"]) {
+                    [visibleHeader.gridHeader witchViewDidDrag:witchView scrollViewDidEndDragging:scrollView willDecelerate:decelerate indexPath:indexPath];
+                }else if ([methodName containsString:@"scrollViewWillEndDragging"]) {
+                    [visibleHeader.gridHeader witchViewDidDrag:witchView scrollViewWillEndDragging:scrollView withVelocity:velocity targetContentOffset:targetContentOffset indexPath:indexPath];
+                }else if ([methodName containsString:@"scrollViewWillBeginDecelerating"]) {
+                    [visibleHeader.gridHeader witchViewDidDrag:witchView scrollViewWillBeginDecelerating:scrollView indexPath:indexPath];
+                }else if ([methodName containsString:@"scrollViewDidEndDecelerating"]) {
+                    [visibleHeader.gridHeader witchViewDidDrag:witchView scrollViewDidEndDecelerating:scrollView indexPath:indexPath];
+                }
+            }
+        }
+    }
+    
+}
 
 #pragma mark - functionMethod
 

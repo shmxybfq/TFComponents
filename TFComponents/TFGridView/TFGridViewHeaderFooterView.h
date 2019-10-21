@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TFGridViewHeaderFooterView : UIView
 
-@property(nonatomic, weak) TFGridViewInnerHeaderFooterView *faterHeader;
+@property(nonatomic, weak) TFGridViewInnerHeaderFooterView *fatherHeader;
 //同步滚动id,相同id的view可接收到滚动消息,为nil时不可滚动,默认为nil
 @property(nonatomic, copy)NSString *syncScrollIdentifier;
 
