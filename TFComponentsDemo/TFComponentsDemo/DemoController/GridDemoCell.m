@@ -11,6 +11,7 @@
 @interface GridDemoCell ()
 
 @property(nonatomic, assign) CGRect productLabelOriginFrame;
+@property(nonatomic, assign) CGPoint initContentOffset;
 
 @end
 
@@ -23,9 +24,14 @@
     
     [self bringSubviewToFront:self.productLabel];
     [self bringSubviewToFront:self.markImageView];
+    
+    
+    [self displayWithOffset:self.initContentOffset];
 }
 
 -(void)initContentOffset:(CGPoint)contentOffset{
+    [super initContentOffset:contentOffset];
+    self.initContentOffset = contentOffset;
     [self displayWithOffset:contentOffset];
 }
 
