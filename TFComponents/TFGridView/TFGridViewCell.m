@@ -32,23 +32,23 @@
 
 
 - (void)witchViewDidDrag:(UIView *)witchView scrollViewWillBeginDragging:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{
-    NSLog(@"-------------------scrollViewWillBeginDragging:%@",NSStringFromCGPoint(scrollView.contentOffset));
+    //NSLog(@"-------------------scrollViewWillBeginDragging:%@",NSStringFromCGPoint(scrollView.contentOffset));
 }
 
 - (void)witchViewDidDrag:(UIView *)witchView scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate indexPath:(NSIndexPath *)indexPath{
-    NSLog(@"-------------------scrollViewDidEndDragging:%@",NSStringFromCGPoint(scrollView.contentOffset));
+    //NSLog(@"-------------------scrollViewDidEndDragging:%@",NSStringFromCGPoint(scrollView.contentOffset));
 }
 
 - (void)witchViewDidDrag:(UIView *)witchView scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset indexPath:(NSIndexPath *)indexPath{
-    NSLog(@"-------------------scrollViewWillEndDragging:%@",NSStringFromCGPoint(scrollView.contentOffset));
+    //NSLog(@"-------------------scrollViewWillEndDragging:%@",NSStringFromCGPoint(scrollView.contentOffset));
 }
 
 - (void)witchViewDidDrag:(UIView *)witchView scrollViewWillBeginDecelerating:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{
-    NSLog(@"-------------------scrollViewWillBeginDecelerating:%@",NSStringFromCGPoint(scrollView.contentOffset));
+    //NSLog(@"-------------------scrollViewWillBeginDecelerating:%@",NSStringFromCGPoint(scrollView.contentOffset));
 }
 
 - (void)witchViewDidDrag:(UIView *)witchView scrollViewDidEndDecelerating:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{
-    NSLog(@"-------------------scrollViewDidEndDecelerating:%@",NSStringFromCGPoint(scrollView.contentOffset));
+    //NSLog(@"-------------------scrollViewDidEndDecelerating:%@",NSStringFromCGPoint(scrollView.contentOffset));
 }
 
 
