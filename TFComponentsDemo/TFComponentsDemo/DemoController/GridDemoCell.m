@@ -40,18 +40,18 @@
 }
 
 
-
+//列自动滚动到边界0
 - (void)witchViewDidDrag:(UIView *)witchView scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate indexPath:(NSIndexPath *)indexPath{
     if (decelerate == NO) {
         [scrollView setContentOffset:[self getNearlyPoint:scrollView.contentOffset.x + [UIScreen mainScreen].bounds.size.width]
                             animated:YES];
     }
 }
-
+//列自动滚动到边界1
 - (void)witchViewDidDrag:(UIView *)witchView scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset indexPath:(NSIndexPath *)indexPath{
     *targetContentOffset = [self getNearlyPoint:(*targetContentOffset).x + [UIScreen mainScreen].bounds.size.width];
 }
-
+//列自动滚动到边界2
 -(CGPoint)getNearlyPoint:(CGFloat)x{
     return CGPointMake(x - [UIScreen mainScreen].bounds.size.width, 0);
     UIView *nearlyView = nil;
@@ -68,12 +68,11 @@
 }
 
 
-
+//列悬浮
 -(void)displayWithOffset:(CGPoint)offset{
     
     CGRect markFrame = self.markImageView.frame;
     self.markImageView.frame = CGRectMake(offset.x, 0, markFrame.size.width, markFrame.size.height);
-    
     
     CGRect productFrame = self.productLabel.frame;
     if ((offset.x + markFrame.size.width) >= self.productLabelOriginFrame.origin.x) {
