@@ -8,19 +8,38 @@
 
 #import <UIKit/UIKit.h>
 #import "TFGridViewInnerCell.h"
+#import "TFGridColumnView.h"
+#import "TFGridColumnModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
+@class TFGridColumnView;
+@protocol TFGridViewCellDelegate <NSObject>
+
+@required
+- (NSInteger)numberOfColumnInGridViewCell:(TFGridViewCell *)cell;
+- (TFGridColumnView *)gridCell:(TFGridViewCell *)gridCell columnViewWithIndex:(NSInteger)index;
+- (TFGridColumnModel *)gridCell:(TFGridViewCell *)gridCell columnModelWithColumnView:(TFGridColumnView *)columnView index:(NSInteger)index;
+@optional
+- (CGRect)gridCell:(TFGridViewCell *)gridCell columnFrameWithColumnView:(TFGridColumnView *)columnView columnModel:(TFGridColumnModel *)columnModel index:(NSInteger)index;
+
+@end
+
 @interface TFGridViewCell : UIView
+
+@property(nonatomic, weak) id<TFGridViewCellDelegate>delegate;
 
 @property(nonatomic, weak) TFGridViewInnerCell *fatherCell;
 //同步滚动id,相同id的view可接收到滚动消息,为nil时不可滚动,默认为nil
 @property(nonatomic, copy)NSString *syncScrollIdentifier;
 
+@property(nonatomic, assign) CGPoint initContentOffset;
+
+-(void)reloadColumn;
+
 /* 初始化contentOffset
  * 初始化的时候调用此方法告诉你当前indexPath的cell上次滚动到哪个位置
  */
 -(void)initContentOffset:(CGPoint)contentOffset;
-
 
 /*
  * 同步滚动函数

@@ -11,7 +11,6 @@
 @interface GridDemoCell ()
 
 @property(nonatomic, assign) CGRect productLabelOriginFrame;
-@property(nonatomic, assign) CGPoint initContentOffset;
 
 @end
 

@@ -40,6 +40,8 @@
 		9081155C235D9E550061540F /* GridDemoSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 9081155B235D9E550061540F /* GridDemoSectionHeader.m */; };
 		9081155E235D9E5C0061540F /* GridDemoSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9081155D235D9E5C0061540F /* GridDemoSectionHeader.xib */; };
 		90E62288235DA6730083B60C /* UITableView+TFGridExtesion.m in Sources */ = {isa = PBXBuildFile; fileRef = 90E62287235DA6730083B60C /* UITableView+TFGridExtesion.m */; };
+		90E622A3235FEEFB0083B60C /* TFGridColumnModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 90E622A2235FEEFB0083B60C /* TFGridColumnModel.m */; };
+		90E622A9235FF81E0083B60C /* TFGridColumnView.m in Sources */ = {isa = PBXBuildFile; fileRef = 90E622A8235FF81E0083B60C /* TFGridColumnView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -103,6 +105,10 @@
 		909FFBF2228580C3006F7587 /* Const.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Const.h; sourceTree = "<group>"; };
 		90E62286235DA6730083B60C /* UITableView+TFGridExtesion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITableView+TFGridExtesion.h"; sourceTree = "<group>"; };
 		90E62287235DA6730083B60C /* UITableView+TFGridExtesion.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITableView+TFGridExtesion.m"; sourceTree = "<group>"; };
+		90E622A1235FEEFB0083B60C /* TFGridColumnModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TFGridColumnModel.h; sourceTree = "<group>"; };
+		90E622A2235FEEFB0083B60C /* TFGridColumnModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TFGridColumnModel.m; sourceTree = "<group>"; };
+		90E622A7235FF81E0083B60C /* TFGridColumnView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TFGridColumnView.h; sourceTree = "<group>"; };
+		90E622A8235FF81E0083B60C /* TFGridColumnView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TFGridColumnView.m; sourceTree = "<group>"; };
 		AAB4364B1219D7FF792AC2FA /* Pods-TFComponentsDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TFComponentsDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-TFComponentsDemo/Pods-TFComponentsDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -227,10 +233,14 @@
 				903D2525235AB1D3009A92DE /* TFGridView.m */,
 				90811543235AB5330061540F /* TFGridViewCell.h */,
 				90811544235AB5330061540F /* TFGridViewCell.m */,
+				90E622A7235FF81E0083B60C /* TFGridColumnView.h */,
+				90E622A8235FF81E0083B60C /* TFGridColumnView.m */,
 				90811557235B13230061540F /* TFGridViewHeaderFooterView.h */,
 				90811558235B13230061540F /* TFGridViewHeaderFooterView.m */,
 				90E62286235DA6730083B60C /* UITableView+TFGridExtesion.h */,
 				90E62287235DA6730083B60C /* UITableView+TFGridExtesion.m */,
+				90E622A1235FEEFB0083B60C /* TFGridColumnModel.h */,
+				90E622A2235FEEFB0083B60C /* TFGridColumnModel.m */,
 				90811549235AB81E0061540F /* Inner */,
 			);
 			path = TFGridView;
@@ -383,6 +393,7 @@
 				90811551235AEE090061540F /* GridDemoCell.m in Sources */,
 				90E62288235DA6730083B60C /* UITableView+TFGridExtesion.m in Sources */,
 				9081155C235D9E550061540F /* GridDemoSectionHeader.m in Sources */,
+				90E622A9235FF81E0083B60C /* TFGridColumnView.m in Sources */,
 				2098109222389DE9004B262C /* WebViewController.m in Sources */,
 				90811556235B130C0061540F /* TFGridViewInnerHeaderFooterView.m in Sources */,
 				20D2EFF4223248CD001DC35D /* TFSquareBlockViewController.m in Sources */,
@@ -401,6 +412,7 @@
 				903D2521235AB175009A92DE /* TFScrollTagView.m in Sources */,
 				903D2522235AB175009A92DE /* TFSquareBlockView.m in Sources */,
 				20D2EFDE22321CA2001DC35D /* main.m in Sources */,
+				90E622A3235FEEFB0083B60C /* TFGridColumnModel.m in Sources */,
 				20D2EFD022321CA1001DC35D /* AppDelegate.m in Sources */,
 				903D2523235AB175009A92DE /* TFRectangleBlockView.m in Sources */,
 			);

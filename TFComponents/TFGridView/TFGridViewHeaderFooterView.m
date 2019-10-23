@@ -8,7 +8,54 @@
 
 #import "TFGridViewHeaderFooterView.h"
 #import "TFGridViewCell.h"
+
+@interface TFGridViewHeaderFooterView ()
+
+@property(nonatomic, strong) NSMutableArray <TFGridColumnView *>*columnViews;
+
+@end
+
 @implementation TFGridViewHeaderFooterView
+
+-(void)reloadColumn{
+    
+    [self.columnViews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    
+    if (self.delegate) {
+        
+        NSInteger columnCount = 1;
+        if ([self.delegate respondsToSelector:@selector(numberOfColumnInGridViewCell:)]) {
+            columnCount = [self.delegate numberOfColumnInGridHeader:self];
+        }
+        
+        CGFloat frameX = 0;
+        CGFloat frameY = 0;
+        for (NSInteger i = 0; i < columnCount; i++) {
+            if ([self.delegate respondsToSelector:@selector(gridCell:columnViewWithIndex:)]) {
+                TFGridColumnView *view = [self.delegate gridCell:self columnViewWithIndex:i];
+                [self addSubview:view];
+                [self.columnViews addObject:view];
+                
+                TFGridColumnModel *columnModel = nil;
+                if (view && [view isKindOfClass:[UIView class]]) {
+                    if ([self.delegate respondsToSelector:@selector(gridCell:columnModelWithColumnView:index:)]) {
+                        columnModel = [self.delegate gridCell:self columnModelWithColumnView:view index:i];
+                        view.columnModel = columnModel;
+                    }
+                }
+                
+                CGRect frame = CGRectZero;
+                if ([self.delegate respondsToSelector:@selector(gridCell:columnFrameWithColumnView:columnModel:index:)]) {
+                    frame = [self.delegate gridCell:self columnFrameWithColumnView:view columnModel:columnModel index:i];
+                }else{
+                    frame = CGRectMake(frameX, frameY, columnModel.width, self.frame.size.height);
+                    frameX += columnModel.width;
+                }
+                view.frame = frame;
+            }
+        }
+    }
+}
 
 
 -(void)initContentOffset:(CGPoint)contentOffset{
@@ -58,5 +105,13 @@
         self.fatherHeader.scrollView.scrollEnabled = NO;
     }
 }
+
+-(NSMutableArray<TFGridColumnView *> *)columnViews{
+    if (!_columnViews) {
+        _columnViews = [[NSMutableArray alloc]init];
+    }
+    return _columnViews;
+}
+
 
 @end
