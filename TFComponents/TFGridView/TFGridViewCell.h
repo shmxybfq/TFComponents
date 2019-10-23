@@ -16,10 +16,14 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol TFGridViewCellDelegate <NSObject>
 
 @required
+//返回列数
 - (NSInteger)numberOfColumnInGridViewCell:(TFGridViewCell *)cell;
+//返回每列的view
 - (TFGridColumnView *)gridCell:(TFGridViewCell *)gridCell columnViewWithIndex:(NSInteger)index;
+//返回每列的TFGridColumnModel
 - (TFGridColumnModel *)gridCell:(TFGridViewCell *)gridCell columnModelWithColumnView:(TFGridColumnView *)columnView index:(NSInteger)index;
 @optional
+//返回每列TFGridColumnView的frame,如不实现,则每列自动按TFGridColumnModel的width依次无间距后排
 - (CGRect)gridCell:(TFGridViewCell *)gridCell columnFrameWithColumnView:(TFGridColumnView *)columnView columnModel:(TFGridColumnModel *)columnModel index:(NSInteger)index;
 
 @end

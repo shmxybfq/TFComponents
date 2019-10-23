@@ -13,9 +13,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TFGridColumnModel : NSObject
 
+//如不赋值,则按默认列数量累加
 @property(nonatomic,assign) NSInteger index;
+//如不赋值,默认=60
 @property(nonatomic,assign) CGFloat width;
+//如不赋值,默认=NO
 @property(nonatomic,assign) BOOL pinEnable;
+//如不赋值,默认=nil
 @property(nonatomic,  copy) NSString *type;
 
 @end

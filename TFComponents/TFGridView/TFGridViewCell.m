@@ -42,6 +42,9 @@
                     TFGridColumnModel *columnModel = nil;
                     if ([self.delegate respondsToSelector:@selector(gridCell:columnModelWithColumnView:index:)]) {
                         columnModel = [self.delegate gridCell:self columnModelWithColumnView:view index:i];
+                        if (columnModel.index == 0) {
+                            columnModel.index = i;
+                        }
                         view.columnModel = columnModel;
                     }
                     
