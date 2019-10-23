@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TFGridColumnView : UIView
 
-@property(nonatomic, copy) TFGridColumnModel *columnModel;
+@property(nonatomic,strong) TFGridColumnModel *columnModel;
 
 @end
 
