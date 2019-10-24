@@ -40,31 +40,31 @@
 
 
 //列自动滚动到边界0
-- (void)witchViewDidDrag:(UIView *)witchView scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate indexPath:(NSIndexPath *)indexPath{
-    if (decelerate == NO) {
-        [scrollView setContentOffset:[self getNearlyPoint:scrollView.contentOffset.x + [UIScreen mainScreen].bounds.size.width]
-                            animated:YES];
-    }
-}
+//- (void)witchViewDidDrag:(UIView *)witchView scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate indexPath:(NSIndexPath *)indexPath{
+//    if (decelerate == NO) {
+//        [scrollView setContentOffset:[self getNearlyPoint:scrollView.contentOffset.x + [UIScreen mainScreen].bounds.size.width]
+//                            animated:YES];
+//    }
+//}
 //列自动滚动到边界1
-- (void)witchViewDidDrag:(UIView *)witchView scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset indexPath:(NSIndexPath *)indexPath{
-    *targetContentOffset = [self getNearlyPoint:(*targetContentOffset).x + [UIScreen mainScreen].bounds.size.width];
-}
-//列自动滚动到边界2
--(CGPoint)getNearlyPoint:(CGFloat)x{
-    return CGPointMake(x - [UIScreen mainScreen].bounds.size.width, 0);
-    UIView *nearlyView = nil;
-    CGFloat edgeX = x;
-    for (UIView *view in self.subviews) {
-        if (edgeX > view.frame.origin.x && edgeX < view.frame.origin.x + view.frame.size.width) {
-            nearlyView = view;break;
-        }
-    }
-    if (nearlyView) {
-        return CGPointMake(nearlyView.frame.origin.x + nearlyView.frame.size.width - [UIScreen mainScreen].bounds.size.width, 0);
-    }
-    return CGPointZero;
-}
+//- (void)witchViewDidDrag:(UIView *)witchView scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset indexPath:(NSIndexPath *)indexPath{
+//    *targetContentOffset = [self getNearlyPoint:(*targetContentOffset).x + [UIScreen mainScreen].bounds.size.width];
+//}
+////列自动滚动到边界2
+//-(CGPoint)getNearlyPoint:(CGFloat)x{
+//    return CGPointMake(x - [UIScreen mainScreen].bounds.size.width, 0);
+//    UIView *nearlyView = nil;
+//    CGFloat edgeX = x;
+//    for (UIView *view in self.subviews) {
+//        if (edgeX > view.frame.origin.x && edgeX < view.frame.origin.x + view.frame.size.width) {
+//            nearlyView = view;break;
+//        }
+//    }
+//    if (nearlyView) {
+//        return CGPointMake(nearlyView.frame.origin.x + nearlyView.frame.size.width - [UIScreen mainScreen].bounds.size.width, 0);
+//    }
+//    return CGPointZero;
+//}
 
 
 //列悬浮

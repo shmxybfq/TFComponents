@@ -109,6 +109,7 @@
 		90E622A2235FEEFB0083B60C /* TFGridColumnModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TFGridColumnModel.m; sourceTree = "<group>"; };
 		90E622A7235FF81E0083B60C /* TFGridColumnView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TFGridColumnView.h; sourceTree = "<group>"; };
 		90E622A8235FF81E0083B60C /* TFGridColumnView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TFGridColumnView.m; sourceTree = "<group>"; };
+		90E622AF236137B80083B60C /* TFGridConst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TFGridConst.h; sourceTree = "<group>"; };
 		AAB4364B1219D7FF792AC2FA /* Pods-TFComponentsDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TFComponentsDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-TFComponentsDemo/Pods-TFComponentsDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -229,6 +230,7 @@
 		903D251A235AB174009A92DE /* TFGridView */ = {
 			isa = PBXGroup;
 			children = (
+				90E622AF236137B80083B60C /* TFGridConst.h */,
 				903D2524235AB1D3009A92DE /* TFGridView.h */,
 				903D2525235AB1D3009A92DE /* TFGridView.m */,
 				90811543235AB5330061540F /* TFGridViewCell.h */,

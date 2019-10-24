@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "TFGridConst.h"
 NS_ASSUME_NONNULL_BEGIN
 @class TFGridViewCell;
 @class TFGridViewInnerCell;

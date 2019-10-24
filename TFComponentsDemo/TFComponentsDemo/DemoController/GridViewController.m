@@ -63,6 +63,7 @@
     }else{
         cell.syncScrollIdentifier = @"第三section和上面两个section不同步滚动";
     }
+    cell.gridScrollPinType = TFGridScrollPinTypeRight;
     return cell;
 }
 

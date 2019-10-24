@@ -70,6 +70,7 @@
 }
 
 -(void)witchViewDidDrag:(UIView *)witchView scrollViewDidScroll:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{
+    //NSLog(@"-------------------scrollViewDidScroll:%@",NSStringFromCGPoint(scrollView.contentOffset));
     if ([witchView isKindOfClass:[TFGridViewCell class]]) {
         TFGridViewCell *witchCell = (TFGridViewCell *)witchView;
         if ([self.syncScrollIdentifier isEqualToString:witchCell.syncScrollIdentifier]) {
@@ -81,9 +82,7 @@
             self.fatherCell.scrollView.contentOffset = scrollView.contentOffset;
         }
     }
-    
 }
-
 
 - (void)witchViewDidDrag:(UIView *)witchView scrollViewWillBeginDragging:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{
     //NSLog(@"-------------------scrollViewWillBeginDragging:%@",NSStringFromCGPoint(scrollView.contentOffset));
@@ -91,10 +90,23 @@
 
 - (void)witchViewDidDrag:(UIView *)witchView scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate indexPath:(NSIndexPath *)indexPath{
     //NSLog(@"-------------------scrollViewDidEndDragging:%@",NSStringFromCGPoint(scrollView.contentOffset));
+    if (self.gridScrollPinType != TFGridScrollPinTypeNone && decelerate == NO) {
+        CGPoint point = [self scrollPin:scrollView stopOffset:scrollView.contentOffset];
+        if (!CGPointEqualToPoint(point, CGPointZero)) {
+            [scrollView setContentOffset:point animated:YES];
+        }
+    }
 }
 
 - (void)witchViewDidDrag:(UIView *)witchView scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset indexPath:(NSIndexPath *)indexPath{
     //NSLog(@"-------------------scrollViewWillEndDragging:%@",NSStringFromCGPoint(scrollView.contentOffset));
+    if (self.gridScrollPinType != TFGridScrollPinTypeNone) {
+        CGPoint offset = *targetContentOffset;
+        CGPoint point = [self scrollPin:scrollView stopOffset:offset];
+        if (!CGPointEqualToPoint(point, CGPointZero)) {
+            *targetContentOffset = point;
+        }
+    }
 }
 
 - (void)witchViewDidDrag:(UIView *)witchView scrollViewWillBeginDecelerating:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{
@@ -103,6 +115,52 @@
 
 - (void)witchViewDidDrag:(UIView *)witchView scrollViewDidEndDecelerating:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{
     //NSLog(@"-------------------scrollViewDidEndDecelerating:%@",NSStringFromCGPoint(scrollView.contentOffset));
+}
+
+
+
+-(CGPoint)scrollPin:(UIScrollView *)scrollView stopOffset:(CGPoint)offset{
+    CGPoint targetPoint = CGPointZero;
+    //    CGPoint offset = scrollView.contentOffset;
+    NSArray *subviews = self.subviews;
+    if (offset.x > 0 && subviews.count > 0) {
+        CGFloat segmentBegin = 0;
+        CGFloat segmentEnd = 0;
+        for (NSInteger i = 0; i < subviews.count; i++) {
+            CGRect frame = ((UIView *)[subviews objectAtIndex:i]).frame;
+            if (i == 0) {
+                segmentBegin = 0;
+                segmentEnd = frame.origin.x + frame.size.width;
+            }else{
+                segmentBegin = segmentEnd;
+                segmentEnd = frame.origin.x + frame.size.width;
+            }
+            if (self.gridScrollPinType == TFGridScrollPinTypeLeft) {
+                if (segmentEnd <= 0 || segmentEnd >= self.fatherCell.scrollView.contentSize.width) {
+                    //超出滚动区域不处理,scrollView自动滚动到边界
+                    break;
+                }else{
+                    if (offset.x >= segmentBegin && offset.x <= segmentEnd) {
+                        targetPoint = CGPointMake(frame.origin.x, 0);
+                        break;
+                    }else{/*不在区域内*/}
+                }
+            }
+            if (self.gridScrollPinType == TFGridScrollPinTypeRight) {
+                if (segmentEnd <= 0 || segmentEnd >= self.fatherCell.scrollView.contentSize.width) {
+                    //超出滚动区域不处理,scrollView自动滚动到边界
+                    break;
+                }else{
+                    CGFloat targetX = offset.x + self.fatherCell.scrollView.frame.size.width;
+                    if (targetX >= segmentBegin && targetX <= segmentEnd) {
+                        targetPoint = CGPointMake(offset.x + CGRectGetMaxX(frame) - targetX, 0);
+                        break;
+                    }else{/*不在区域内*/}
+                }
+            }
+        }
+    }
+    return targetPoint;
 }
 
 
