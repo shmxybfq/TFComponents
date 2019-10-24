@@ -24,7 +24,7 @@
     if (self.delegate) {
         
         NSInteger columnCount = 1;
-        if ([self.delegate respondsToSelector:@selector(numberOfColumnInGridViewCell:)]) {
+        if ([self.delegate respondsToSelector:@selector(numberOfColumnInGridHeader:)]) {
             columnCount = [self.delegate numberOfColumnInGridHeader:self];
         }
         
@@ -48,7 +48,7 @@
                 if ([self.delegate respondsToSelector:@selector(gridCell:columnFrameWithColumnView:columnModel:index:)]) {
                     frame = [self.delegate gridCell:self columnFrameWithColumnView:view columnModel:columnModel index:i];
                 }else{
-                    frame = CGRectMake(frameX, frameY, columnModel.width, self.frame.size.height);
+                    frame = CGRectMake(frameX, frameY, columnModel.width, columnModel.height);
                     frameX += columnModel.width;
                 }
                 view.frame = frame;
