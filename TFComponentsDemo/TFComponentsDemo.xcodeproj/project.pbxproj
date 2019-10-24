@@ -42,6 +42,7 @@
 		90E62288235DA6730083B60C /* UITableView+TFGridExtesion.m in Sources */ = {isa = PBXBuildFile; fileRef = 90E62287235DA6730083B60C /* UITableView+TFGridExtesion.m */; };
 		90E622A3235FEEFB0083B60C /* TFGridColumnModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 90E622A2235FEEFB0083B60C /* TFGridColumnModel.m */; };
 		90E622A9235FF81E0083B60C /* TFGridColumnView.m in Sources */ = {isa = PBXBuildFile; fileRef = 90E622A8235FF81E0083B60C /* TFGridColumnView.m */; };
+		90E622B2236182DD0083B60C /* TFGridUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = 90E622B1236182DD0083B60C /* TFGridUnit.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -109,7 +110,8 @@
 		90E622A2235FEEFB0083B60C /* TFGridColumnModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TFGridColumnModel.m; sourceTree = "<group>"; };
 		90E622A7235FF81E0083B60C /* TFGridColumnView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TFGridColumnView.h; sourceTree = "<group>"; };
 		90E622A8235FF81E0083B60C /* TFGridColumnView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TFGridColumnView.m; sourceTree = "<group>"; };
-		90E622AF236137B80083B60C /* TFGridConst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TFGridConst.h; sourceTree = "<group>"; };
+		90E622B0236182DD0083B60C /* TFGridUnit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TFGridUnit.h; sourceTree = "<group>"; };
+		90E622B1236182DD0083B60C /* TFGridUnit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TFGridUnit.m; sourceTree = "<group>"; };
 		AAB4364B1219D7FF792AC2FA /* Pods-TFComponentsDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TFComponentsDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-TFComponentsDemo/Pods-TFComponentsDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -230,7 +232,6 @@
 		903D251A235AB174009A92DE /* TFGridView */ = {
 			isa = PBXGroup;
 			children = (
-				90E622AF236137B80083B60C /* TFGridConst.h */,
 				903D2524235AB1D3009A92DE /* TFGridView.h */,
 				903D2525235AB1D3009A92DE /* TFGridView.m */,
 				90811543235AB5330061540F /* TFGridViewCell.h */,
@@ -243,6 +244,8 @@
 				90E62287235DA6730083B60C /* UITableView+TFGridExtesion.m */,
 				90E622A1235FEEFB0083B60C /* TFGridColumnModel.h */,
 				90E622A2235FEEFB0083B60C /* TFGridColumnModel.m */,
+				90E622B0236182DD0083B60C /* TFGridUnit.h */,
+				90E622B1236182DD0083B60C /* TFGridUnit.m */,
 				90811549235AB81E0061540F /* Inner */,
 			);
 			path = TFGridView;
@@ -401,6 +404,7 @@
 				20D2EFF4223248CD001DC35D /* TFSquareBlockViewController.m in Sources */,
 				903D2526235AB1D3009A92DE /* TFGridView.m in Sources */,
 				20D2EFD322321CA1001DC35D /* ViewController.m in Sources */,
+				90E622B2236182DD0083B60C /* TFGridUnit.m in Sources */,
 				2098108B2237616D004B262C /* TFWKWebView.m in Sources */,
 				2098108422375F2E004B262C /* WeakWKScriptMessageHandler.m in Sources */,
 				9081154D235AB8410061540F /* TFGridViewInnerCell.m in Sources */,

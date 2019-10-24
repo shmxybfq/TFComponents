@@ -9,8 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "TFGridViewCell.h"
 #import "TFGridViewHeaderFooterView.h"
-#import "TFGridConst.h"
-
 
 NS_ASSUME_NONNULL_BEGIN
 

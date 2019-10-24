@@ -82,11 +82,22 @@
 }
 
 - (void)witchViewDidDrag:(UIView *)witchView scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate indexPath:(NSIndexPath *)indexPath{
-    
+    if (self.gridScrollPinType != TFGridScrollPinTypeNone && decelerate == NO) {
+        CGPoint point = [TFGridUnit witchView:self scrollPin:scrollView stopOffset:scrollView.contentOffset subviews:self.subviews];
+        if (!CGPointEqualToPoint(point, CGPointZero)) {
+            [scrollView setContentOffset:point animated:YES];
+        }
+    }
 }
 
 - (void)witchViewDidDrag:(UIView *)witchView scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset indexPath:(NSIndexPath *)indexPath{
-    
+    if (self.gridScrollPinType != TFGridScrollPinTypeNone) {
+        CGPoint offset = *targetContentOffset;
+        CGPoint point = [TFGridUnit witchView:self scrollPin:scrollView stopOffset:offset subviews:self.subviews];
+        if (!CGPointEqualToPoint(point, CGPointZero)) {
+            *targetContentOffset = point;
+        }
+    }
 }
 
 - (void)witchViewDidDrag:(UIView *)witchView scrollViewWillBeginDecelerating:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{

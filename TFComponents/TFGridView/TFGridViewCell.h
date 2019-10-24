@@ -10,6 +10,8 @@
 #import "TFGridViewInnerCell.h"
 #import "TFGridColumnView.h"
 #import "TFGridColumnModel.h"
+#import "TFGridUnit.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
 @class TFGridColumnView;
