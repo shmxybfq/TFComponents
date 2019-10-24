@@ -37,7 +37,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, copy)NSString *syncScrollIdentifier;
 
 @property(nonatomic, assign) CGPoint initContentOffset;
-//列吸附设置:对顺序横向排列(或有间距)支持好,对非常规布局(重叠/重叠+超长等)支持较差,如遇太复杂列吸附建议自己重写对应滚动函数实现
+//列吸附设置:对顺序横向排列(或横向排列+间距)支持好,对非常规布局(重叠/重叠+超长等)支持较差,如遇太复杂列吸附建议自己重写对应滚动函数实现
 @property(nonatomic, assign) TFGridScrollPinType gridScrollPinType;
 
 -(void)reloadColumn;
