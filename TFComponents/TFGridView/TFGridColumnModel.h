@@ -17,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,assign) NSInteger index;
 //如不赋值,默认=60
 @property(nonatomic,assign) CGFloat width;
+//如不赋值,默认=60
+@property(nonatomic,assign) CGFloat height;
 //如不赋值,默认=NO
 @property(nonatomic,assign) BOOL pinEnable;
 //如不赋值,默认=nil
