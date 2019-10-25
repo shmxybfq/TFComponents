@@ -100,7 +100,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.gridView reloadData];
+    [self.gridView reloadData:NO];
 }
 
 

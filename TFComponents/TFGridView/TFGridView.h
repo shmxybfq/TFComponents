@@ -42,7 +42,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,  weak)id<TFGridViewDelegate>delegate;
 @property(nonatomic,  weak)id<TFGridViewDataSource>dataSource;
 
--(void)reloadData;
+-(void)reloadData:(BOOL)loadMore;
 -(id)dequeueReusableCellWithIdentifier:(NSString *)identifier;
 -(id)dequeueReusableSectionHeaderWithIdentifier:(NSString *)identifier;
 @end

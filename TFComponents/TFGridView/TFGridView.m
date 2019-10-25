@@ -35,9 +35,11 @@
     self.tableView.frame = self.bounds;
 }
 
--(void)reloadData{
-    self.haveSectionHeaders = NO;
-    [self.cellContentOffsetPool removeAllObjects];
+-(void)reloadData:(BOOL)loadMore{
+    if (!loadMore) {
+        self.haveSectionHeaders = NO;
+        [self.cellContentOffsetPool removeAllObjects];
+    }
     [self.tableView reloadData];
 }
 

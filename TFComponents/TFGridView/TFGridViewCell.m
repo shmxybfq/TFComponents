@@ -11,9 +11,6 @@
 
 @interface TFGridViewCell ()
 
-@property(nonatomic, strong) NSMutableArray <TFGridColumnView *>*columnViews;
-
-
 @end
 
 @implementation TFGridViewCell
@@ -83,6 +80,7 @@
         }
     }
 }
+
 
 - (void)witchViewDidDrag:(UIView *)witchView scrollViewWillBeginDragging:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{
     //NSLog(@"-------------------scrollViewWillBeginDragging:%@",NSStringFromCGPoint(scrollView.contentOffset));

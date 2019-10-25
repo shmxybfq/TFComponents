@@ -11,8 +11,6 @@
 
 @interface TFGridViewHeaderFooterView ()
 
-@property(nonatomic, strong) NSMutableArray <TFGridColumnView *>*columnViews;
-
 @end
 
 @implementation TFGridViewHeaderFooterView
