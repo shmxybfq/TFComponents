@@ -13,7 +13,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TFGridColumnView : UIView
 
+@property(nonatomic, strong) id data;
+@property(nonatomic, assign) NSInteger index;
+@property(nonatomic,   weak) id delegate;
+
 @property(nonatomic,strong) TFGridColumnModel *columnModel;
+
+-(void)setData:(id)data;
+-(void)setData:(id)data index:(NSInteger)index delegate:(id)delegate;
 
 @end
 

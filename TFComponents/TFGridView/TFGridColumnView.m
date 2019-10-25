@@ -8,14 +8,20 @@
 
 #import "TFGridColumnView.h"
 
+@interface TFGridColumnView ()
+
+@end
+
 @implementation TFGridColumnView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+-(void)setData:(id)data{
+    self.data = data;
 }
-*/
+
+-(void)setData:(id)data index:(NSInteger)index delegate:(id)delegate{
+    self.data = data;
+    self.index = index;
+    self.delegate = delegate;
+}
 
 @end
