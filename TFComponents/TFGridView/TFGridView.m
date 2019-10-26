@@ -84,6 +84,8 @@
         gridCell = [self.dataSource gridView:self cellForRowAtIndexPath:indexPath];
     }
     gridCell.fatherCell = tableCell;
+    //刷新tableViewCell中的横向滚动cell
+    [tableCell reloadGridCell:gridCell];
     if (gridCell.syncScrollIdentifier) {
         gridCell.fatherCell.scrollView.scrollEnabled = YES;
     }else{
@@ -97,8 +99,6 @@
     }
     [tableCell reloadGridCellFrame:frame];
 
-    //刷新tableViewCell中的横向滚动cell
-    [tableCell reloadGridCell:gridCell];
     //根据记录初始化滚动contentOffset
     if (gridCell.syncScrollIdentifier) {
         NSString *pointString = [self.cellContentOffsetPool objectForKey:gridCell.syncScrollIdentifier];
@@ -131,6 +131,9 @@
         gridHeader = (TFGridViewHeaderFooterView *)[self.delegate gridView:self viewForHeaderInSection:section];
     }
     gridHeader.fatherHeader = tableHeader;
+    //刷新tableViewCell中的横向滚动cell
+    [tableHeader reloadGridHeader:gridHeader];
+    
     if (gridHeader.syncScrollIdentifier) {
         gridHeader.fatherHeader.scrollView.scrollEnabled = YES;
     }else{
@@ -143,8 +146,7 @@
     }
     [tableHeader reloadGridHeaderFrame:frame];
     
-    //刷新tableViewCell中的横向滚动cell
-    [tableHeader reloadGridHeader:gridHeader];
+   
     //根据记录初始化滚动contentOffset
     if (gridHeader.syncScrollIdentifier) {
         NSString *pointString = [self.cellContentOffsetPool objectForKey:gridHeader.syncScrollIdentifier];

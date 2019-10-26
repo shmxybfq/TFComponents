@@ -38,6 +38,7 @@
     self.scrollView.contentSize = CGSizeMake(frame.origin.x + frame.size.width, frame.origin.y + frame.size.height);
 }
 
+
 -(void)layoutSubviews{
     [super layoutSubviews];
     self.scrollView.frame = self.bounds;
