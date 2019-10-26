@@ -21,7 +21,6 @@
 -(void)setData:(id)data index:(NSInteger)index delegate:(id)delegate{
     self.data = data;
     self.index = index;
-    self.delegate = delegate;
 }
 
 @end

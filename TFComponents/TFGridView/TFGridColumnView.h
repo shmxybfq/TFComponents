@@ -15,7 +15,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(nonatomic, strong) id data;
 @property(nonatomic, assign) NSInteger index;
-@property(nonatomic,   weak) id delegate;
 
 @property(nonatomic,strong) TFGridColumnModel *columnModel;
 
