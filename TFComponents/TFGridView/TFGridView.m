@@ -104,6 +104,12 @@
         NSString *pointString = [self.cellContentOffsetPool objectForKey:gridCell.syncScrollIdentifier];
         [gridCell initContentOffset:CGPointFromString(pointString)];
     }
+    
+    if ([self.delegate respondsToSelector:@selector(gridView:cellDidLoadFinishWithCell:atIndexPath:)]) {
+        [self.delegate gridView:self cellDidLoadFinishWithCell:gridCell atIndexPath:indexPath];
+    }
+    
+    
     return tableCell;
 }
 
@@ -154,6 +160,11 @@
     }
     if (tableHeader) {
         self.haveSectionHeaders = YES;
+    }
+    
+    
+    if ([self.delegate respondsToSelector:@selector(gridView:headerDidLoadFinishWithHeader:inSection:)]) {
+        [self.delegate gridView:self headerDidLoadFinishWithHeader:gridHeader inSection:section];
     }
     return tableHeader;
 }

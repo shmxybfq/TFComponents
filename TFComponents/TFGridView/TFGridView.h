@@ -32,6 +32,9 @@ NS_ASSUME_NONNULL_BEGIN
 -(TFGridViewHeaderFooterView *)gridView:(TFGridView *)gridView viewForHeaderInSection:(NSInteger)section;
 - (CGRect)gridView:(TFGridView *)gridView headerFrameForRowWithHeader:(TFGridViewHeaderFooterView *)header inSection:(NSInteger)section;
 
+-(void)gridView:(TFGridView *)gridView cellDidLoadFinishWithCell:(TFGridViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
+-(void)gridView:(TFGridView *)gridView headerDidLoadFinishWithHeader:(TFGridViewHeaderFooterView *)header inSection:(NSInteger)section;
+
 @end
 
 
