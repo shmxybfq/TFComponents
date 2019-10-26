@@ -15,6 +15,17 @@
 
 @implementation TFGridViewHeaderFooterView
 
+-(void)setData:(id)data{
+    
+}
+-(void)setData:(id)data indexPath:(NSIndexPath *)indexPath{
+    
+}
+-(void)setData:(id)data indexPath:(NSIndexPath *)indexPath delegate:(id)delegate{
+    
+}
+
+
 -(void)reloadColumn{
     
     [self.columnViews makeObjectsPerformSelector:@selector(removeFromSuperview)];

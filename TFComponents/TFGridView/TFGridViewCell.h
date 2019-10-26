@@ -44,6 +44,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(nonatomic, strong) NSMutableArray <TFGridColumnView *>*columnViews;
 
+-(void)setData:(id)data;
+-(void)setData:(id)data indexPath:(NSIndexPath *)indexPath;
+-(void)setData:(id)data indexPath:(NSIndexPath *)indexPath delegate:(id)delegate;
+
 
 -(void)reloadColumn;
 
