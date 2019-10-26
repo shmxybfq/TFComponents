@@ -2,7 +2,7 @@
 
 Pod::Spec.new do |s|
 s.name         = "TFComponents"
-s.version      = "1.3.1"
+s.version      = "1.3.2"
 s.ios.deployment_target = '7.0'
 s.summary      = "A powerful tool for ztf"
 s.homepage     = "https://github.com/shmxybfq/TFComponents"

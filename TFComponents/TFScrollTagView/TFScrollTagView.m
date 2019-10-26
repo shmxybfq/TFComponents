@@ -48,6 +48,7 @@
     self.count = 0;
     [self.widths removeAllObjects];
     [self.margins removeAllObjects];
+    [self.cells makeObjectsPerformSelector:@selector(removeFromSuperview)];
     [self.cells removeAllObjects];
     
     if ([self.delegate respondsToSelector:@selector(numberOfCell)]) {
