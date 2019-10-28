@@ -185,6 +185,9 @@
 //3.同步和非同步cell并存情况下，同步需要同步，不同步需要保持记录
 //4.reload以后清空记录
 - (void)innerCell:(TFGridViewInnerCell *)cell scrollViewDidScroll:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{
+    if ([self.delegate respondsToSelector:@selector(gridView:innerCell:scrollViewDidScroll:indexPath:)]) {
+        [self.delegate gridView:self innerCell:cell scrollViewDidScroll:scrollView indexPath:indexPath];
+    }
     if (cell.gridCell.syncScrollIdentifier) {
         [self syncScrollToSameIdentifier:cell.gridCell.syncScrollIdentifier witchView:cell.gridCell scrollViewDidScroll:scrollView indexPath:indexPath];
     }
@@ -207,6 +210,9 @@
 
 #pragma mark - TFGridViewInnerHeaderFooterViewDelegate
 - (void)innerHeader:(TFGridViewInnerHeaderFooterView *)header scrollViewDidScroll:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath{
+    if ([self.delegate respondsToSelector:@selector(gridView:innerHeader:scrollViewDidScroll:indexPath:)]) {
+        [self.delegate gridView:self innerHeader:header scrollViewDidScroll:scrollView indexPath:indexPath];
+    }
     if (header.gridHeader.syncScrollIdentifier) {
         [self syncScrollToSameIdentifier:header.gridHeader.syncScrollIdentifier witchView:header.gridHeader scrollViewDidScroll:scrollView indexPath:indexPath];
     }

@@ -35,6 +35,10 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)gridView:(TFGridView *)gridView cellDidLoadFinishWithCell:(TFGridViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 -(void)gridView:(TFGridView *)gridView headerDidLoadFinishWithHeader:(TFGridViewHeaderFooterView *)header inSection:(NSInteger)section;
 
+
+-(void)gridView:(TFGridView *)gridView innerCell:(TFGridViewInnerCell *)cell scrollViewDidScroll:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath;
+-(void)gridView:(TFGridView *)gridView innerHeader:(TFGridViewInnerHeaderFooterView *)header scrollViewDidScroll:(UIScrollView *)scrollView indexPath:(NSIndexPath *)indexPath;
+
 @end
 
 
