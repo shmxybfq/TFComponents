@@ -39,6 +39,7 @@
 		90811559235B13230061540F /* TFGridViewHeaderFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 90811558235B13230061540F /* TFGridViewHeaderFooterView.m */; };
 		9081155C235D9E550061540F /* GridDemoSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 9081155B235D9E550061540F /* GridDemoSectionHeader.m */; };
 		9081155E235D9E5C0061540F /* GridDemoSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9081155D235D9E5C0061540F /* GridDemoSectionHeader.xib */; };
+		90979E2D2366891400A0B521 /* TFGridReloadParam.m in Sources */ = {isa = PBXBuildFile; fileRef = 90979E2C2366891400A0B521 /* TFGridReloadParam.m */; };
 		90E62288235DA6730083B60C /* UITableView+TFGridExtesion.m in Sources */ = {isa = PBXBuildFile; fileRef = 90E62287235DA6730083B60C /* UITableView+TFGridExtesion.m */; };
 		90E622A3235FEEFB0083B60C /* TFGridColumnModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 90E622A2235FEEFB0083B60C /* TFGridColumnModel.m */; };
 		90E622A9235FF81E0083B60C /* TFGridColumnView.m in Sources */ = {isa = PBXBuildFile; fileRef = 90E622A8235FF81E0083B60C /* TFGridColumnView.m */; };
@@ -103,6 +104,8 @@
 		9081155A235D9E550061540F /* GridDemoSectionHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GridDemoSectionHeader.h; sourceTree = "<group>"; };
 		9081155B235D9E550061540F /* GridDemoSectionHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GridDemoSectionHeader.m; sourceTree = "<group>"; };
 		9081155D235D9E5C0061540F /* GridDemoSectionHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GridDemoSectionHeader.xib; sourceTree = "<group>"; };
+		90979E2B2366891400A0B521 /* TFGridReloadParam.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TFGridReloadParam.h; sourceTree = "<group>"; };
+		90979E2C2366891400A0B521 /* TFGridReloadParam.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TFGridReloadParam.m; sourceTree = "<group>"; };
 		909FFBF2228580C3006F7587 /* Const.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Const.h; sourceTree = "<group>"; };
 		90E62286235DA6730083B60C /* UITableView+TFGridExtesion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITableView+TFGridExtesion.h"; sourceTree = "<group>"; };
 		90E62287235DA6730083B60C /* UITableView+TFGridExtesion.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITableView+TFGridExtesion.m"; sourceTree = "<group>"; };
@@ -244,6 +247,8 @@
 				90E62287235DA6730083B60C /* UITableView+TFGridExtesion.m */,
 				90E622A1235FEEFB0083B60C /* TFGridColumnModel.h */,
 				90E622A2235FEEFB0083B60C /* TFGridColumnModel.m */,
+				90979E2B2366891400A0B521 /* TFGridReloadParam.h */,
+				90979E2C2366891400A0B521 /* TFGridReloadParam.m */,
 				90E622B0236182DD0083B60C /* TFGridUnit.h */,
 				90E622B1236182DD0083B60C /* TFGridUnit.m */,
 				90811549235AB81E0061540F /* Inner */,
@@ -400,6 +405,7 @@
 				9081155C235D9E550061540F /* GridDemoSectionHeader.m in Sources */,
 				90E622A9235FF81E0083B60C /* TFGridColumnView.m in Sources */,
 				2098109222389DE9004B262C /* WebViewController.m in Sources */,
+				90979E2D2366891400A0B521 /* TFGridReloadParam.m in Sources */,
 				90811556235B130C0061540F /* TFGridViewInnerHeaderFooterView.m in Sources */,
 				20D2EFF4223248CD001DC35D /* TFSquareBlockViewController.m in Sources */,
 				903D2526235AB1D3009A92DE /* TFGridView.m in Sources */,

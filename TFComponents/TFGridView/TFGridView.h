@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "TFGridViewCell.h"
 #import "TFGridViewHeaderFooterView.h"
-
+#import "TFGridReloadParam.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @class TFGridView;
@@ -45,7 +45,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,  weak)id<TFGridViewDelegate>delegate;
 @property(nonatomic,  weak)id<TFGridViewDataSource>dataSource;
 
--(void)reloadData:(BOOL)loadMore;
+-(void)reloadData:(TFGridReloadParam *)reloadParam;
 -(id)dequeueReusableCellWithIdentifier:(NSString *)identifier;
 -(id)dequeueReusableSectionHeaderWithIdentifier:(NSString *)identifier;
 @end

@@ -14,6 +14,7 @@
 
 @property(nonatomic, strong)NSMutableDictionary <NSString *,NSString *>*cellContentOffsetPool;
 @property(nonatomic, assign)BOOL haveSectionHeaders;
+@property(nonatomic, assign)BOOL haveSectionFooters;
 
 @end
 
@@ -35,11 +36,15 @@
     self.tableView.frame = self.bounds;
 }
 
--(void)reloadData:(BOOL)loadMore{
-    if (!loadMore) {
-        self.haveSectionHeaders = NO;
+-(void)reloadData:(TFGridReloadParam *)reloadParam{
+    
+    if (reloadParam.keepOrignHorizontalScrollOffset == NO) {
         [self.cellContentOffsetPool removeAllObjects];
     }
+    
+    self.haveSectionHeaders = NO;
+    self.haveSectionFooters = NO;
+    
     [self.tableView reloadData];
 }
 
@@ -158,6 +163,8 @@
         NSString *pointString = [self.cellContentOffsetPool objectForKey:gridHeader.syncScrollIdentifier];
         [gridHeader initContentOffset:CGPointFromString(pointString)];
     }
+    
+    //为了性能,监听是否有section,如果有每次横向滚动的时候才会去计算section的同步滚动
     if (tableHeader) {
         self.haveSectionHeaders = YES;
     }
