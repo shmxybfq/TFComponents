@@ -106,7 +106,6 @@
 		9081155D235D9E5C0061540F /* GridDemoSectionHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GridDemoSectionHeader.xib; sourceTree = "<group>"; };
 		90979E2B2366891400A0B521 /* TFGridReloadParam.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TFGridReloadParam.h; sourceTree = "<group>"; };
 		90979E2C2366891400A0B521 /* TFGridReloadParam.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TFGridReloadParam.m; sourceTree = "<group>"; };
-		909FFBF2228580C3006F7587 /* Const.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Const.h; sourceTree = "<group>"; };
 		90E62286235DA6730083B60C /* UITableView+TFGridExtesion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITableView+TFGridExtesion.h"; sourceTree = "<group>"; };
 		90E62287235DA6730083B60C /* UITableView+TFGridExtesion.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITableView+TFGridExtesion.m"; sourceTree = "<group>"; };
 		90E622A1235FEEFB0083B60C /* TFGridColumnModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TFGridColumnModel.h; sourceTree = "<group>"; };
@@ -186,7 +185,6 @@
 		20D2EFE422321F2E001DC35D /* TFComponents */ = {
 			isa = PBXGroup;
 			children = (
-				909FFBF2228580C3006F7587 /* Const.h */,
 				2098107522375C28004B262C /* TFComponents.h */,
 				903D251A235AB174009A92DE /* TFGridView */,
 				903D251E235AB175009A92DE /* TFRectangleBlockView */,

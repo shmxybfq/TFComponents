@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "TFWKWebView.h"
 #import "TFWKWebViewNavBarView.h"
-#import "Const.h"
 
 @class TFWKWebViewController;
 typedef void(^TFWKWebViewControllerActionBlock)(TFWKWebViewController *controller);

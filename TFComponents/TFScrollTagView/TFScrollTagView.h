@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Const.h"
 
 @class TFScrollTagView;
 @protocol TFScrollTagViewDelegate <NSObject>

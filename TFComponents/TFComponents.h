@@ -9,13 +9,23 @@
 #ifndef TFComponents_h
 #define TFComponents_h
 
-#import "Const.h"
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+
+#ifdef DEBUG
+#   define XLog(fmt, ...) NSLog((@"\nfunction:%s,line:%d\n" fmt @"\n"), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+#else
+#   define XLog(...)
+#endif
+
+
 #import "TFGridView.h"
 #import "TFRectangleBlockView.h"
 #import "TFScrollTagView.h"
 #import "TFSquareBlockView.h"
 #import "TFWKWebView.h"
 #import "TFWKWebViewController.h"
+
 /**
  *  weak obj
  *  @param TARGET 实例
@@ -28,11 +38,23 @@
 #define kdeclare_weakself tf_weak_obj(self,weakSelf)
 #endif
 
+#ifndef kScreenBounds
 #define kScreenBounds [UIScreen mainScreen].bounds
+#endif
+#ifndef kScreenOrigin
 #define kScreenOrigin [UIScreen mainScreen].bounds.origin
+#endif
+#ifndef kScreenSize
 #define kScreenSize [UIScreen mainScreen].bounds.size
+#endif
+#ifndef kScreenWidth
 #define kScreenWidth [UIScreen mainScreen].bounds.size.width
+#endif
+#ifndef kScreenHeight
 #define kScreenHeight [UIScreen mainScreen].bounds.size.height
+#endif
+
+
 
 static inline BOOL fun_iphonex(){
     CGSize ss = [UIScreen mainScreen].bounds.size;

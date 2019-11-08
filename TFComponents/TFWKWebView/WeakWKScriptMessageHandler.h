@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import <WebKit/WebKit.h>
-#import "Const.h"
 
 //套壳类,可以不用让添加到下面方法的类被强引用
 //-(void)addScriptMessageHandler:(id<WKScriptMessageHandler>)scriptMessageHandler name:(NSString *)name;

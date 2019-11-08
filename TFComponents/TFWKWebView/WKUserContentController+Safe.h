@@ -7,7 +7,6 @@
 //
 
 #import <WebKit/WebKit.h>
-#import "Const.h"
 
 //专门解决scriptMessageHandler不释放问题
 //添加的scriptMessageHandler因为有不释放问题所以需要专门去清除
