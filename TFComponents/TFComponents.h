@@ -25,7 +25,7 @@
 #import "TFSquareBlockView.h"
 #import "TFWKWebView.h"
 #import "TFWKWebViewController.h"
-
+#import "TFTagBoardView.h"
 /**
  *  weak obj
  *  @param TARGET 实例

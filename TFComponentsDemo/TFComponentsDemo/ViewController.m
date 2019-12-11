@@ -10,6 +10,7 @@
 #import "TFScrollTagViewController.h"
 #import "TFSquareBlockViewController.h"
 #import "WebViewController.h"
+#import "TFTagBoardController.h"
 @interface ViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property(nonatomic,strong) NSMutableArray *dataSource;
@@ -24,6 +25,7 @@
     [self.dataSource addObject:@"滚动方块:TFSquareBlockViewController"];
     [self.dataSource addObject:@"浏览器:WebViewController"];
     [self.dataSource addObject:@"表格:GridViewController"];
+    [self.dataSource addObject:@"标签板:TFTagBoardController"];
     [self.tableView reloadData];
 }
 

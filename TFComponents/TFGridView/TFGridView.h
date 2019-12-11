@@ -52,6 +52,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)reloadData:(TFGridReloadParam *)reloadParam;
 -(id)dequeueReusableCellWithIdentifier:(NSString *)identifier;
 -(id)dequeueReusableSectionHeaderWithIdentifier:(NSString *)identifier;
+
 @end
 
 NS_ASSUME_NONNULL_END
