@@ -42,7 +42,7 @@
 
 -(void)reloadData{
     
-    [self.scrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [self.cells makeObjectsPerformSelector:@selector(removeFromSuperview)];
 
     NSUInteger count = 0;
     if ([self.delegate respondsToSelector:@selector(numberOfCell)]) {
@@ -61,7 +61,6 @@
             x = self.edge.left;
             y = y + self.rowMargin + self.rowHeight;
         }
-        NSLog(@"index:%@:%@",@(i),@(width));
         
         UIView *cell = nil;
         if ([self.delegate respondsToSelector:@selector(tagBoardView:cellForIndex:width:)]) {
@@ -69,6 +68,7 @@
         }
         
         cell.frame = CGRectMake(x, y, width, self.rowHeight);
+        [self.cells addObject:cell];
         [self.scrollView addSubview:cell];
         self.scrollView.contentSize = CGSizeMake(self.bounds.size.width, y + self.rowHeight + self.edge.bottom);
         
@@ -78,14 +78,14 @@
 }
 
 -(NSMutableArray *)cells{
-    if (_cells == nil) {
+    if (!_cells) {
         _cells = [[NSMutableArray alloc]init];
     }
     return _cells;
 }
 
 -(UIScrollView *)scrollView{
-    if (_scrollView == nil) {
+    if (!_scrollView) {
         _scrollView = [[UIScrollView alloc]initWithFrame:self.bounds];
         _scrollView.showsVerticalScrollIndicator = NO;
         _scrollView.showsHorizontalScrollIndicator = NO;
