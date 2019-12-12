@@ -51,7 +51,7 @@
 
     CGFloat x = self.edge.left;
     CGFloat y = self.edge.top;
-    for (NSInteger i = 0; i <= count; i++) {
+    for (NSInteger i = 0; i < count; i++) {
        
         CGFloat width = 0;
         if ([self.delegate respondsToSelector:@selector(tagBoardView:widthForIndex:)]) {
