@@ -128,7 +128,11 @@
         target = target - self.frame.size.width * 0.5 + cf.size.width * 0.5;
         if (target <= 0) target = 0;
         if (target >= (self.maxWidth - self.frame.size.width)) target = self.maxWidth - self.frame.size.width;
-        [self.scrollView setContentOffset:CGPointMake(target, 0) animated:YES];
+        if (target >= 0) {
+            [self.scrollView setContentOffset:CGPointMake(target, 0) animated:YES];
+        }else{
+            [self.scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
+        }
     }
 }
 
