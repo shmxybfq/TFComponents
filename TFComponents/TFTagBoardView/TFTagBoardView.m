@@ -43,7 +43,8 @@
 -(void)reloadData{
     
     [self.cells makeObjectsPerformSelector:@selector(removeFromSuperview)];
-
+    [self.cells removeAllObjects];
+    
     NSUInteger count = 0;
     if ([self.delegate respondsToSelector:@selector(numberOfCell)]) {
         count = [self.delegate numberOfCell];
