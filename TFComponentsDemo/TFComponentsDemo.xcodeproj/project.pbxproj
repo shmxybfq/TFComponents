@@ -47,6 +47,9 @@
 		90E622A3235FEEFB0083B60C /* TFGridColumnModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 90E622A2235FEEFB0083B60C /* TFGridColumnModel.m */; };
 		90E622A9235FF81E0083B60C /* TFGridColumnView.m in Sources */ = {isa = PBXBuildFile; fileRef = 90E622A8235FF81E0083B60C /* TFGridColumnView.m */; };
 		90E622B2236182DD0083B60C /* TFGridUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = 90E622B1236182DD0083B60C /* TFGridUnit.m */; };
+		BD361F9625C2AD84001DF608 /* TFScrollBlockView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD361F9525C2AD84001DF608 /* TFScrollBlockView.m */; };
+		BD361F9C25C2B533001DF608 /* TFScrollBlockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD361F9A25C2B533001DF608 /* TFScrollBlockViewController.m */; };
+		BD361F9D25C2B533001DF608 /* TFScrollBlockViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD361F9B25C2B533001DF608 /* TFScrollBlockViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -123,6 +126,11 @@
 		90E622B0236182DD0083B60C /* TFGridUnit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TFGridUnit.h; sourceTree = "<group>"; };
 		90E622B1236182DD0083B60C /* TFGridUnit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TFGridUnit.m; sourceTree = "<group>"; };
 		AAB4364B1219D7FF792AC2FA /* Pods-TFComponentsDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TFComponentsDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-TFComponentsDemo/Pods-TFComponentsDemo.release.xcconfig"; sourceTree = "<group>"; };
+		BD361F9425C2AD84001DF608 /* TFScrollBlockView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TFScrollBlockView.h; sourceTree = "<group>"; };
+		BD361F9525C2AD84001DF608 /* TFScrollBlockView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TFScrollBlockView.m; sourceTree = "<group>"; };
+		BD361F9925C2B533001DF608 /* TFScrollBlockViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TFScrollBlockViewController.h; sourceTree = "<group>"; };
+		BD361F9A25C2B533001DF608 /* TFScrollBlockViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TFScrollBlockViewController.m; sourceTree = "<group>"; };
+		BD361F9B25C2B533001DF608 /* TFScrollBlockViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TFScrollBlockViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				2098107522375C28004B262C /* TFComponents.h */,
+				BD361F9325C2AD66001DF608 /* TFScrollBlockView */,
 				90BA49F823A0883600A031CE /* TFTagBoardView */,
 				903D251A235AB174009A92DE /* TFGridView */,
 				903D251E235AB175009A92DE /* TFRectangleBlockView */,
@@ -211,6 +220,9 @@
 				20D2EFE922322307001DC35D /* TFScrollTagViewController.h */,
 				20D2EFEA22322307001DC35D /* TFScrollTagViewController.m */,
 				20D2EFEB22322307001DC35D /* TFScrollTagViewController.xib */,
+				BD361F9925C2B533001DF608 /* TFScrollBlockViewController.h */,
+				BD361F9A25C2B533001DF608 /* TFScrollBlockViewController.m */,
+				BD361F9B25C2B533001DF608 /* TFScrollBlockViewController.xib */,
 				20D2EFF1223248CD001DC35D /* TFSquareBlockViewController.h */,
 				20D2EFF2223248CD001DC35D /* TFSquareBlockViewController.m */,
 				20D2EFF3223248CD001DC35D /* TFSquareBlockViewController.xib */,
@@ -321,6 +333,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		BD361F9325C2AD66001DF608 /* TFScrollBlockView */ = {
+			isa = PBXGroup;
+			children = (
+				BD361F9425C2AD84001DF608 /* TFScrollBlockView.h */,
+				BD361F9525C2AD84001DF608 /* TFScrollBlockView.m */,
+			);
+			path = TFScrollBlockView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -386,6 +407,7 @@
 				90811553235AEE190061540F /* GridDemoCell.xib in Resources */,
 				90BA4A0023A0923E00A031CE /* TFTagBoardController.xib in Resources */,
 				20D2EFED22322307001DC35D /* TFScrollTagViewController.xib in Resources */,
+				BD361F9D25C2B533001DF608 /* TFScrollBlockViewController.xib in Resources */,
 				9081155E235D9E5C0061540F /* GridDemoSectionHeader.xib in Resources */,
 				903D2516235AB106009A92DE /* GridViewController.xib in Resources */,
 				20D2EFD622321CA1001DC35D /* Main.storyboard in Resources */,
@@ -425,6 +447,7 @@
 				90E62288235DA6730083B60C /* UITableView+TFGridExtesion.m in Sources */,
 				9081155C235D9E550061540F /* GridDemoSectionHeader.m in Sources */,
 				90E622A9235FF81E0083B60C /* TFGridColumnView.m in Sources */,
+				BD361F9C25C2B533001DF608 /* TFScrollBlockViewController.m in Sources */,
 				2098109222389DE9004B262C /* WebViewController.m in Sources */,
 				90979E2D2366891400A0B521 /* TFGridReloadParam.m in Sources */,
 				90811556235B130C0061540F /* TFGridViewInnerHeaderFooterView.m in Sources */,
@@ -435,6 +458,7 @@
 				2098108B2237616D004B262C /* TFWKWebView.m in Sources */,
 				2098108422375F2E004B262C /* WeakWKScriptMessageHandler.m in Sources */,
 				9081154D235AB8410061540F /* TFGridViewInnerCell.m in Sources */,
+				BD361F9625C2AD84001DF608 /* TFScrollBlockView.m in Sources */,
 				2098108122375F2E004B262C /* WKUserContentController+Safe.m in Sources */,
 				90811545235AB5330061540F /* TFGridViewCell.m in Sources */,
 				903D2515235AB106009A92DE /* GridViewController.m in Sources */,

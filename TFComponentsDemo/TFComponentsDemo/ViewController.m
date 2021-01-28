@@ -26,6 +26,8 @@
     [self.dataSource addObject:@"浏览器:WebViewController"];
     [self.dataSource addObject:@"表格:GridViewController"];
     [self.dataSource addObject:@"标签板:TFTagBoardController"];
+    [self.dataSource addObject:@"竖向滚动标签:TFScrollBlockViewController"];
+    
     [self.tableView reloadData];
 }
 

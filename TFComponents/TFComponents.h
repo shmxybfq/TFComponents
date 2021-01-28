@@ -26,6 +26,7 @@
 #import "TFWKWebView.h"
 #import "TFWKWebViewController.h"
 #import "TFTagBoardView.h"
+#import "TFScrollBlockView.h"
 /**
  *  weak obj
  *  @param TARGET 实例
