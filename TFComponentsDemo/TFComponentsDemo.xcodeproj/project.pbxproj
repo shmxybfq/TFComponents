@@ -24,7 +24,7 @@
 		20D2EFED22322307001DC35D /* TFScrollTagViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20D2EFEB22322307001DC35D /* TFScrollTagViewController.xib */; };
 		20D2EFF4223248CD001DC35D /* TFSquareBlockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D2EFF2223248CD001DC35D /* TFSquareBlockViewController.m */; };
 		20D2EFF5223248CD001DC35D /* TFSquareBlockViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20D2EFF3223248CD001DC35D /* TFSquareBlockViewController.xib */; };
-		3181B3D42D96106084DFD923 /* libPods-TFComponentsDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 423C14E308F7FFACDC192769 /* libPods-TFComponentsDemo.a */; };
+		3001BB15940AFA7CBBB34A82 /* Pods_TFComponentsDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC3C50E9DB8542F431D90F52 /* Pods_TFComponentsDemo.framework */; };
 		903D2515235AB106009A92DE /* GridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 903D2513235AB106009A92DE /* GridViewController.m */; };
 		903D2516235AB106009A92DE /* GridViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 903D2514235AB106009A92DE /* GridViewController.xib */; };
 		903D2521235AB175009A92DE /* TFScrollTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 903D2519235AB174009A92DE /* TFScrollTagView.m */; };
@@ -84,7 +84,6 @@
 		20D2EFF1223248CD001DC35D /* TFSquareBlockViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TFSquareBlockViewController.h; sourceTree = "<group>"; };
 		20D2EFF2223248CD001DC35D /* TFSquareBlockViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TFSquareBlockViewController.m; sourceTree = "<group>"; };
 		20D2EFF3223248CD001DC35D /* TFSquareBlockViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TFSquareBlockViewController.xib; sourceTree = "<group>"; };
-		423C14E308F7FFACDC192769 /* libPods-TFComponentsDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TFComponentsDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		903D2512235AB106009A92DE /* GridViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GridViewController.h; sourceTree = "<group>"; };
 		903D2513235AB106009A92DE /* GridViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GridViewController.m; sourceTree = "<group>"; };
 		903D2514235AB106009A92DE /* GridViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GridViewController.xib; sourceTree = "<group>"; };
@@ -126,6 +125,7 @@
 		90E622B0236182DD0083B60C /* TFGridUnit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TFGridUnit.h; sourceTree = "<group>"; };
 		90E622B1236182DD0083B60C /* TFGridUnit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TFGridUnit.m; sourceTree = "<group>"; };
 		AAB4364B1219D7FF792AC2FA /* Pods-TFComponentsDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TFComponentsDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-TFComponentsDemo/Pods-TFComponentsDemo.release.xcconfig"; sourceTree = "<group>"; };
+		BC3C50E9DB8542F431D90F52 /* Pods_TFComponentsDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TFComponentsDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD361F9425C2AD84001DF608 /* TFScrollBlockView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TFScrollBlockView.h; sourceTree = "<group>"; };
 		BD361F9525C2AD84001DF608 /* TFScrollBlockView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TFScrollBlockView.m; sourceTree = "<group>"; };
 		BD361F9925C2B533001DF608 /* TFScrollBlockViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TFScrollBlockViewController.h; sourceTree = "<group>"; };
@@ -138,7 +138,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3181B3D42D96106084DFD923 /* libPods-TFComponentsDemo.a in Frameworks */,
+				3001BB15940AFA7CBBB34A82 /* Pods_TFComponentsDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,7 +328,7 @@
 		ABC281DE02A98FBE01552774 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				423C14E308F7FFACDC192769 /* libPods-TFComponentsDemo.a */,
+				BC3C50E9DB8542F431D90F52 /* Pods_TFComponentsDemo.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -353,6 +353,7 @@
 				20D2EFC722321CA1001DC35D /* Sources */,
 				20D2EFC822321CA1001DC35D /* Frameworks */,
 				20D2EFC922321CA1001DC35D /* Resources */,
+				F1E0BDE612F063E9186D5E28 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -433,6 +434,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F1E0BDE612F063E9186D5E28 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TFComponentsDemo/Pods-TFComponentsDemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TFComponentsDemo/Pods-TFComponentsDemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TFComponentsDemo/Pods-TFComponentsDemo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

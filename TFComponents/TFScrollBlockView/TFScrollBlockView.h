@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Masonry/Masonry.h>
 
 @class TFScrollBlockView;
 @protocol TFScrollBlockViewDelegate <NSObject>
@@ -30,6 +31,8 @@
 
 @property(nonatomic,  weak)id<TFScrollBlockViewDelegate>delegate;
 @property(nonatomic,strong)UIScrollView *scrollView;
+@property(nonatomic,strong)UIView *contentView;
+@property(nonatomic,strong)UIView *contentBackgroundView;
 @property(nonatomic,strong)NSMutableArray *cells;
 
 -(void)reload;

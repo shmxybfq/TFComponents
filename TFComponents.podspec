@@ -2,7 +2,7 @@
 
 Pod::Spec.new do |s|
 s.name         = "TFComponents"
-s.version      = "1.6.0"
+s.version      = "1.6.1"
 s.ios.deployment_target = '7.0'
 s.summary      = "A powerful tool for ztf"
 s.homepage     = "https://github.com/shmxybfq/TFComponents"
@@ -12,4 +12,5 @@ s.social_media_url   = "https://github.com/shmxybfq/TFComponents"
 s.source       = { :git => "https://github.com/shmxybfq/TFComponents.git", :tag => s.version }
 s.source_files  = "TFComponents/**/*.{h,m}"
 s.requires_arc = true
+s.dependency "Masonry"
 end

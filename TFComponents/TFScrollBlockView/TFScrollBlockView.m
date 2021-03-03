@@ -9,6 +9,7 @@
 #import "TFScrollBlockView.h"
 
 
+
 @interface TFScrollBlockView ()
 
 @property(nonatomic,assign)NSUInteger count;
@@ -26,18 +27,33 @@
 -(instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
         [self addSubview:self.scrollView];
-        self.scrollView.frame = self.bounds;
+        [self.scrollView mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.top.left.bottom.right.equalTo(self);
+        }];
+        
+        [self.scrollView addSubview:self.contentBackgroundView];
+        [self.contentBackgroundView mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.top.left.bottom.right.equalTo(self.scrollView);
+            make.height.mas_equalTo(self.frame.size.height);
+        }];
+        
+        [self.scrollView addSubview:self.contentView];
+        [self.contentView mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.top.left.bottom.right.equalTo(self.scrollView);
+            make.height.mas_equalTo(self.frame.size.height);
+        }];
+        
     }
     return self;
 }
 
--(void)layoutSubviews{
-    [super layoutSubviews];
-    if (CGRectEqualToRect(self.scrollView.frame, self.bounds) == NO) {
-        self.scrollView.frame = self.bounds;
-        [self reloadLayout];
-    }
-}
+//-(void)layoutSubviews{
+//    [super layoutSubviews];
+//    if (CGRectEqualToRect(self.scrollView.frame, self.bounds) == NO) {
+//        self.scrollView.frame = self.bounds;
+//        [self reloadLayout];
+//    }
+//}
 
 -(void)reload{
     [self reloadData];
@@ -47,6 +63,8 @@
 -(void)reloadData{
     
     self.count = 0;
+    [self.heights removeAllObjects];
+    [self.lefts removeAllObjects];
     [self.widths removeAllObjects];
     [self.margins removeAllObjects];
     [self.cells makeObjectsPerformSelector:@selector(removeFromSuperview)];
@@ -93,6 +111,7 @@
     
     if (self.count == 0) return;
     CGFloat y = 0;
+    UIView *topView = self.contentView;
     for (NSInteger i = 0; i <= self.count; i++) {
         UIView *cell = nil;
         CGFloat x  = 0;
@@ -109,19 +128,36 @@
             if (i < self.widths.count) {
                 width = [[self.widths objectAtIndex:i] floatValue];
             }
-            [self.scrollView addSubview:cell];
+            [self.contentView addSubview:cell];
         }else{
             margin = [[self.margins objectAtIndex:i] floatValue];
         }
         y += margin;
-        cell.frame = CGRectMake(x, y, width, height);
+        if (cell) {
+            [cell mas_remakeConstraints:^(MASConstraintMaker *make) {
+                if (i == 0) {
+                    make.top.equalTo(topView);
+                }else{
+                    make.top.equalTo(topView.mas_bottom);
+                }
+                make.left.equalTo(self.contentView);
+                make.width.mas_equalTo(width);
+                make.height.mas_equalTo(height);
+            }];
+        }
         y += height;
+        topView = cell;
     }
-    self.scrollView.contentSize = CGSizeMake(self.bounds.size.width, y);
     self.maxHeight = y;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        self.scrollView.contentSize = CGSizeMake(self.bounds.size.width, y);
-    });
+    
+    [self.contentBackgroundView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(y);
+    }];
+    [self.contentView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(y);
+    }];
+    
+    
 }
 
 
@@ -169,4 +205,21 @@
     }
     return _scrollView;
 }
+
+-(UIView *)contentView{
+    if (!_contentView) {
+        _contentView = [[UIView alloc]initWithFrame:self.bounds];
+        _contentView.backgroundColor = [UIColor clearColor];
+    }
+    return _contentView;
+}
+
+-(UIView *)contentBackgroundView{
+    if (!_contentBackgroundView) {
+        _contentBackgroundView = [[UIView alloc]initWithFrame:self.bounds];
+        _contentBackgroundView.backgroundColor = [UIColor clearColor];
+    }
+    return _contentBackgroundView;
+}
+
 @end
