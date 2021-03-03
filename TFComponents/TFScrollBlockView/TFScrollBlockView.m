@@ -19,6 +19,10 @@
 @property(nonatomic,strong)NSMutableArray *widths;
 @property(nonatomic,assign)CGFloat maxHeight;
 
+@property(nonatomic,assign)NSUInteger backgroundViewCount;
+@property(nonatomic,strong)NSMutableArray *backgroundViews;
+@property(nonatomic,strong)NSMutableArray *backgroundViewFrames;
+
 @end
 
 @implementation TFScrollBlockView
@@ -32,35 +36,40 @@
         }];
         
         [self.scrollView addSubview:self.contentBackgroundView];
-        [self.contentBackgroundView mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.top.left.bottom.right.equalTo(self.scrollView);
-            make.height.mas_equalTo(self.frame.size.height);
-        }];
-        
         [self.scrollView addSubview:self.contentView];
+        
         [self.contentView mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.top.left.bottom.right.equalTo(self.scrollView);
+            make.width.mas_equalTo(self.frame.size.width);
             make.height.mas_equalTo(self.frame.size.height);
         }];
         
+        [self.contentBackgroundView mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.top.left.bottom.right.equalTo(self.contentView);
+        }];
+        
+        self.forceScrollHeight = 0;
     }
     return self;
 }
 
-//-(void)layoutSubviews{
-//    [super layoutSubviews];
-//    if (CGRectEqualToRect(self.scrollView.frame, self.bounds) == NO) {
-//        self.scrollView.frame = self.bounds;
-//        [self reloadLayout];
-//    }
-//}
-
--(void)reload{
-    [self reloadData];
+-(void)layoutSubviews{
+    [super layoutSubviews];
+    [self.contentView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(self.frame.size.width);
+    }];
     [self reloadLayout];
 }
 
--(void)reloadData{
+-(void)reload{
+    [self reloadContent];
+    [self reloadBackground];
+    [self reloadLayout];
+}
+
+
+
+-(void)reloadContent{
     
     self.count = 0;
     [self.heights removeAllObjects];
@@ -107,8 +116,40 @@
     }
 }
 
--(void)reloadLayout{
+
+-(void)reloadBackground{
+    self.backgroundViewCount = 0;
+    [self.backgroundViews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [self.backgroundViews removeAllObjects];
+    [self.backgroundViewFrames removeAllObjects];
     
+    if ([self.delegate respondsToSelector:@selector(numberOfBackgroundView)]) {
+        NSInteger count = [self.delegate numberOfBackgroundView];
+        self.backgroundViewCount = count>=0?count:0;
+        
+        for (NSInteger i = 0; i <= self.backgroundViewCount; i++) {
+            if ([self.delegate respondsToSelector:@selector(blockView:backgroundViewForIndex:)]) {
+                UIView *backgroundView = [self.delegate blockView:self backgroundViewForIndex:i];
+                NSAssert((!(backgroundView == nil)), @"backgroundView 不能为空！");
+                [self.backgroundViews addObject:backgroundView];
+                
+                if ([self.delegate respondsToSelector:@selector(blockView:backgroundView:frameForIndex:)]) {
+                    CGRect backgroundViewFrame = [self.delegate blockView:self backgroundView:backgroundView frameForIndex:i];
+                    [self.backgroundViewFrames addObject:NSStringFromCGRect(backgroundViewFrame)];
+                }
+            }
+        }
+    }
+}
+
+
+-(void)reloadLayout{
+    [self layoutContent];
+    [self layoutBackground];
+}
+
+-(void)layoutContent{
+    [self.cells makeObjectsPerformSelector:@selector(removeFromSuperview)];
     if (self.count == 0) return;
     CGFloat y = 0;
     UIView *topView = self.contentView;
@@ -136,11 +177,11 @@
         if (cell) {
             [cell mas_remakeConstraints:^(MASConstraintMaker *make) {
                 if (i == 0) {
-                    make.top.equalTo(topView);
+                    make.top.equalTo(topView).offset(margin);
                 }else{
-                    make.top.equalTo(topView.mas_bottom);
+                    make.top.equalTo(topView.mas_bottom).offset(margin);
                 }
-                make.left.equalTo(self.contentView);
+                make.left.equalTo(self.contentView).offset(x);
                 make.width.mas_equalTo(width);
                 make.height.mas_equalTo(height);
             }];
@@ -148,19 +189,39 @@
         y += height;
         topView = cell;
     }
-    self.maxHeight = y;
     
-    [self.contentBackgroundView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(y);
-    }];
+    CGFloat contentHeight = y;
+    if (contentHeight <= self.scrollView.frame.size.height) {
+        contentHeight = self.scrollView.frame.size.height + self.forceScrollHeight;
+    }
+    
+    self.maxHeight = contentHeight;
+
     [self.contentView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(y);
+        make.height.mas_equalTo(contentHeight);
     }];
-    
-    
 }
 
 
+
+-(void)layoutBackground{
+    [self.backgroundViews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    if (self.backgroundViewCount == 0) return;
+    
+    for (NSInteger i = 0; i <= self.backgroundViewCount; i++) {
+        UIView *backgroundView = [self.backgroundViews objectAtIndex:i];
+        NSString *frameString = [self.backgroundViewFrames objectAtIndex:i];
+        CGRect frame = CGRectFromString(frameString);
+            
+        [self.contentBackgroundView addSubview:backgroundView];
+        [backgroundView mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.contentBackgroundView).offset(frame.origin.y);
+            make.left.equalTo(self.contentBackgroundView).offset(frame.origin.x);
+            make.width.mas_equalTo(frame.size.width);
+            make.height.mas_equalTo(frame.size.height);
+        }];
+    }
+}
 
 -(NSMutableArray *)widths{
     if (_widths == nil) {
@@ -220,6 +281,20 @@
         _contentBackgroundView.backgroundColor = [UIColor clearColor];
     }
     return _contentBackgroundView;
+}
+
+-(NSMutableArray *)backgroundViews{
+    if (_backgroundViews == nil) {
+        _backgroundViews = [[NSMutableArray alloc]init];
+    }
+    return _backgroundViews;
+}
+
+-(NSMutableArray *)backgroundViewFrames{
+    if (_backgroundViewFrames == nil) {
+        _backgroundViewFrames = [[NSMutableArray alloc]init];
+    }
+    return _backgroundViewFrames;
 }
 
 @end

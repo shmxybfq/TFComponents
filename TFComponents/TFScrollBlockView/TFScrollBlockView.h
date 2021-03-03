@@ -24,6 +24,12 @@
 -(CGFloat)blockView:(TFScrollBlockView *)blockView leftForIndex:(NSUInteger)index;
 
 -(CGFloat)blockView:(TFScrollBlockView *)blockView widthForIndex:(NSUInteger)index;
+
+-(NSUInteger)numberOfBackgroundView;
+
+-(UIView *)blockView:(TFScrollBlockView *)blockView backgroundViewForIndex:(NSUInteger)index;
+
+-(CGRect)blockView:(TFScrollBlockView *)blockView backgroundView:(UIView *)backgroundView frameForIndex:(NSUInteger)index;
 @end
 
 
@@ -34,6 +40,9 @@
 @property(nonatomic,strong)UIView *contentView;
 @property(nonatomic,strong)UIView *contentBackgroundView;
 @property(nonatomic,strong)NSMutableArray *cells;
+//因为UIScrollView 内容不足的话不会滚动,所以强制让scrollview滚动的话就得用内容撑开
+//此属性即为撑开时加的高度
+@property(nonatomic,assign)CGFloat forceScrollHeight;
 
 -(void)reload;
 
