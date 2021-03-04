@@ -127,7 +127,7 @@
         NSInteger count = [self.delegate numberOfBackgroundView];
         self.backgroundViewCount = count>=0?count:0;
         
-        for (NSInteger i = 0; i <= self.backgroundViewCount; i++) {
+        for (NSInteger i = 0; i < self.backgroundViewCount; i++) {
             if ([self.delegate respondsToSelector:@selector(blockView:backgroundViewForIndex:)]) {
                 UIView *backgroundView = [self.delegate blockView:self backgroundViewForIndex:i];
                 NSAssert((!(backgroundView == nil)), @"backgroundView 不能为空！");
@@ -208,7 +208,7 @@
     [self.backgroundViews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     if (self.backgroundViewCount == 0) return;
     
-    for (NSInteger i = 0; i <= self.backgroundViewCount; i++) {
+    for (NSInteger i = 0; i < self.backgroundViewCount; i++) {
         UIView *backgroundView = [self.backgroundViews objectAtIndex:i];
         NSString *frameString = [self.backgroundViewFrames objectAtIndex:i];
         CGRect frame = CGRectFromString(frameString);
