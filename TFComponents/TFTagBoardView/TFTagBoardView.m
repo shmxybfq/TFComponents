@@ -61,7 +61,7 @@
     [self reloadData];
 }
 
--(void)reloadData{
+-(CGSize)reloadData{
     
     [self.cells makeObjectsPerformSelector:@selector(removeFromSuperview)];
     [self.cells removeAllObjects];
@@ -97,6 +97,7 @@
         x = x + self.columnMargin + width;
         
     }
+    return self.scrollView.contentSize;
 }
 
 -(NSMutableArray *)cells{

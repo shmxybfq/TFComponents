@@ -32,7 +32,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,strong) UIScrollView *scrollView;
 @property(nonatomic,strong) NSMutableArray *cells;
 
--(void)reload;
+-(CGSize)reloadData;
 
 @end
 
