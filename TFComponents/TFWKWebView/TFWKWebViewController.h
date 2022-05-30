@@ -25,7 +25,7 @@ typedef void(^TFWKWebViewControllerActionBlock)(TFWKWebViewController *controlle
 //点击返回键是否直接回调返回
 @property(nonatomic,assign)BOOL backClose;
 @property(nonatomic,assign)BOOL hideNavgationBar;
-
+-(void)relayout;
 //刷新链接
 -(void)reload:(NSString *)urlString title:(NSString *)titleString;
 //监听自定义导航栏或者js导航栏回调
