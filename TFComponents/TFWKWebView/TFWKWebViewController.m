@@ -63,8 +63,18 @@ NSString *const kLocalCanGoBackx = @"";
 #define kTopHeight 64
 -(void)initView{
     kdeclare_weakself;
-    //初始化
-    self.webView = [[TFWKWebView alloc] initWithFrame:CGRectZero];
+    // 初始化配置对象
+    WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];
+    // 默认是NO，这个值决定了用内嵌HTML5播放视频还是用本地的全屏控制
+    // 自动播放， 不需要用户采取任何手势开启播放
+    configuration.allowsInlineMediaPlayback = YES;
+    if (@available(iOS 10.0, *)) {
+        // WKAudiovisualMediaTypeNone 音视频的播放不需要用户手势触发，即为自动播放
+        configuration.mediaTypesRequiringUserActionForPlayback = WKAudiovisualMediaTypeNone;
+    } else {
+        configuration.requiresUserActionForMediaPlayback = NO;
+    }
+    self.webView = [[TFWKWebView alloc] initWithFrame:CGRectZero configuration:configuration];
     self.webView.UIDelegate = self;
     self.webView.navigationDelegate = self;
     [self.view addSubview:self.webView];
